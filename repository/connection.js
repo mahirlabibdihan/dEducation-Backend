@@ -5,13 +5,13 @@ oracledb.autoCommit = true;
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 oracledb.fetchAsString = [oracledb.CLOB];
 
-class Database {
+class Repository {
   constructor() {
     this.connection = undefined;
   }
   // code to execute sql
-  execute = async function (sql, binds) {
-    let results;
+  execute = async (sql, binds) => {
+    let result;
     try {
       if (this.connection === undefined) {
         this.connection = await oracledb.getConnection({
@@ -23,14 +23,18 @@ class Database {
           connectionString: "localhost/orcl",
         });
       }
-      console.log("Connected to Database!!");
-      results = await this.connection.execute(sql, binds);
-    } catch (err) {
-      console.log("ERROR executing sql: " + err.message);
-      console.log(sql);
-      console.log(binds);
+      result = await this.connection.execute(sql, binds);
+      return {
+        success: true,
+        data: result.rows,
+      };
+    } catch (error) {
+      console.log(error);
+      return {
+        success: false,
+        error,
+      };
     }
-    return results;
   };
 }
-module.exports = Database;
+module.exports = Repository;
