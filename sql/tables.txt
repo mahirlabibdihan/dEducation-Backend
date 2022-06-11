@@ -1,7 +1,43 @@
 CREATE TABLE Users (
-  id NUMBER NOT NULL,
+  id NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
   name VARCHAR2(100) NOT NULL,
   image VARCHAR2(1000),
   email VARCHAR2(100) NOT NULL,
   pass VARCHAR2(1024) NOT NULL
+);
+
+CREATE TABLE Students (
+	id NUMBER;
+);
+
+CREATE TABLE Tutors (
+	id NUMBER;
+);
+
+CREATE TABLE Coachings (
+	id NUMBER;
+);
+
+CREATE TABLE TuitionPosts (
+	id NUMBER;
+);
+
+CREATE TABLE TuitionOffers (
+	id NUMBER;
+);
+
+CREATE TABLE Tuitions (
+	id NUMBER;
+);
+
+CREATE TABLE Courses (
+	id NUMBER;
+);
+
+CREATE TABLE Payment (
+	id NUMBER;
+);
+
+CREATE TABLE Address (
+	id NUMBER;
 );

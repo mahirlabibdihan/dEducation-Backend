@@ -62,6 +62,20 @@ class AuthRepository extends Repository {
       success: false,
     };
   };
+  tokenValidity = async (id, email, pass) => {
+    const query =
+      "SELECT * FROM Users where id = :id and email = :email and pass = :pass";
+    const params = { id: id, email: email, pass: pass };
+    const result = await this.execute(query, params);
+    console.log(id, email, pass);
+    console.log(result);
+    if (result.success == true) {
+      if (result.data.length == 1) {
+        return true;
+      }
+    }
+    return false;
+  };
 }
 
 module.exports = AuthRepository;

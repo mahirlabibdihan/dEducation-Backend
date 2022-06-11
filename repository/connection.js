@@ -11,16 +11,21 @@ class Repository {
   }
   // code to execute sql
   execute = async (sql, binds) => {
+    console.log(
+      process.env.db_user,
+      process.env.db_password,
+      process.env.db_connectstring
+    );
     let result;
     try {
       if (this.connection === undefined) {
         this.connection = await oracledb.getConnection({
-          // user: process.env.DB_USER,
-          // password: process.env.DB_PASSWORD,
-          // connectionString: process.env.DB_CONNECTSTRING,
-          user: "c##hiddenbrain",
-          password: "root",
-          connectionString: "localhost/orcl",
+          user: process.env.db_user,
+          password: process.env.db_password,
+          connectionString: process.env.db_connectstring,
+          // user: "c##hiddenbrain",
+          // password: "root",
+          // connectionString: "localhost/orcl",
         });
       }
       result = await this.connection.execute(sql, binds);
