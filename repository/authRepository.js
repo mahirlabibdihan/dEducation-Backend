@@ -9,20 +9,21 @@ class AuthRepository extends Repository {
     super();
   }
   signup = async (data) => {
-    const sql = `SELECT * FROM Users WHERE email = :email`;
-    const binds = {
+    const query = `SELECT * FROM Users WHERE email = :email`;
+    const params = {
       email: data.email,
     };
-    const result = await this.execute(sql, binds);
+    const result = await this.execute(query, params);
     if (result.success == true) {
       if (result.data.length == 0) {
-        const sql = `INSERT INTO Users (name,email,pass) VALUES (:name,:email,:pass)`;
-        const binds = {
+        const query = `INSERT INTO Users (name,email,pass,type) VALUES (:name,:email,:pass,:type)`;
+        const params = {
           name: data.name,
           email: data.email,
           pass: bcrypt.hashSync(data.pass, 10),
+          type: data.type,
         };
-        const result = await this.execute(sql, binds);
+        const result = await this.execute(query, params);
         return result;
       }
     }
@@ -31,11 +32,11 @@ class AuthRepository extends Repository {
     };
   };
   login = async (data) => {
-    const sql = `SELECT * FROM Users WHERE email = :email`;
-    const binds = {
+    const query = `SELECT * FROM Users WHERE email = :email`;
+    const params = {
       email: data.email,
     };
-    const result = await this.execute(sql, binds);
+    const result = await this.execute(query, params);
     console.log(result);
     if (result.success == true) {
       if (result.data.length == 1) {

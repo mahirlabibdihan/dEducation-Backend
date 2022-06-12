@@ -10,7 +10,7 @@ class Repository {
     this.connection = undefined;
   }
   // code to execute sql
-  execute = async (sql, binds) => {
+  execute = async (query, params) => {
     console.log(
       process.env.db_user,
       process.env.db_password,
@@ -28,7 +28,7 @@ class Repository {
           // connectionString: "localhost/orcl",
         });
       }
-      result = await this.connection.execute(sql, binds);
+      result = await this.connection.execute(query, params);
       return {
         success: true,
         data: result.rows,

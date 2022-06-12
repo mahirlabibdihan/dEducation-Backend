@@ -25,6 +25,7 @@ class AuthController extends Controller {
     console.log(result);
     if (result.success == true) {
       res.status(200).json({
+        success: true,
         token: result.token,
       });
     } else {
