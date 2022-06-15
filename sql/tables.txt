@@ -1,5 +1,5 @@
 CREATE TABLE Users (
-  id NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
+  user_id NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
   name VARCHAR2(100) NOT NULL,
   image VARCHAR2(1000),
   email VARCHAR2(100) NOT NULL,
@@ -7,7 +7,18 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Students (
-	id NUMBER;
+	student_id NUMBER REFERENCES Users(user_id),
+	gender VARCHAR2(100),
+	date_of_birth DATE,
+	instituition VARCHAR2(100),
+	phone_number NUMBER,
+	address_id NUMBER REFERENCES Address(address_id),
+);
+
+CREATE TABLE Address (
+	address_id NUMBER,
+	city VARCHAR2(100),
+	district VARCHAR2(100)
 );
 
 CREATE TABLE Tutors (
@@ -38,6 +49,3 @@ CREATE TABLE Payment (
 	id NUMBER;
 );
 
-CREATE TABLE Address (
-	id NUMBER;
-);

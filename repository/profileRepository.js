@@ -8,7 +8,7 @@ class profileRepository extends Repository {
     const query = `
     SELECT name,image
     FROM Users
-    WHERE id=:id`;
+    WHERE user_id=:id`;
     const params = {
       id: data.user_id,
     };
@@ -26,14 +26,30 @@ class profileRepository extends Repository {
       success: false,
     };
   };
-  setProfileImage = async (data) => {
-    const query = "UPDATE Users SET image = :image where id = :id";
-    const params = { image: data.image, id: data.user_id };
+  setProfilePicture = async (data) => {
+    const query = "UPDATE Users SET image = :image where user_id = :id";
+    const fileName = data.user_id + Date.now() + "." + data.ext;
+    const params = { image: fileName, id: data.user_id };
     const result = await this.execute(query, params);
     if (result.success === true) {
       return {
         success: true,
-        path: data.image,
+        image: fileName,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  getProfilePicture = async (data) => {
+    const query = "SELECT image FROM Users WHERE user_id = :id";
+    const params = { id: data.user_id };
+    const result = await this.execute(query, params);
+    console.log("PRO", result);
+    if (result.success === true) {
+      return {
+        success: true,
+        image: result.data[0].IMAGE,
       };
     }
     return {

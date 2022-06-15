@@ -1,7 +1,7 @@
 const Controller = require("./base");
 const ProfileRepository = require("../repository/profileRepository");
 const profileRepository = new ProfileRepository();
-
+const fs = require("fs");
 class profileController extends Controller {
   constructor() {
     super();
@@ -19,8 +19,25 @@ class profileController extends Controller {
       });
     }
   };
+  deleteProfilePicture = async (req, res) => {
+    console.log("Delete start");
+    const result = await profileRepository.getProfilePicture(req.body);
+    console.log(result);
+    if (result.image !== null) {
+      console.log("Delete start 2");
+      try {
+        fs.unlinkSync(
+          `G:/github/hidden-brain-backend/public/assets/images/${result.image}`
+        );
+        console.log("Deleting");
+      } catch (err) {
+        console.log(err);
+      }
+      console.log("Delete end");
+    }
+  };
 
-  setProfileImage = async (req, res) => {
+  setProfilePicture = async (req, res) => {
     // console.log(req);
     console.log(req.files);
     if (req.files === null) {
@@ -28,34 +45,34 @@ class profileController extends Controller {
         success: false,
       });
     }
+    await this.deleteProfilePicture(req, res);
     const file = req.files.file;
-    const filePath = `${file.name}`;
-    file.mv(
-      `G:/Github/hidden-brain-backend/public/assets/images/${file.name}`,
-      (err) => {
-        // console.log(`../${__dirname}/public/assets/images/${file.name}`);
-        if (err) {
-          // res.status(404).json({
-          //   success: false,
-          // });
-        }
-        console.log("File uploaded!");
-      }
-    );
-    console.log("DONE");
-    req.body["image"] = filePath;
-    let result = await profileRepository.setProfileImage(req.body);
+    req.body["ext"] = file.name.split(".").pop();
+    const result = await profileRepository.setProfilePicture(req.body);
     console.log(result);
+
     if (result.success) {
+      try {
+        await file.mv(
+          `G:/github/hidden-brain-backend/public/assets/images/${result.image}`
+        );
+        console.log("Moving");
+      } catch (err) {
+        (err) => {
+          if (!err) {
+            console.log(result.image);
+          }
+        };
+      }
+      console.log("Send response");
       return res.status(200).json({
         success: true,
-        path: result.path,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
+        image: result.image,
       });
     }
+    res.status(404).json({
+      success: false,
+    });
   };
   setProfile = async (req, res) => {
     let result = await profileRepository.update(req.body);
