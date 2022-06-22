@@ -6,19 +6,21 @@ class profileRepository extends Repository {
   }
   getProfile = async (data) => {
     const query = `
-    SELECT name,image
+    SELECT name,image,type
     FROM Users
     WHERE user_id=:id`;
     const params = {
       id: data.user_id,
     };
     var result = await this.execute(query, params);
+    console.log(result);
     if (result.success === true) {
       return {
         success: true,
         data: {
           name: result.data[0].NAME,
           image: result.data[0].IMAGE,
+          type: result.data[0].TYPE,
         },
       };
     }

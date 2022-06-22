@@ -32,6 +32,7 @@ class AuthRepository extends Repository {
     };
   };
   login = async (data) => {
+    console.log(data);
     const query = `SELECT * FROM Users WHERE email = :email`;
     const params = {
       email: data.email,
@@ -72,26 +73,32 @@ class AuthRepository extends Repository {
     if (result.success == true) {
       if (result.data.length == 1) {
         const pass = result.data[0].PASS;
-        if (bcrypt.compareSync(data.currPass, pass)) {
-          let query = `UPDATE Users SET pass = :pass where id = :id`;
-          var newPassHash = bcrypt.hashSync(data.newPass, 10);
-          let params = {
+        if (bcrypt.compareSync(data.curr_pass, pass)) {
+          let update_query = `UPDATE Users SET pass = :pass where user_id = :id`;
+          var newPassHash = bcrypt.hashSync(data.new_pass, 10);
+          let update_params = {
             pass: newPassHash,
             id: data.user_id,
           };
-          let result = await this.execute(query, params);
-          if (result.success) {
-            // console.log(currPass, newPass);
+          let update_result = await this.execute(update_query, update_params);
+          if (update_result.success) {
+            console.log(data.curr_pass, data.new_pass, newPassHash, data.email);
+
             const token = jwt.sign(
               {
-                id: data.user_id,
-                email: data.email,
+                id: result.data[0].USER_ID,
+                email: result.data[0].EMAIL,
                 pass: newPassHash,
-                type: data.type,
+                type: result.data[0].TYPE,
               },
               process.env.JWT_SECRET,
               { expiresIn: `${tokenExpiryDuration}s` }
             );
+            jwt.verify(token, process.env.jwt_secret, async (err, user) => {
+              console.log("user" + user + err);
+              console.log(user.id);
+              console.log(user.email);
+            });
             return {
               success: true,
               token: token,
@@ -108,7 +115,7 @@ class AuthRepository extends Repository {
   };
   tokenValidity = async (id, email, pass) => {
     const query =
-      "SELECT * FROM Users where id = :id and email = :email and pass = :pass";
+      "SELECT * FROM Users where user_id = :id and email = :email and pass = :pass";
     const params = { id: id, email: email, pass: pass };
     const result = await this.execute(query, params);
     console.log("ALL:", id, email, pass);

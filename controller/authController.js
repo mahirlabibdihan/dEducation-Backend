@@ -21,6 +21,7 @@ class AuthController extends Controller {
 
   login = async (req, res) => {
     console.log("Login request");
+    console.log(req.body);
     let result = await authRepository.login(req.body);
     console.log(result);
     if (result.success == true) {
