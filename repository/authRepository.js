@@ -94,11 +94,6 @@ class AuthRepository extends Repository {
               process.env.JWT_SECRET,
               { expiresIn: `${tokenExpiryDuration}s` }
             );
-            jwt.verify(token, process.env.jwt_secret, async (err, user) => {
-              console.log("user" + user + err);
-              console.log(user.id);
-              console.log(user.email);
-            });
             return {
               success: true,
               token: token,

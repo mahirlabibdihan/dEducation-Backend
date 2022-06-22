@@ -2,7 +2,7 @@ const Controller = require("./base");
 const ProfileRepository = require("../repository/profileRepository");
 const profileRepository = new ProfileRepository();
 const fs = require("fs");
-class profileController extends Controller {
+class ProfileController extends Controller {
   constructor() {
     super();
   }
@@ -86,4 +86,4 @@ class profileController extends Controller {
   };
 }
 
-module.exports = profileController;
+module.exports = ProfileController;
