@@ -4,7 +4,8 @@ const ProfileController = require("../controller/profileController");
 const profileController = new ProfileController();
 
 //anyone can see the list off items
-router.post("/upload", authMiddleware, profileController.setProfilePicture);
-router.get("/", authMiddleware, profileController.getProfile);
+router.use(authMiddleware);
+router.post("/upload", profileController.setProfilePicture);
+router.get("/", profileController.getProfile);
 
 module.exports = router;

@@ -44,6 +44,39 @@ class TuitionController extends Controller {
       });
     }
   };
+  getPosts = async (req, res) => {
+    let result = await tuitionRepository.getPosts(req.body);
+    console.log(result);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getApplications = async (req, res) => {
+    let result = await tuitionRepository.getApplications(req.body);
+    console.log(result);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getOffers = async (req, res) => {
+    let result = await tuitionRepository.getOffers(req.body);
+    console.log(result);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
 }
 
 module.exports = TuitionController;
