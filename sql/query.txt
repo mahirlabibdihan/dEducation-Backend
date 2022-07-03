@@ -1,0 +1,4 @@
+1. Get List of Tutors
+SELECT name, image, gender, phone_number, status, years_of_experience, preferred_salary
+FROM Users U,Tutors T
+WHERE U.user_id = T.tutor_id

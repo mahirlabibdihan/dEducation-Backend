@@ -1,0 +1,22 @@
+
+Entities:
+User (user_id, name, email, pass, image, gender, type, phone_number, date_of_birth)
+Student (student_id, school, version, class, address_id)
+Tutor (tutor_id, status, years_of_experience, preferred_salary)
+Tuition_Post (post_id, student_id, tuition_id, timestamp, desired_tutor_gender)
+Tuition (tuition_id, salary, days_per_week, type)
+Coaching (coaching_id, image, name, address)
+Course (course_id, coaching_id, title, class)
+Address (address_id, city, district, area, post)
+Education (education_id, tutor_id, degree, field_of_study, grade, institute, start_date, end_date)
+Subject (name)
+
+
+Relations:
+offers (student_id, tutor_id, tuition_id, status)
+memberOf (user_id, coaching_id, type)
+assigned (tutor_id,course_id)
+applies (tutor_id,post_id)
+teaches (tutor_id,sub_name)
+includes (tuition_id,sub_name)
+

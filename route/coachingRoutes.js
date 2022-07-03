@@ -11,6 +11,8 @@ router
   .post(coachingController.create)
   .get(coachingController.getInfo);
 
+router.route("/list").get(coachingController.getList);
+router.route("/my_list").get(coachingController.getMyList);
 router
   .route("/join_request")
   .post(coachingController.joinRequest)

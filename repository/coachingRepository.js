@@ -21,6 +21,44 @@ class CoachingRepository extends Repository {
       success: false,
     };
   };
+  getList = async () => {
+    const query = `
+    SELECT *
+    FROM Coachings
+    `;
+    // name, image, gender, phone_number, status, years_of_experience, preferred_salary
+    const params = {};
+    const result = await this.execute(query, params);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+
+  getMyList = async (data) => {
+    const query = `
+    SELECT *
+    FROM MemberOf NATURAL JOIN Coachings
+    WHERE user_id = :id 
+    `;
+    // name, image, gender, phone_number, status, years_of_experience, preferred_salary
+    const params = { id: data.user_id };
+    const result = await this.execute(query, params);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
 
   getInfo = async (data) => {
     let query = "SELECT * from Users where user_id = :id";

@@ -8,117 +8,190 @@ class AuthRepository extends Repository {
   constructor() {
     super();
   }
-  signup = async (data) => {
-    const query = `SELECT * FROM Users WHERE email = :email`;
+  getUserByEmail = async (email) => {
+    const query = `
+    SELECT *
+    FROM Users
+    WHERE email = :email
+    `;
     const params = {
-      email: data.email,
+      email: email,
     };
     const result = await this.execute(query, params);
-    if (result.success == true) {
-      if (result.data.length == 0) {
-        const query = `INSERT INTO Users (name,email,pass,type) VALUES (:name,:email,:pass,:type)`;
-        const params = {
-          name: data.name,
-          email: data.email,
-          pass: bcrypt.hashSync(data.pass, 10),
-          type: data.type,
-        };
-        const result = await this.execute(query, params);
-        return result;
-      }
+    if (result.data.length > 0) {
+      return {
+        success: true,
+        data: result.data[0],
+      };
     }
     return {
       success: false,
     };
+  };
+  getUserByID = async (id) => {
+    const query = `
+    SELECT *
+    FROM Users
+    WHERE user_id = :id
+    `;
+    const params = {
+      id: id,
+    };
+    const result = await this.execute(query, params);
+    if (result.data.length > 0) {
+      return {
+        success: true,
+        data: result.data[0],
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  isEmailTaken = async (email) => {
+    const result = await this.getUserByEmail(email);
+    return result.success == true;
+  };
+  addToTutors = async (id) => {
+    const query = `
+    INSERT INTO Tutors (tutor_id)
+    VALUES (:id)
+    `;
+    const params = {
+      id: id,
+    };
+    return await this.execute(query, params);
+  };
+  addToStudents = async (id) => {
+    const query = `
+    INSERT INTO Students (student_id)
+    VALUES (:id)
+    `;
+    const params = {
+      id: id,
+    };
+    return await this.execute(query, params);
+  };
+  addToUsers = async (data) => {
+    const query = `
+    INSERT INTO Users (name,email,pass,type)
+    VALUES (:name,:email,:pass,:type)
+    `;
+    const params = {
+      name: data.name,
+      email: data.email,
+      pass: bcrypt.hashSync(data.pass, 10),
+      type: data.type,
+    };
+    const res = await this.execute(query, params);
+    if (res.success) {
+      const result = await this.getUserByEmail(data.email);
+      if (result.data.TYPE === "STUDENT") {
+        return await this.addToStudents(result.data.USER_ID);
+      } else {
+        return await this.addToTutors(result.data.USER_ID);
+      }
+    }
+    return res;
+  };
+  signup = async (data) => {
+    const isTaken = await this.isEmailTaken(data.email);
+    if (!isTaken) {
+      const result = await this.addToUsers(data);
+      return {
+        success: result.success,
+      };
+    }
+    console.log("ALREADY TAKEN");
+    return {
+      success: false,
+      error: "Email is already taken",
+    };
+  };
+  getToken = (id, email, pass, type) => {
+    const token = jwt.sign(
+      {
+        id: id,
+        email: email,
+        pass: pass,
+        type: type,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: `${tokenExpiryDuration}s` }
+    );
+    return token;
   };
   login = async (data) => {
     console.log(data);
-    const query = `SELECT * FROM Users WHERE email = :email`;
-    const params = {
-      email: data.email,
-    };
-    const result = await this.execute(query, params);
-    console.log(result);
-    if (result.success == true) {
-      if (result.data.length == 1) {
-        const pass = result.data[0].PASS;
-        if (bcrypt.compareSync(data.pass, pass)) {
-          //signing a token with necessary information for validation
-          const token = jwt.sign(
-            {
-              id: result.data[0].USER_ID,
-              email: data.email,
-              pass: pass,
-              type: data.type,
-            },
-            process.env.JWT_SECRET,
-            { expiresIn: `${tokenExpiryDuration}s` }
-          );
-          return {
-            success: true,
-            token: token,
-          };
-        }
+    const result = await this.getUserByEmail(data.email);
+    if (result.success) {
+      const pass = result.data.PASS;
+      if (bcrypt.compareSync(data.pass, pass)) {
+        //signing a token with necessary information for validation
+        return {
+          success: true,
+          token: this.getToken(
+            result.data.USER_ID,
+            data.email,
+            pass,
+            data.type
+          ),
+        };
       }
     }
     return {
       success: false,
     };
   };
+  updatePass = async (pass, id) => {
+    const query = `
+    UPDATE Users
+    SET pass = :pass
+    where user_id = :id
+    `;
+    const newPassHash = bcrypt.hashSync(pass, 10);
+    const params = {
+      pass: newPassHash,
+      id: id,
+    };
+    await this.execute(query, params);
+    return newPassHash;
+  };
   changePass = async (data) => {
-    console.log("Change Password");
-    let query = "SELECT * from Users where user_id = :id";
-    let params = { id: data.user_id };
-    let result = await this.execute(query, params);
-    if (result.success == true) {
-      if (result.data.length == 1) {
-        const pass = result.data[0].PASS;
-        if (bcrypt.compareSync(data.curr_pass, pass)) {
-          let update_query = `UPDATE Users SET pass = :pass where user_id = :id`;
-          var newPassHash = bcrypt.hashSync(data.new_pass, 10);
-          let update_params = {
-            pass: newPassHash,
-            id: data.user_id,
-          };
-          let update_result = await this.execute(update_query, update_params);
-          if (update_result.success) {
-            console.log(data.curr_pass, data.new_pass, newPassHash, data.email);
-
-            const token = jwt.sign(
-              {
-                id: result.data[0].USER_ID,
-                email: result.data[0].EMAIL,
-                pass: newPassHash,
-                type: result.data[0].TYPE,
-              },
-              process.env.JWT_SECRET,
-              { expiresIn: `${tokenExpiryDuration}s` }
-            );
-            return {
-              success: true,
-              token: token,
-            };
-          }
-          return result;
-        }
+    const result = await this.getUserByID(data.user_id);
+    if (result.success) {
+      const pass = result.data.PASS;
+      if (bcrypt.compareSync(data.curr_pass, pass)) {
+        const newPassHash = await this.updatePass(data.new_pass, data.user_id);
+        return {
+          success: true,
+          token: this.getToken(
+            result.data.USER_ID,
+            result.data.EMAIL,
+            newPassHash,
+            result.data.TYPE
+          ),
+        };
       }
     }
-
     return {
       success: false,
     };
   };
   tokenValidity = async (id, email, pass) => {
-    const query =
-      "SELECT * FROM Users where user_id = :id and email = :email and pass = :pass";
+    const query = `
+    SELECT *
+    FROM Users
+    WHERE user_id = :id
+    AND email = :email
+    AND pass = :pass
+    `;
     const params = { id: id, email: email, pass: pass };
     const result = await this.execute(query, params);
-    console.log("ALL:", id, email, pass);
-    console.log(result);
-    if (result.success == true) {
-      if (result.data.length == 1) {
-        return true;
-      }
+    // console.log("ALL:", id, email, pass);
+    // console.log(result);
+    if (result.success && result.data.length == 1) {
+      return true;
     }
     return false;
   };

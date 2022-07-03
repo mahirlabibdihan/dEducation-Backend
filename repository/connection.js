@@ -34,6 +34,7 @@ class Repository {
         data: result.rows,
       };
     } catch (error) {
+      console.log("COULD NOT CONNECT TO ORACLE");
       console.log(error);
       return {
         success: false,

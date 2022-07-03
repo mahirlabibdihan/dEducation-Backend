@@ -18,8 +18,34 @@ class CoachingController extends Controller {
       });
     }
   };
+  getList = async (req, res) => {
+    const result = await coachingRepository.getList();
+    if (result.success) {
+      res.status(200).json({
+        success: true,
+        data: result.data,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getMyList = async (req, res) => {
+    const result = await coachingRepository.getList(req.body);
+    if (result.success) {
+      res.status(200).json({
+        success: true,
+        data: result.data,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
   joinRequest = async (req, res) => {
-    let result = await coachingRepository.joinRequest(req.body);
+    const result = await coachingRepository.joinRequest(req.body);
     console.log(result);
     if (result.success == true) {
       res.status(200).json({

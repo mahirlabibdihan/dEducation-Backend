@@ -6,10 +6,34 @@ class ProfileController extends Controller {
   constructor() {
     super();
   }
-
+  
   getProfile = async (req, res) => {
     console.log("Profile request");
     let result = await profileRepository.getProfile(req.body);
+    console.log(result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  setProfile = async (req, res) => {
+    console.log("UPDATE REUQEST");
+    console.log("SET PROFILE:", req.body);
+    let result = await profileRepository.setProfile(req.body);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getProfilePicture = async (req, res) => {
+    console.log("Profile Picture request");
+    let result = await profileRepository.getProfilePicture(req.body);
     console.log(result);
     if (result.success) {
       res.status(200).json(result.data);
@@ -36,7 +60,6 @@ class ProfileController extends Controller {
       console.log("Delete end");
     }
   };
-
   setProfilePicture = async (req, res) => {
     // console.log(req);
     console.log(req.files);
@@ -73,16 +96,6 @@ class ProfileController extends Controller {
     res.status(404).json({
       success: false,
     });
-  };
-  setProfile = async (req, res) => {
-    let result = await profileRepository.update(req.body);
-    if (result.success) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
   };
 }
 
