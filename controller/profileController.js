@@ -6,10 +6,22 @@ class ProfileController extends Controller {
   constructor() {
     super();
   }
-  
+
   getProfile = async (req, res) => {
     console.log("Profile request");
     let result = await profileRepository.getProfile(req.body);
+    console.log(result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getProfileByID = async (req, res) => {
+    console.log("Profile request BY ID");
+    let result = await profileRepository.getProfileByID(req.body);
     console.log(result);
     if (result.success) {
       res.status(200).json(result.data);

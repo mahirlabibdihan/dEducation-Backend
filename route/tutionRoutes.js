@@ -11,13 +11,12 @@ router
   .get(tutionController.getPosts);
 router.get("/my_list", tutionController.getMyPosts);
 router.get("/list", tutionController.getPosts);
-router
-  .route("/apply")
-  .post(tutionController.apply)
-  .get(tutionController.getApplications);
+router.route("/apply").post(tutionController.apply);
+router.post("/get_applicants", tutionController.getApplicants);
 router
   .route("/offer")
   .post(tutionController.offer)
   .get(tutionController.getOffers);
+router.post("/get_offer", tutionController.getOffer);
 
 module.exports = router;

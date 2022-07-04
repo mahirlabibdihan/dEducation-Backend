@@ -68,8 +68,8 @@ class TutionController extends Controller {
       });
     }
   };
-  getApplications = async (req, res) => {
-    let result = await tutionRepository.getApplications(req.body);
+  getApplicants = async (req, res) => {
+    let result = await tutionRepository.getApplicants(req.body);
     console.log(result);
     if (result.success == true) {
       res.status(200).json(result.data);
@@ -81,6 +81,18 @@ class TutionController extends Controller {
   };
   getOffers = async (req, res) => {
     let result = await tutionRepository.getOffers(req.body);
+    console.log(result);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getOffer = async (req, res) => {
+    console.log("*******************");
+    let result = await tutionRepository.getOffer(req.body);
     console.log(result);
     if (result.success == true) {
       res.status(200).json(result.data);

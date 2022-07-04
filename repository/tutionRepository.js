@@ -103,19 +103,25 @@ class TutionRepository extends Repository {
   };
 
   offer = async (data) => {
-    // Insert details in Tuition
-    // Insert details in Offers
-    let query = "SELECT * from Users where user_id = :id";
-    let params = { id: data.user_id };
-    let result = await this.execute(query, params);
+    // Insert details in Tuitions
+    // Insert details in Tuition_Posts
+    const tution = await this.addTution(data);
+    console.log("OFFER TUTION");
+    const query = `
+      INSERT INTO Offers (student_id, tutor_id, tution_id, status)
+      VALUES(:student_id,:tutor_id,:tution_id,:status)
+    `;
+    const params = {
+      student_id: data.user_id,
+      tutor_id: data.tutor_id,
+      tution_id: tution.data.TUTION_ID,
+      status: "PENDING",
+    };
+    const result = await this.execute(query, params);
     if (result.success == true) {
-      if (result.data.length == 1 && result.data[0].TYPE === "STUDENT") {
-        // Data = {Requirements, Desired Tutor gender, Salary, Type, Days per week}
-        const query = `<Insert tuition in Offers>`;
-        const params = {};
-        const result = await this.execute(query, params);
-        return result;
-      }
+      return {
+        success: true,
+      };
     }
     return {
       success: false,
@@ -123,18 +129,43 @@ class TutionRepository extends Repository {
   };
 
   getOffers = async (data) => {
-    // Select from Offers
-    let query = "SELECT * from Users where user_id = :id";
-    let params = { id: data.user_id };
-    let result = await this.execute(query, params);
-    if (result.success == true) {
-      if (result.data.length == 1 && result.data[0].TYPE === "TUTOR") {
-        // Data = {Requirements, Desired Tutor gender, Salary, Type, Days per week}
-        const query = `<Insert tuition in Applies>`;
-        const params = {};
-        const result = await this.execute(query, params);
-        return result;
-      }
+    // Get posts from Tuition_Posts
+    const query = `
+    SELECT *
+    FROM Offers NATURAL JOIN Tutions NATURAL JOIN Students JOIN Users
+    ON student_id = user_id
+    WHERE tutor_id = :id
+    `;
+    const params = { id: data.user_id };
+    const result = await this.execute(query, params);
+    console.log("TUTION POST", result.data);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  getOffer = async (data) => {
+    // Get posts from Tuition_Posts
+    console.log("----", data);
+    const query = `
+    SELECT *
+    FROM Offers NATURAL JOIN Tutions NATURAL JOIN Students JOIN Users
+    ON student_id = user_id
+    WHERE tutor_id = :id AND student_id = :student_id
+    `;
+    const params = { id: data.user_id, student_id: data.student_id };
+    const result = await this.execute(query, params);
+    console.log("TUTION POST", result.data);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data[0],
+      };
     }
     return {
       success: false,
@@ -142,35 +173,44 @@ class TutionRepository extends Repository {
   };
 
   apply = async (data) => {
-    let query = "SELECT * from Users where user_id = :id";
-    let params = { id: data.user_id };
-    let result = await this.execute(query, params);
+    // Insert details in Tuitions
+    // Insert details in Tuition_Posts
+    // const tution = await this.addTution(data.tution);
+    console.log("OFFER TUTION");
+    const query = `
+      INSERT INTO Applies (tutor_id, post_id)
+      VALUES(:tutor_id,:post_id)
+    `;
+    const params = {
+      tutor_id: data.user_id,
+      post_id: data.post_id,
+    };
+    const result = await this.execute(query, params);
     if (result.success == true) {
-      if (result.data.length == 1 && result.data[0].TYPE === "TUTOR") {
-        // Data = {Requirements, Desired Tutor gender, Salary, Type, Days per week}
-        const query = `<Insert tuition in Applies>`;
-        const params = {};
-        const result = await this.execute(query, params);
-        return result;
-      }
+      return {
+        success: true,
+      };
     }
     return {
       success: false,
     };
   };
 
-  getApplications = async (data) => {
-    let query = "SELECT * from Users where user_id = :id";
-    let params = { id: data.user_id };
-    let result = await this.execute(query, params);
-    if (result.success == true) {
-      if (result.data.length == 1 && result.data[0].TYPE === "TUTOR") {
-        // Data = {Requirements, Desired Tutor gender, Salary, Type, Days per week}
-        const query = `<Insert tuition in Applies>`;
-        const params = {};
-        const result = await this.execute(query, params);
-        return result;
-      }
+  getApplicants = async (data) => {
+    // Get posts from Tuition_Posts
+    const query = `
+     SELECT *
+     FROM Applies NATURAL JOIN Tutors
+     WHERE post_id = :post_id
+     `;
+    const params = { post_id: data.post_id };
+    const result = await this.execute(query, params);
+    console.log("TUTION POST", result.data);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data,
+      };
     }
     return {
       success: false,

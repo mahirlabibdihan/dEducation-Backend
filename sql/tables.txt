@@ -60,6 +60,18 @@ CREATE TABLE Tutions (
 	type VARCHAR2(100)
 );
 
+CREATE TABLE Offers (
+	student_id NUMBER REFERENCES Students(student_id) NOT NULL,
+	tutor_id NUMBER REFERENCES Tutors(tutor_id) NOT NULL,
+	tution_id NUMBER REFERENCES Tutions(tution_id) NOT NULL,
+	status VARCHAR2(100)
+);
+
+CREATE TABLE Applies (
+	tutor_id NUMBER REFERENCES Tutors(tutor_id) NOT NULL,
+	post_id NUMBER REFERENCES Tution_Posts(post_id) NOT NULL
+);
+
 CREATE TABLE TuitionOffers (
 	post_id NUMBER  GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) Primary Key,
 	student_id NUMBER REFERENCES Students(student_id) NOT NULL,

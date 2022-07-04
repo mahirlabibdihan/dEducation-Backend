@@ -5,6 +5,7 @@ const authRepository = new AuthRepository();
 
 async function tokenValidationMiddleware(req, res, next) {
   console.log("Authentication");
+  console.log(req.body);
   const authHeader = req.headers["authorization"];
   console.log(req.headers);
   const token = authHeader && authHeader.split(" ")[1];
@@ -15,6 +16,7 @@ async function tokenValidationMiddleware(req, res, next) {
     if (err || !("email" in data))
       return res.status(403).send({ error: "access denied" });
     console.log(data);
+
     var isValid = await authRepository.tokenValidity(
       data.id,
       data.email,

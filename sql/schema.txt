@@ -14,9 +14,9 @@ Subject (name)
 
 Relations:
 offers (student_id, tutor_id, tuition_id, status)
+applies (tutor_id,post_id)
 memberOf (user_id, coaching_id, type)
 assigned (tutor_id,course_id)
-applies (tutor_id,post_id)
 teaches (tutor_id,sub_name)
 includes (tuition_id,sub_name)
 

@@ -51,6 +51,21 @@ class ProfileRepository extends Repository {
       success: false,
     };
   };
+  getProfileByID = async (data) => {
+    console.log("BY ID", data);
+    const result = await authRepository.getUserByID(data.profile_id);
+    console.log(result);
+    if (result.success === true) {
+      if (result.data.TYPE === "STUDENT") {
+        return await this.getStudentProfile(data.profile_id);
+      } else {
+        return await this.getTutorProfile(data.profile_id);
+      }
+    }
+    return {
+      success: false,
+    };
+  };
   setStudentProfile = async (data) => {
     console.log("STUDENT UPDATE");
     const user = data.user;

@@ -7,6 +7,7 @@ const profileController = new ProfileController();
 router.use(authMiddleware);
 router.post("/upload", profileController.setProfilePicture);
 router.get("/", profileController.getProfile);
+router.post("/by_id", profileController.getProfileByID);
 router.post("/", profileController.setProfile);
 router.get("/picture", profileController.getProfilePicture);
 module.exports = router;
