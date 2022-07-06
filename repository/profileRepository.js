@@ -52,9 +52,8 @@ class ProfileRepository extends Repository {
     };
   };
   getProfileByID = async (data) => {
-    console.log("BY ID", data);
     const result = await authRepository.getUserByID(data.profile_id);
-    console.log(result);
+
     if (result.success === true) {
       if (result.data.TYPE === "STUDENT") {
         return await this.getStudentProfile(data.profile_id);
@@ -67,7 +66,6 @@ class ProfileRepository extends Repository {
     };
   };
   setStudentProfile = async (data) => {
-    console.log("STUDENT UPDATE");
     const user = data.user;
     const query = `
     UPDATE Students 
@@ -82,7 +80,6 @@ class ProfileRepository extends Repository {
       id: data.user_id,
     };
     const result = await this.execute(query, params);
-    console.log(result, user.institution);
     return result;
   };
   setTutorProfile = async (data) => {
@@ -117,7 +114,7 @@ class ProfileRepository extends Repository {
       id: data.user_id,
     };
     const result = await this.execute(query, params);
-    console.log(auth.data.TYPE, result);
+
     if (result.success) {
       if (auth.data.TYPE === "STUDENT") {
         return await this.setStudentProfile(data);
@@ -129,7 +126,7 @@ class ProfileRepository extends Repository {
   };
   getProfilePicture = async (data) => {
     const result = await authRepository.getUserByID(data.user_id);
-    console.log(result);
+
     if (result.success === true) {
       return {
         success: true,

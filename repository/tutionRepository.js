@@ -14,7 +14,6 @@ class TutionRepository extends Repository {
     return result.data[result.data.length - 1];
   };
   addTution = async (data) => {
-    console.log("ADD TUTION");
     const query = `
       INSERT INTO Tutions (subjects,salary,days_per_week,type)
       VALUES(:subjects,:salary,:days_per_week,:type)
@@ -40,7 +39,6 @@ class TutionRepository extends Repository {
     // Insert details in Tuitions
     // Insert details in Tuition_Posts
     const tution = await this.addTution(data);
-    console.log("ADD TUTION POST");
     const query = `
       INSERT INTO Tution_Posts (student_id,tution_id,desired_tutor_gender)
       VALUES(:student_id,:tution_id,:tutor_gender)
@@ -71,7 +69,6 @@ class TutionRepository extends Repository {
     `;
     const params = { id: data.user_id };
     const result = await this.execute(query, params);
-    console.log("TUTION POST", result.data);
     if (result.success) {
       return {
         success: true,
@@ -106,7 +103,6 @@ class TutionRepository extends Repository {
     // Insert details in Tuitions
     // Insert details in Tuition_Posts
     const tution = await this.addTution(data);
-    console.log("OFFER TUTION");
     const query = `
       INSERT INTO Offers (student_id, tutor_id, tution_id, status)
       VALUES(:student_id,:tutor_id,:tution_id,:status)
@@ -128,10 +124,6 @@ class TutionRepository extends Repository {
     };
   };
   acceptOffer = async (data) => {
-    // Insert details in Tuitions
-    // Insert details in Tuition_Posts
-    // const tution = await this.addTution(data);
-    console.log("###########Accept OFFER#############");
     const query = `
       UPDATE Offers
       SET status = 'ACCEPTED'
@@ -152,10 +144,6 @@ class TutionRepository extends Repository {
     };
   };
   rejectOffer = async (data) => {
-    // Insert details in Tuitions
-    // Insert details in Tuition_Posts
-    // const tution = await this.addTution(data);
-    console.log("REJECT OFFER");
     const query = `
       UPDATE Offers
       SET status = 'REJECTED'
@@ -186,7 +174,6 @@ class TutionRepository extends Repository {
     `;
     const params = { id: data.user_id };
     const result = await this.execute(query, params);
-    console.log("TUTION POST", result.data);
     if (result.success) {
       return {
         success: true,
@@ -198,8 +185,6 @@ class TutionRepository extends Repository {
     };
   };
   getOfferFromStudent = async (data) => {
-    // Get posts from Tuition_Posts
-    console.log("----", data);
     const query = `
     SELECT *
     FROM Offers NATURAL JOIN Tutions NATURAL JOIN Students JOIN Users
@@ -208,7 +193,6 @@ class TutionRepository extends Repository {
     `;
     const params = { id: data.user_id, student_id: data.student_id };
     const result = await this.execute(query, params);
-    console.log("TUTION POST", result.data);
     if (result.success) {
       return {
         success: true,
@@ -221,8 +205,6 @@ class TutionRepository extends Repository {
   };
 
   getOfferFromTutor = async (data) => {
-    // Get posts from Tuition_Posts
-    console.log("----", data);
     const query = `
       SELECT *
       FROM Offers O NATURAL JOIN Tutions JOIN Tutors T
@@ -233,7 +215,6 @@ class TutionRepository extends Repository {
     `;
     const params = { tutor_id: data.tutor_id, student_id: data.user_id };
     const result = await this.execute(query, params);
-    console.log("TUTION POST", result.data);
     if (result.success) {
       return {
         success: true,
@@ -246,8 +227,6 @@ class TutionRepository extends Repository {
   };
 
   getOfferFromPost = async (data) => {
-    // Get posts from Tuition_Posts
-    console.log("----", data);
     const query = `
     SELECT *
     FROM Tution_Posts NATURAL JOIN Tutions
@@ -255,7 +234,6 @@ class TutionRepository extends Repository {
     `;
     const params = { post_id: data.post_id };
     const result = await this.execute(query, params);
-    console.log("TUTION POST", result.data);
     if (result.success) {
       return {
         success: true,
@@ -268,10 +246,6 @@ class TutionRepository extends Repository {
   };
 
   apply = async (data) => {
-    // Insert details in Tuitions
-    // Insert details in Tuition_Posts
-    // const tution = await this.addTution(data.tution);
-    console.log("OFFER TUTION");
     const query = `
       INSERT INTO Applies (tutor_id, post_id)
       VALUES(:tutor_id,:post_id)
@@ -292,16 +266,16 @@ class TutionRepository extends Repository {
   };
 
   getApplicants = async (data) => {
-    // Get posts from Tuition_Posts
     const query = `
-     SELECT *
-     FROM Applies NATURAL JOIN Tutors JOIN Users
-     ON tutor_id = user_id
-     WHERE post_id = :post_id
-     `;
+      SELECT *
+      FROM Applies A NATURAL JOIN Tution_Posts NATURAL JOIN Tutions JOIN Tutors T
+      ON A.tutor_id = T.tutor_id
+      JOIN Users
+      ON T.tutor_id = user_id
+      WHERE post_id = :post_id
+    `;
     const params = { post_id: data.post_id };
     const result = await this.execute(query, params);
-    console.log("TUTION POST", result.data);
     if (result.success) {
       return {
         success: true,

@@ -7,7 +7,7 @@ class CoachingController extends Controller {
   }
   create = async (req, res) => {
     let result = await coachingRepository.create(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -40,7 +40,7 @@ class CoachingController extends Controller {
   };
   joinRequest = async (req, res) => {
     const result = await coachingRepository.joinRequest(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -53,7 +53,7 @@ class CoachingController extends Controller {
   };
   addMember = async (req, res) => {
     let result = await coachingRepository.addMember(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -66,7 +66,7 @@ class CoachingController extends Controller {
   };
   joinCoaching = async (req, res) => {
     let result = await coachingRepository.joinCoaching(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -79,7 +79,7 @@ class CoachingController extends Controller {
   };
   addCourse = async (req, res) => {
     let result = await coachingRepository.addCourse(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -92,7 +92,7 @@ class CoachingController extends Controller {
   };
   assignCourse = async (req, res) => {
     let result = await coachingRepository.assignCourse(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -105,7 +105,7 @@ class CoachingController extends Controller {
   };
   getInfo = async (req, res) => {
     let result = await coachingRepository.getInfo(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -116,7 +116,7 @@ class CoachingController extends Controller {
   };
   getRequests = async (req, res) => {
     let result = await coachingRepository.getRequests(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -127,7 +127,7 @@ class CoachingController extends Controller {
   };
   getMembers = async (req, res) => {
     let result = await coachingRepository.getMembers(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -138,7 +138,7 @@ class CoachingController extends Controller {
   };
   getCourses = async (req, res) => {
     let result = await coachingRepository.getCourses(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -149,7 +149,7 @@ class CoachingController extends Controller {
   };
   getAssignments = async (req, res) => {
     let result = await coachingRepository.getAssignments(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {

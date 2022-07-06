@@ -122,7 +122,6 @@ class AuthRepository extends Repository {
     return token;
   };
   login = async (data) => {
-    console.log(data);
     const result = await this.getUserByEmail(data.email);
     if (result.success) {
       const pass = result.data.PASS;
@@ -188,8 +187,6 @@ class AuthRepository extends Repository {
     `;
     const params = { id: id, email: email, pass: pass };
     const result = await this.execute(query, params);
-    // console.log("ALL:", id, email, pass);
-    // console.log(result);
     if (result.success && result.data.length == 1) {
       return true;
     }

@@ -6,9 +6,8 @@ class TutionController extends Controller {
     super();
   }
   post = async (req, res) => {
-    console.log("POST TUTION");
     let result = await tutionRepository.post(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -21,7 +20,7 @@ class TutionController extends Controller {
   };
   offer = async (req, res) => {
     let result = await tutionRepository.offer(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -34,7 +33,7 @@ class TutionController extends Controller {
   };
   apply = async (req, res) => {
     let result = await tutionRepository.apply(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -46,9 +45,8 @@ class TutionController extends Controller {
     }
   };
   getMyPosts = async (req, res) => {
-    console.log("GET MY POSTS");
     let result = await tutionRepository.getMyPosts(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -59,7 +57,7 @@ class TutionController extends Controller {
   };
   getPosts = async (req, res) => {
     let result = await tutionRepository.getPosts(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -70,7 +68,7 @@ class TutionController extends Controller {
   };
   getApplicants = async (req, res) => {
     let result = await tutionRepository.getApplicants(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -81,7 +79,7 @@ class TutionController extends Controller {
   };
   getMyOffers = async (req, res) => {
     let result = await tutionRepository.getMyOffers(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -91,9 +89,8 @@ class TutionController extends Controller {
     }
   };
   getOfferFromStudent = async (req, res) => {
-    console.log("*******************");
     let result = await tutionRepository.getOfferFromStudent(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -103,9 +100,8 @@ class TutionController extends Controller {
     }
   };
   getOfferFromTutor = async (req, res) => {
-    console.log("*******************");
     let result = await tutionRepository.getOfferFromTutor(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -115,9 +111,8 @@ class TutionController extends Controller {
     }
   };
   getOfferFromPost = async (req, res) => {
-    console.log("*******************");
     let result = await tutionRepository.getOfferFromPost(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -127,9 +122,8 @@ class TutionController extends Controller {
     }
   };
   acceptOffer = async (req, res) => {
-    console.log("*******************");
     let result = await tutionRepository.acceptOffer(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -141,9 +135,8 @@ class TutionController extends Controller {
     }
   };
   rejectOffer = async (req, res) => {
-    console.log("*******************");
     let result = await tutionRepository.rejectOffer(req.body);
-    console.log(result);
+
     if (result.success == true) {
       res.status(200).json({
         success: true,

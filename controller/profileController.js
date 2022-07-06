@@ -8,9 +8,8 @@ class ProfileController extends Controller {
   }
 
   getProfile = async (req, res) => {
-    console.log("Profile request");
     let result = await profileRepository.getProfile(req.body);
-    console.log(result);
+
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -20,9 +19,8 @@ class ProfileController extends Controller {
     }
   };
   getProfileByID = async (req, res) => {
-    console.log("Profile request BY ID");
     let result = await profileRepository.getProfileByID(req.body);
-    console.log(result);
+
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -32,8 +30,6 @@ class ProfileController extends Controller {
     }
   };
   setProfile = async (req, res) => {
-    console.log("UPDATE REUQEST");
-    console.log("SET PROFILE:", req.body);
     let result = await profileRepository.setProfile(req.body);
     if (result.success) {
       res.status(200).json(result.data);
@@ -44,9 +40,8 @@ class ProfileController extends Controller {
     }
   };
   getProfilePicture = async (req, res) => {
-    console.log("Profile Picture request");
     let result = await profileRepository.getProfilePicture(req.body);
-    console.log(result);
+
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -56,25 +51,18 @@ class ProfileController extends Controller {
     }
   };
   deleteProfilePicture = async (req, res) => {
-    console.log("Delete start");
     const result = await profileRepository.getProfilePicture(req.body);
-    console.log(result);
     if (result.image !== null) {
-      console.log("Delete start 2");
       try {
         fs.unlinkSync(
           `G:/github/hidden-brain-backend/public/assets/images/${result.image}`
         );
-        console.log("Deleting");
       } catch (err) {
         console.log(err);
       }
-      console.log("Delete end");
     }
   };
   setProfilePicture = async (req, res) => {
-    // console.log(req);
-    console.log(req.files);
     if (req.files === null) {
       res.status(404).json({
         success: false,
@@ -84,14 +72,12 @@ class ProfileController extends Controller {
     const file = req.files.file;
     req.body["ext"] = file.name.split(".").pop();
     const result = await profileRepository.setProfilePicture(req.body);
-    console.log(result);
 
     if (result.success) {
       try {
         await file.mv(
           `G:/github/hidden-brain-backend/public/assets/images/${result.image}`
         );
-        console.log("Moving");
       } catch (err) {
         (err) => {
           if (!err) {
@@ -99,7 +85,6 @@ class ProfileController extends Controller {
           }
         };
       }
-      console.log("Send response");
       return res.status(200).json({
         success: true,
         image: result.image,

@@ -5,8 +5,6 @@ class StudentsRepository extends Repository {
     super();
   }
   getMyList = async (data) => {
-    // Get posts from Tuition_Posts
-    console.log("----", data);
     const query = `
         SELECT *
         FROM Offers O NATURAL JOIN Tutions T NATURAL JOIN Students S JOIN Users U
@@ -15,7 +13,6 @@ class StudentsRepository extends Repository {
      `;
     const params = { id: data.user_id };
     const result = await this.execute(query, params);
-    console.log("My Student", result.data);
     if (result.success) {
       return {
         success: true,

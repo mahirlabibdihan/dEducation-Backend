@@ -6,9 +6,7 @@ class StudentsController extends Controller {
     super();
   }
   getMyList = async (req, res) => {
-    // console.log("Register request");
     const result = await studentsRepository.getMyList(req.body);
-    console.log("--", result.data);
     if (result.success) {
       res.status(200).json(result.data);
     } else {

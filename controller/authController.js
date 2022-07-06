@@ -6,7 +6,6 @@ class AuthController extends Controller {
     super();
   }
   signup = async (req, res) => {
-    console.log("Register request");
     let result = await authRepository.signup(req.body);
     if (result.success) {
       res.status(200).json({
@@ -20,10 +19,7 @@ class AuthController extends Controller {
   };
 
   login = async (req, res) => {
-    console.log("Login request");
-    console.log(req.body);
     let result = await authRepository.login(req.body);
-    console.log(result);
     if (result.success == true) {
       res.status(200).json({
         success: true,
