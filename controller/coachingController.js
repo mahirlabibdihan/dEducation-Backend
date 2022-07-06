@@ -21,10 +21,7 @@ class CoachingController extends Controller {
   getList = async (req, res) => {
     const result = await coachingRepository.getList();
     if (result.success) {
-      res.status(200).json({
-        success: true,
-        data: result.data,
-      });
+      res.status(200).json(result.data);
     } else {
       res.status(404).json({
         success: false,
@@ -32,12 +29,9 @@ class CoachingController extends Controller {
     }
   };
   getMyList = async (req, res) => {
-    const result = await coachingRepository.getList(req.body);
+    const result = await coachingRepository.getMyList(req.body);
     if (result.success) {
-      res.status(200).json({
-        success: true,
-        data: result.data,
-      });
+      res.status(200).json(result.data);
     } else {
       res.status(404).json({
         success: false,
@@ -59,6 +53,19 @@ class CoachingController extends Controller {
   };
   addMember = async (req, res) => {
     let result = await coachingRepository.addMember(req.body);
+    console.log(result);
+    if (result.success == true) {
+      res.status(200).json({
+        success: true,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  joinCoaching = async (req, res) => {
+    let result = await coachingRepository.joinCoaching(req.body);
     console.log(result);
     if (result.success == true) {
       res.status(200).json({

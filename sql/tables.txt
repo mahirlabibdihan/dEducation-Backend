@@ -44,6 +44,21 @@ CREATE TABLE Coachings (
 	id NUMBER;
 );
 
+CREATE TABLE MemberOf(
+	user_id        	NUMBER  REFERENCES Users(user_id),
+	coaching_id    	NUMBER  REFERENCES Coachings(coaching_id),
+	type           	VARCHAR2(100),
+	PRIMARY KEY   	(user_id,coaching_id)
+);
+
+CREATE TABLE Coachings(
+	coaching_id    	NUMBER  GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) PRIMARY KEY,
+	image          	VARCHAR2(100),
+	name           	VARCHAR2(100),
+	address			VARCHAR2(1024)
+);
+
+
 CREATE TABLE Tution_Posts (
 	post_id NUMBER  GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) Primary Key,
 	student_id NUMBER REFERENCES Students(student_id) NOT NULL,

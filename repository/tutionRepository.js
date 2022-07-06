@@ -127,14 +127,62 @@ class TutionRepository extends Repository {
       success: false,
     };
   };
+  acceptOffer = async (data) => {
+    // Insert details in Tuitions
+    // Insert details in Tuition_Posts
+    // const tution = await this.addTution(data);
+    console.log("###########Accept OFFER#############");
+    const query = `
+      UPDATE Offers
+      SET status = 'ACCEPTED'
+      WHERE tutor_id = :id AND student_id = :student_id
+    `;
+    const params = {
+      id: data.user_id,
+      student_id: data.student_id,
+    };
+    const result = await this.execute(query, params);
+    if (result.success == true) {
+      return {
+        success: true,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  rejectOffer = async (data) => {
+    // Insert details in Tuitions
+    // Insert details in Tuition_Posts
+    // const tution = await this.addTution(data);
+    console.log("REJECT OFFER");
+    const query = `
+      UPDATE Offers
+      SET status = 'REJECTED'
+      WHERE tutor_id = :id AND student_id = :student_id
+    `;
+    const params = {
+      id: data.user_id,
+      student_id: data.student_id,
+    };
+    const result = await this.execute(query, params);
+    if (result.success == true) {
+      return {
+        success: true,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
 
-  getOffers = async (data) => {
+  getMyOffers = async (data) => {
     // Get posts from Tuition_Posts
     const query = `
     SELECT *
     FROM Offers NATURAL JOIN Tutions NATURAL JOIN Students JOIN Users
     ON student_id = user_id
-    WHERE tutor_id = :id
+    WHERE tutor_id = :id AND status = 'PENDING'
     `;
     const params = { id: data.user_id };
     const result = await this.execute(query, params);
@@ -149,7 +197,7 @@ class TutionRepository extends Repository {
       success: false,
     };
   };
-  getOffer = async (data) => {
+  getOfferFromStudent = async (data) => {
     // Get posts from Tuition_Posts
     console.log("----", data);
     const query = `
@@ -159,6 +207,53 @@ class TutionRepository extends Repository {
     WHERE tutor_id = :id AND student_id = :student_id
     `;
     const params = { id: data.user_id, student_id: data.student_id };
+    const result = await this.execute(query, params);
+    console.log("TUTION POST", result.data);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data[0],
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+
+  getOfferFromTutor = async (data) => {
+    // Get posts from Tuition_Posts
+    console.log("----", data);
+    const query = `
+      SELECT *
+      FROM Offers O NATURAL JOIN Tutions JOIN Tutors T
+      ON O.tutor_id = T.tutor_id
+      JOIN Users U
+      ON O.tutor_id = U.user_id
+      WHERE O.student_id = :student_id AND O.status = 'ACCEPTED' AND O.tutor_id = :tutor_id
+    `;
+    const params = { tutor_id: data.tutor_id, student_id: data.user_id };
+    const result = await this.execute(query, params);
+    console.log("TUTION POST", result.data);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data[0],
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+
+  getOfferFromPost = async (data) => {
+    // Get posts from Tuition_Posts
+    console.log("----", data);
+    const query = `
+    SELECT *
+    FROM Tution_Posts NATURAL JOIN Tutions
+    WHERE post_id = :post_id
+    `;
+    const params = { post_id: data.post_id };
     const result = await this.execute(query, params);
     console.log("TUTION POST", result.data);
     if (result.success) {
@@ -200,7 +295,8 @@ class TutionRepository extends Repository {
     // Get posts from Tuition_Posts
     const query = `
      SELECT *
-     FROM Applies NATURAL JOIN Tutors
+     FROM Applies NATURAL JOIN Tutors JOIN Users
+     ON tutor_id = user_id
      WHERE post_id = :post_id
      `;
     const params = { post_id: data.post_id };

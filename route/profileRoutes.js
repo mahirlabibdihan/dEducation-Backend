@@ -6,8 +6,10 @@ const profileController = new ProfileController();
 //anyone can see the list off items
 router.use(authMiddleware);
 router.post("/upload", profileController.setProfilePicture);
-router.get("/", profileController.getProfile);
+router
+  .route("/")
+  .get(profileController.getProfile)
+  .post(profileController.setProfile);
 router.post("/by_id", profileController.getProfileByID);
-router.post("/", profileController.setProfile);
 router.get("/picture", profileController.getProfilePicture);
 module.exports = router;
