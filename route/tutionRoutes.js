@@ -9,14 +9,24 @@ router.route("/post").post(tutionController.post);
 router.get("/list", tutionController.getPosts);
 router.get("/my_list", tutionController.getMyPosts);
 router.route("/apply").post(tutionController.apply);
+router.route("/apply/cancel").post(tutionController.cancelApplication);
 router.post("/get_applicants", tutionController.getApplicants);
+router.post(
+  "/get_applicants_tution_details",
+  tutionController.getApplicantsTutionDetails
+);
 router
   .route("/offer")
   .post(tutionController.offer)
   .get(tutionController.getMyOffers);
 router.post("/get_offer_student", tutionController.getOfferFromStudent);
 router.post("/get_offer_tutor", tutionController.getOfferFromTutor);
-router.post("/accept", tutionController.acceptOffer);
-router.post("/reject", tutionController.rejectOffer);
+router.post("/offer/accept", tutionController.acceptOffer);
+router.post("/offer/reject", tutionController.rejectOffer);
+router.post("/offer/cancel", tutionController.cancelOffer);
 router.post("/by_post", tutionController.getOfferFromPost);
+router.post("/get_details", tutionController.getDetails);
+router.get("/get_all_details", tutionController.getAllDetails);
+router.get("/get_my_details", tutionController.getMyDetails);
+router.get("/get_apply_list", tutionController.getApplyList);
 module.exports = router;

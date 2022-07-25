@@ -39,26 +39,29 @@ class ProfileController extends Controller {
       });
     }
   };
-  getProfilePicture = async (req, res) => {
-    let result = await profileRepository.getProfilePicture(req.body);
+  // getProfilePicture = async (req, res) => {
+  //   let result = await profileRepository.getProfilePicture(req.body);
 
-    if (result.success) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
+  //   if (result.success) {
+  //     res.status(200).json(result.data);
+  //   } else {
+  //     res.status(404).json({
+  //       success: false,
+  //     });
+  //   }
+  // };
   deleteProfilePicture = async (req, res) => {
-    const result = await profileRepository.getProfilePicture(req.body);
-    if (result.image !== null) {
+    console.log("START DELETING");
+    const result = await profileRepository.getProfile(req.body);
+    console.log(result);
+    if (result.data.IMAGE !== null) {
+      console.log("AGAIN START DELETING");
       try {
         fs.unlinkSync(
-          `G:/github/hidden-brain-backend/public/assets/images/${result.image}`
+          `G:/github/hidden-brain/hidden-brain-backend/public/assets/images/${result.data.IMAGE}`
         );
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
   };
@@ -68,7 +71,14 @@ class ProfileController extends Controller {
         success: false,
       });
     }
-    await this.deleteProfilePicture(req, res);
+    const profile = await profileRepository.getProfile(req.body);
+    const prev_image = profile.data.IMAGE;
+    if (prev_image[0] >= "0" && prev_image[0] <= "9") {
+      await this.deleteProfilePicture(req, res);
+    } else {
+      // it isn't
+    }
+    // await this.deleteProfilePicture(req, res);
     const file = req.files.file;
     req.body["ext"] = file.name.split(".").pop();
     const result = await profileRepository.setProfilePicture(req.body);
@@ -76,12 +86,12 @@ class ProfileController extends Controller {
     if (result.success) {
       try {
         await file.mv(
-          `G:/github/hidden-brain-backend/public/assets/images/${result.image}`
+          `G:/github/hidden-brain/hidden-brain-backend/public/assets/images/${result.image}`
         );
       } catch (err) {
         (err) => {
           if (!err) {
-            console.log(result.image);
+            // console.log(result.image);
           }
         };
       }

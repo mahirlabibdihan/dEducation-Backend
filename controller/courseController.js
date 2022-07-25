@@ -18,6 +18,33 @@ class CourseController extends Controller {
       });
     }
   };
+
+  enroll = async (req, res) => {
+    let result = await courseRepository.enroll(req.body);
+
+    if (result.success == true) {
+      res.status(200).json({
+        success: true,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  addBatch = async (req, res) => {
+    let result = await courseRepository.addBatch(req.body);
+
+    if (result.success == true) {
+      res.status(200).json({
+        success: true,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
   getList = async (req, res) => {
     const result = await courseRepository.getList();
     if (result.success) {
@@ -28,9 +55,10 @@ class CourseController extends Controller {
       });
     }
   };
-  getMyList = async (req, res) => {
-    const result = await courseRepository.getMyList(req.body);
-    console.log("COurses: ", result);
+  getClassOptions = async (req, res) => {
+    // // console.log("Data", req.body);
+    const result = await courseRepository.getClassOptions(req.body);
+    // console.log("Class: ", result);
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -39,7 +67,83 @@ class CourseController extends Controller {
       });
     }
   };
-
+  getSubjectOptions = async (req, res) => {
+    const result = await courseRepository.getSubjectOptions(req.body);
+    // console.log("Subject: ", result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getCourseId = async (req, res) => {
+    const result = await courseRepository.getCourseId(req.body);
+    // console.log("Subject: ", result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getBatchOptions = async (req, res) => {
+    const result = await courseRepository.getBatchOptions(req.body);
+    // console.log("Subject: ", result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getBatches = async (req, res) => {
+    const result = await courseRepository.getBatches(req.body);
+    // console.log("Subject: ", result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getStudents = async (req, res) => {
+    // console.log("STUDENTS", req.body);
+    const result = await courseRepository.getStudents(req.body.data);
+    // console.log("Subject: ", result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getMyList = async (req, res) => {
+    const result = await courseRepository.getMyList(req.body);
+    // console.log("COurses: ", result);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getMyListAdmin = async (req, res) => {
+    const result = await courseRepository.getMyListAdmin(req.body);
+    if (result.success) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
   addMember = async (req, res) => {
     let result = await courseRepository.addMember(req.body);
 

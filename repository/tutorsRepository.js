@@ -4,19 +4,20 @@ class TutorsRepository extends Repository {
   constructor() {
     super();
   }
-  getList = async () => {
+  getList = async (data) => {
     const query = `
-    SELECT *
-    FROM Users U JOIN Tutors T
-    ON U.user_id = T.tutor_id
+      BEGIN
+        :ret := GET_ALL_TUTORS();
+      END;
     `;
-    // name, image, gender, phone_number, status, years_of_experience, preferred_salary
-    const params = {};
-    const result = await this.execute(query, params);
+    const params = {
+      ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
     if (result.success) {
       return {
         success: true,
-        data: result.data,
+        data: result.data.ret,
       };
     }
     return {
@@ -25,19 +26,19 @@ class TutorsRepository extends Repository {
   };
   getMyList = async (data) => {
     const query = `
-      SELECT *
-      FROM Offers O NATURAL JOIN Tutions JOIN Tutors T
-      ON O.tutor_id = T.tutor_id
-      JOIN Users U
-      ON O.tutor_id = U.user_id
-      WHERE O.student_id = :id AND O.status = 'ACCEPTED'
+      BEGIN
+        :ret := GET_MY_TUTORS(:id);
+      END;
      `;
-    const params = { id: data.user_id };
-    const result = await this.execute(query, params);
+    const params = {
+      id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
     if (result.success) {
       return {
         success: true,
-        data: result.data,
+        data: result.data.ret,
       };
     }
     return {

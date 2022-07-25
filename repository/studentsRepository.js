@@ -6,17 +6,19 @@ class StudentsRepository extends Repository {
   }
   getMyList = async (data) => {
     const query = `
-        SELECT *
-        FROM Offers O NATURAL JOIN Tutions T NATURAL JOIN Students S JOIN Users U
-        ON student_id = U.user_id
-        WHERE tutor_id = :id AND status = 'ACCEPTED'
+        BEGIN
+          :ret := GET_MY_STUDENTS(:id);
+        END;
      `;
-    const params = { id: data.user_id };
-    const result = await this.execute(query, params);
+    const params = {
+      id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
     if (result.success) {
       return {
         success: true,
-        data: result.data,
+        data: result.data.ret,
       };
     }
     return {

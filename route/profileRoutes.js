@@ -11,5 +11,5 @@ router
   .get(profileController.getProfile)
   .post(profileController.setProfile);
 router.post("/by_id", profileController.getProfileByID);
-router.get("/picture", profileController.getProfilePicture);
+// router.get("/picture", profileController.getProfilePicture);
 module.exports = router;

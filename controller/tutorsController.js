@@ -6,7 +6,7 @@ class TutorController extends Controller {
     super();
   }
   getList = async (req, res) => {
-    let result = await tutorsRepository.getList();
+    let result = await tutorsRepository.getList(req.body);
     if (result.success) {
       res.status(200).json(result.data);
     } else {
