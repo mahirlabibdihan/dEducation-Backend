@@ -15,6 +15,38 @@ class StudentsController extends Controller {
       });
     }
   };
+  getPendingList = async (req, res) => {
+    let result = await studentsRepository.getPendingList(req.body);
+    console.log(result);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getEnrolledList = async (req, res) => {
+    let result = await studentsRepository.getEnrolledList(req.body);
+    console.log(result);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getMembersList = async (req, res) => {
+    let result = await studentsRepository.getMembersList(req.body);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
 }
 
 module.exports = StudentsController;

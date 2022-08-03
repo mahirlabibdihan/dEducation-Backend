@@ -10,6 +10,8 @@ router
   .route("/")
   .get(profileController.getProfile)
   .post(profileController.setProfile);
-router.post("/by_id", profileController.getProfileByID);
-// router.get("/picture", profileController.getProfilePicture);
+router
+  .route("/education")
+  .get(profileController.getEducation)
+  .post(profileController.setEducation);
 module.exports = router;

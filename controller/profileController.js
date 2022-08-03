@@ -8,7 +8,9 @@ class ProfileController extends Controller {
   }
 
   getProfile = async (req, res) => {
-    let result = await profileRepository.getProfile(req.body);
+    const result = await (req.body.type == "STUDENT"
+      ? profileRepository.getStudentProfile(req.body.user_id)
+      : profileRepository.getTutorProfile(req.body.user_id));
 
     if (result.success) {
       res.status(200).json(result.data);
@@ -18,9 +20,9 @@ class ProfileController extends Controller {
       });
     }
   };
-  getProfileByID = async (req, res) => {
-    let result = await profileRepository.getProfileByID(req.body);
-
+  getEducation = async (req, res) => {
+    const result = await profileRepository.getEducation(req.body);
+    console.log(":", result.data);
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -28,9 +30,57 @@ class ProfileController extends Controller {
         success: false,
       });
     }
+  };
+  setEducation = async (req, res) => {
+    const result = await profileRepository.getEducation(req.body);
+
+    for (let i = 0; i < result.data.length; i++) {
+      let flag = 0;
+      console.log(i, result.data[i].EQ_ID);
+      for (let j = 0; j < req.body.list.length; j++) {
+        if (req.body.list[j].eq_id == result.data[i].EQ_ID) {
+          flag = 1;
+          break;
+        }
+      }
+      if (flag == 0) {
+        const result2 = await profileRepository.deleteEducation(
+          result.data[i].EQ_ID
+        );
+        if (!result2.success) {
+          res.status(404).json({
+            success: false,
+          });
+        }
+      }
+    }
+    for (let i = 0; i < req.body.list.length; i++) {
+      if (req.body.list[i].eq_id == null) {
+        console.log("ADD NEW");
+        const result = await profileRepository.addEducation({
+          user_id: req.body.user_id,
+          eq_id: req.body.list[i].eq_id,
+          institute: req.body.list[i].institute,
+          field_of_study: req.body.list[i].field_of_study,
+          degree: req.body.list[i].degree,
+          passing_year: req.body.list[i].passing_year,
+        });
+        if (!result.success) {
+          res.status(404).json({
+            success: false,
+          });
+        }
+      }
+    }
+
+    res.status(200).json({
+      success: true,
+    });
   };
   setProfile = async (req, res) => {
-    let result = await profileRepository.setProfile(req.body);
+    const result = await (req.body.ROLE == "STUDENT"
+      ? profileRepository.setStudentProfile(req.body)
+      : profileRepository.setTutorProfile(req.body));
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -39,17 +89,6 @@ class ProfileController extends Controller {
       });
     }
   };
-  // getProfilePicture = async (req, res) => {
-  //   let result = await profileRepository.getProfilePicture(req.body);
-
-  //   if (result.success) {
-  //     res.status(200).json(result.data);
-  //   } else {
-  //     res.status(404).json({
-  //       success: false,
-  //     });
-  //   }
-  // };
   deleteProfilePicture = async (req, res) => {
     console.log("START DELETING");
     const result = await profileRepository.getProfile(req.body);

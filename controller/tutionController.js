@@ -88,16 +88,6 @@ class TutionController extends Controller {
       });
     }
   };
-  getApplicants = async (req, res) => {
-    let result = await tutionRepository.getApplicants(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
   getApplyList = async (req, res) => {
     let result = await tutionRepository.getApplyList(req.body);
     if (result.success == true) {
@@ -108,8 +98,8 @@ class TutionController extends Controller {
       });
     }
   };
-  getMyOffers = async (req, res) => {
-    let result = await tutionRepository.getMyOffers(req.body);
+  getPendingDetails = async (req, res) => {
+    let result = await tutionRepository.getPendingDetails(req.body);
 
     if (result.success == true) {
       res.status(200).json(result.data);
@@ -120,7 +110,7 @@ class TutionController extends Controller {
     }
   };
   getOfferFromStudent = async (req, res) => {
-    let result = await tutionRepository.getOfferFromStudent(req.body);
+    let result = await tutionRepository.getTutionDetails(req.body);
 
     if (result.success == true) {
       res.status(200).json(result.data);
@@ -131,18 +121,7 @@ class TutionController extends Controller {
     }
   };
   getOfferFromTutor = async (req, res) => {
-    let result = await tutionRepository.getOfferFromTutor(req.body);
-
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
-  getOfferFromPost = async (req, res) => {
-    let result = await tutionRepository.getOfferFromPost(req.body);
+    let result = await tutionRepository.getTutionDetails(req.body);
 
     if (result.success == true) {
       res.status(200).json(result.data);

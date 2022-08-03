@@ -9,7 +9,6 @@ class CoachingController extends Controller {
   }
   create = async (req, res) => {
     let result = await coachingRepository.create(req.body);
-
     if (result.success == true) {
       res.status(200).json({
         success: true,
@@ -20,9 +19,9 @@ class CoachingController extends Controller {
       });
     }
   };
+
   getList = async (req, res) => {
     const result = await coachingRepository.getList();
-    // // console.log(result);
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -34,7 +33,6 @@ class CoachingController extends Controller {
 
   getMyList = async (req, res) => {
     const result = await coachingRepository.getMyList(req.body);
-    // // console.log(result);
     if (result.success) {
       res.status(200).json(result.data);
     } else {
@@ -43,32 +41,7 @@ class CoachingController extends Controller {
       });
     }
   };
-  joinRequest = async (req, res) => {
-    const result = await coachingRepository.joinRequest(req.body);
 
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
-  addMember = async (req, res) => {
-    let result = await coachingRepository.addMember(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
   joinCoaching = async (req, res) => {
     let result = await coachingRepository.joinCoaching(req.body);
 
@@ -82,32 +55,7 @@ class CoachingController extends Controller {
       });
     }
   };
-  addCourse = async (req, res) => {
-    let result = await coachingRepository.addCourse(req.body);
 
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
-  assignCourse = async (req, res) => {
-    let result = await coachingRepository.assignCourse(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
   updateInfo = async (req, res) => {
     console.log(req.body);
     let result = await coachingRepository.updateInfo(req.body.coaching);
@@ -121,6 +69,7 @@ class CoachingController extends Controller {
       });
     }
   };
+
   getInfo = async (req, res) => {
     let result = await coachingRepository.getInfo(req.body);
 
@@ -132,6 +81,7 @@ class CoachingController extends Controller {
       });
     }
   };
+
   getRequests = async (req, res) => {
     let result = await coachingRepository.getRequests(req.body);
 
@@ -143,16 +93,7 @@ class CoachingController extends Controller {
       });
     }
   };
-  getStudents = async (req, res) => {
-    let result = await coachingRepository.getStudents(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
+
   getCourses = async (req, res) => {
     let result = await coachingRepository.getCourses(req.body);
 
@@ -164,17 +105,7 @@ class CoachingController extends Controller {
       });
     }
   };
-  getAssignments = async (req, res) => {
-    let result = await coachingRepository.getAssignments(req.body);
 
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
-  };
   deleteProfilePicture = async (req, res) => {
     const result = await coachingRepository.getInfo(req.body);
     if (result.data.IMAGE !== null) {

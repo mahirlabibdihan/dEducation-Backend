@@ -25,6 +25,16 @@ class TutorController extends Controller {
       });
     }
   };
+  getApplicantsList = async (req, res) => {
+    let result = await tutorsRepository.getApplicantsList(req.body);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
 }
 
 module.exports = TutorController;

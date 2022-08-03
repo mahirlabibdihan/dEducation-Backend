@@ -45,6 +45,27 @@ class TutorsRepository extends Repository {
       success: false,
     };
   };
+  getApplicantsList = async (data) => {
+    const query = `
+      BEGIN
+        :ret := GET_ALL_APPLICANTS(:post_id);
+      END;
+    `;
+    const params = {
+      post_id: data.post_id,
+      ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data.ret,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
 }
 
 module.exports = TutorsRepository;

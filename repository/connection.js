@@ -8,19 +8,6 @@ oracledb.fetchAsString = [oracledb.CLOB];
 class Repository {
   constructor() {
     this.connection = undefined;
-    // const query = `
-    //   BEGIN
-    //     :ret := GET_TUTION_DETAILS(:tutor_id,:student_id);
-    //   END;
-    // `;
-    // const params = {
-    //   tutor_id: 10,
-    //   student_id: 1,
-    //   ret: { dir: oracledb.BIND_OUT, type: "TUTION" },
-    // };
-    // this.execute_pl(query, params).then((result) => {
-    //   console.log(result.data.ret);
-    // });
   }
   // code to execute sql
   execute = async (query, params) => {
@@ -47,7 +34,7 @@ class Repository {
       console.log(query, params);
       return {
         success: false,
-        error,
+        error: error,
       };
     }
   };
@@ -65,6 +52,7 @@ class Repository {
         });
       }
       result = await this.connection.execute(query, params);
+      // console.log(query, params);
       return {
         success: true,
         data: result.outBinds,

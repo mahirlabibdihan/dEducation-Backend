@@ -45,20 +45,71 @@ class ProfileRepository extends Repository {
       return await this.getTutorProfile(data.user_id);
     }
   };
-  // getProfileByID = async (data) => {
-  //   const result = await authRepository.getUserByID(data.profile_id);
+  getEducation = async (data) => {
+    console.log("EDUCATION");
+    const query = `
+    BEGIN
+      :ret := GET_EDUCATIONS(:id);
+    END;
+    `;
+    const params = {
+      id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "EDUCATION_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    console.log(query, params, result);
+    return {
+      success: true,
+      data: result.data.ret,
+    };
+  };
+  addEducation = async (data) => {
+    console.log("EDUCATION");
+    const query = `
+    BEGIN
+      ADD_EDUCATION(:tutor_id,:institute,:field,:degree,:passing_year);
+    END;
+    `;
+    const params = {
+      tutor_id: data.user_id,
+      institute: data.institute,
+      field: data.field_of_study,
+      degree: data.degree,
+      passing_year: data.passing_year,
+    };
+    const result = await this.execute_pl(query, params);
+    // console.log(result, query, params);
+    if (result.success) {
+      return {
+        success: true,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  deleteEducation = async (eq_id) => {
+    console.log("EDUCATION");
+    const query = `
+    BEGIN
+      DELETE_EDUCATION(:eq_id);
+    END;
+    `;
+    const params = {
+      eq_id: eq_id,
+    };
+    const result = await this.execute_pl(query, params);
+    console.log(result, query, params);
+    if (result.success) {
+      return {
+        success: true,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
 
-  //   if (result.success === true) {
-  //     if (result.data.ROLE === "STUDENT") {
-  //       return await this.getStudentProfile(data.profile_id);
-  //     } else {
-  //       return await this.getTutorProfile(data.profile_id);
-  //     }
-  //   }
-  //   return {
-  //     success: false,
-  //   };
-  // };
   setStudentProfile = async (data) => {
     const user = data.user;
     const query = `
@@ -100,33 +151,7 @@ class ProfileRepository extends Repository {
     };
     return await this.execute_pl(query, params);
   };
-  setProfile = async (data) => {
-    const result = await (data.ROLE == "STUDENT"
-      ? this.setStudentProfile(data)
-      : this.setTutorProfile(data));
-    if (result.success === true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
-  };
-  // getProfilePicture = async (data) => {
-  //   const result = await authRepository.getUserByID(data.user_id);
-  //   if (result.success === true) {
-  //     return {
-  //       success: true,
-  //       data: {
-  //         image: result.data.IMAGE,
-  //       },
-  //     };
-  //   }
-  //   return {
-  //     success: false,
-  //   };
-  // };
+
   setProfilePicture = async (data) => {
     const fileName = data.user_id + Date.now() + "." + data.ext;
     const query = `
@@ -135,7 +160,7 @@ class ProfileRepository extends Repository {
     END;
     `;
     const params = { image: fileName, id: data.user_id };
-    const result = await this.execute(query, params);
+    const result = await this.execute_pl(query, params);
     if (result.success) {
       return {
         success: true,

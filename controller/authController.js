@@ -62,8 +62,8 @@ class AuthController extends Controller {
   };
 
   changePass = async (req, res) => {
-    if (bcrypt.compareSync(data.curr_pass, data.pass)) {
-      const newPassHash = bcrypt.hashSync(data.new_pass, 10);
+    if (bcrypt.compareSync(req.body.curr_pass, req.body.pass)) {
+      const newPassHash = bcrypt.hashSync(req.body.new_pass, 10);
       const result = await authRepository.changePass(
         req.body.user_id,
         newPassHash
@@ -72,10 +72,10 @@ class AuthController extends Controller {
         return res.status(200).json({
           success: true,
           token: this.getToken(
-            data.user_id,
-            data.email,
+            req.body.user_id,
+            req.body.email,
             newPassHash,
-            data.type
+            req.body.type
           ),
         });
       }

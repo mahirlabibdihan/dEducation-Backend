@@ -181,11 +181,13 @@ CREATE TABLE Offers (
 INSERT INTO Offers (student_id,tutor_id,tution_id,status) 
 VALUES (1,4,8,'ACCEPTED');
 INSERT INTO Offers (student_id,tutor_id,tution_id,status) 
+VALUES (3,4,10,'PENDING');
+INSERT INTO Offers (student_id,tutor_id,tution_id,status) 
 VALUES (1,5,9,'ACCEPTED');
 INSERT INTO Offers (student_id,tutor_id,tution_id,status) 
-VALUES (1,6,10,'ACCEPTED');
+VALUES (1,6,10,'PENDING');
 INSERT INTO Offers (student_id,tutor_id,tution_id,status) 
-VALUES (2,4,11,'PENDING');
+VALUES (2,4,11,'ACCEPTED');
 INSERT INTO Offers (student_id,tutor_id,tution_id,status) 
 VALUES (2,5,12,'PENDING');
 INSERT INTO Offers (student_id,tutor_id,tution_id,status) 
