@@ -44,10 +44,25 @@ class ProfileController extends Controller {
         }
       }
       if (flag == 0) {
-        const result2 = await profileRepository.deleteEducation(
+        const result = await profileRepository.deleteEducation(
           result.data[i].EQ_ID
         );
-        if (!result2.success) {
+        if (!result.success) {
+          res.status(404).json({
+            success: false,
+          });
+        }
+      } else {
+        const result = await profileRepository.updateEducation({
+          eq_id: req.body.list[i].eq_id,
+          user_id: req.body.user_id,
+          eq_id: req.body.list[i].eq_id,
+          institute: req.body.list[i].institute,
+          field_of_study: req.body.list[i].field_of_study,
+          degree: req.body.list[i].degree,
+          passing_year: req.body.list[i].passing_year,
+        });
+        if (!result.success) {
           res.status(404).json({
             success: false,
           });

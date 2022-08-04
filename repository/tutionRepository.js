@@ -27,7 +27,7 @@ class TutionRepository extends Repository {
       success: false,
     };
   };
-  getPosts = async (data) => {
+  getPosts = async () => {
     const query = `
     BEGIN
       :ret := GET_ALL_TUTION_POSTS();
@@ -35,6 +35,59 @@ class TutionRepository extends Repository {
     `;
     const params = {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data.ret,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  getFilteredPosts = async (filter) => {
+    const query = `
+    BEGIN
+      :ret := GET_FILTERED_TUTION_POSTS(:gender,:start,:end,:days,:version,:type);
+    END;
+    `;
+    const params = {
+      gender: filter.gender,
+      start: filter.start_salary,
+      end: filter.end_salary,
+      days: filter.days_per_week,
+      version: filter.version,
+      type: filter.type,
+      ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data.ret,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  getFilteredApplyList = async (data) => {
+    const query = `
+    BEGIN
+      :ret := IS_APPLIED_FILTERED(:id,:gender,:start,:end,:days,:version,:type);
+    END;
+    `;
+    const params = {
+      gender: data.filter.gender,
+      start: data.filter.start_salary,
+      end: data.filter.end_salary,
+      days: data.filter.days_per_week,
+      version: data.filter.version,
+      id: data.user_id,
+      type: data.filter.type,
+      ret: { dir: oracledb.BIND_OUT, type: "STRING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
     if (result.success) {
@@ -68,7 +121,6 @@ class TutionRepository extends Repository {
       success: false,
     };
   };
-
   offer = async (data) => {
     // Insert details in Tuitions
     // Insert details in Tuition_Posts
@@ -184,15 +236,37 @@ class TutionRepository extends Repository {
   getAllDetails = async (data) => {
     const query = `
       BEGIN
-        :ret := ${
-          data.type === "STUDENT"
-            ? "GET_TUTIONS_BY_STUDENT(:user_id);"
-            : "GET_TUTIONS_BY_TUTOR(:user_id);"
-        }
+        :ret := GET_ALL_TUTIONS(:user_id);
       END;
     `;
     const params = {
       user_id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data.ret,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
+  getFilteredDetails = async (data) => {
+    const query = `
+      BEGIN
+        :ret := GET_FILTERED_TUTIONS(:user_id,:gender,:start,:end,:status,:experience);
+      END;
+    `;
+    const params = {
+      user_id: data.user_id,
+      gender: data.filter.gender,
+      start: data.filter.start_salary,
+      end: data.filter.end_salary,
+      status: data.filter.status,
+      experience: data.filter.experience,
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);

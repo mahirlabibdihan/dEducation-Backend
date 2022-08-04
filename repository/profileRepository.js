@@ -88,6 +88,32 @@ class ProfileRepository extends Repository {
       success: false,
     };
   };
+  updateEducation = async (data) => {
+    console.log("EDUCATION");
+    const query = `
+    BEGIN
+      UPDATE_EDUCATION(:eq_id,:tutor_id,:institute,:field,:degree,:passing_year);
+    END;
+    `;
+    const params = {
+      eq_id: data.eq_id,
+      tutor_id: data.user_id,
+      institute: data.institute,
+      field: data.field_of_study,
+      degree: data.degree,
+      passing_year: data.passing_year,
+    };
+    const result = await this.execute_pl(query, params);
+    // console.log(result, query, params);
+    if (result.success) {
+      return {
+        success: true,
+      };
+    }
+    return {
+      success: false,
+    };
+  };
   deleteEducation = async (eq_id) => {
     console.log("EDUCATION");
     const query = `

@@ -78,6 +78,17 @@ class TutionController extends Controller {
       });
     }
   };
+  getFilteredPosts = async (req, res) => {
+    let result = await tutionRepository.getFilteredPosts(req.body.filter);
+    console.log("Filtered posts", result);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
   getApplicantsTutionDetails = async (req, res) => {
     let result = await tutionRepository.getApplicantsTutionDetails(req.body);
     if (result.success == true) {
@@ -90,6 +101,16 @@ class TutionController extends Controller {
   };
   getApplyList = async (req, res) => {
     let result = await tutionRepository.getApplyList(req.body);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
+  getFilteredApplyList = async (req, res) => {
+    let result = await tutionRepository.getFilteredApplyList(req.body);
     if (result.success == true) {
       res.status(200).json(result.data);
     } else {
@@ -192,8 +213,19 @@ class TutionController extends Controller {
       });
     }
   };
+  getFilteredDetails = async (req, res) => {
+    console.log("Request Filtered Tution details");
+    let result = await tutionRepository.getFilteredDetails(req.body);
+    if (result.success == true) {
+      res.status(200).json(result.data);
+    } else {
+      res.status(404).json({
+        success: false,
+      });
+    }
+  };
   getMyDetails = async (req, res) => {
-    console.log("Request All Tution details");
+    console.log("Request My Tution details");
     let result = await tutionRepository.getMyDetails(req.body);
     if (result.success == true) {
       res.status(200).json(result.data);
