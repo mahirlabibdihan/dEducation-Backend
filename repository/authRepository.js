@@ -15,16 +15,14 @@ class AuthRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "USERS%ROWTYPE" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success && result.data.ret.ROLE == type) {
+    if (result.success && result.data.ROLE == type) {
       return {
         success: true,
-        id: result.data.ret.USER_ID,
-        pass: result.data.ret.PASS,
+        id: result.data.USER_ID,
+        pass: result.data.PASS,
       };
     }
-    return {
-      success: false,
-    };
+    return result;
   };
   signup = async (data) => {
     const query = `
@@ -41,14 +39,11 @@ class AuthRepository extends Repository {
     const result = await this.execute_pl(query, params);
     if (result.success) {
       return {
-        success: result.success,
+        success: true,
       };
     }
-    // console.log("ALREADY TAKEN");
-    return {
-      success: false,
-      error: "Email is already taken",
-    };
+    if (result.errorNum === 1) result.error = "Email address already in use";
+    return result;
   };
   changePass = async (user_id, newPassHash) => {
     const query = `
@@ -61,14 +56,7 @@ class AuthRepository extends Repository {
       id: user_id,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   tokenValidity = async (id, email, pass, role) => {
     const query = `
@@ -84,7 +72,7 @@ class AuthRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: oracledb.STRING },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success && result.data.ret === "YES") {
+    if (result.success && result.data === "YES") {
       return true;
     }
     return false;

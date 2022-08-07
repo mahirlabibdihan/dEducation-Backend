@@ -17,15 +17,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getPosts = async () => {
     const query = `
@@ -37,15 +29,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getFilteredPosts = async (filter) => {
     const query = `
@@ -63,15 +47,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getFilteredApplyList = async (data) => {
     const query = `
@@ -90,15 +66,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STRING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getApplyList = async (data) => {
     const query = `
@@ -111,20 +79,9 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STRING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   offer = async (data) => {
-    // Insert details in Tuitions
-    // Insert details in Tuition_Posts
-    // const tution = await this.addTution(data);
     const query = `
       BEGIN
         MAKE_OFFER(:student_id,:tutor_id,:subjects,:salary,:days_per_week,:type);
@@ -139,14 +96,7 @@ class TutionRepository extends Repository {
       type: data.tution.type,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   acceptOffer = async (data) => {
     const query = `
@@ -159,15 +109,7 @@ class TutionRepository extends Repository {
       student_id: data.student_id,
     };
     const result = await this.execute_pl(query, params);
-    console.log(result);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   rejectOffer = async (data) => {
     const query = `
@@ -180,14 +122,7 @@ class TutionRepository extends Repository {
       student_id: data.student_id,
     };
     const result = await this.execute(query, params);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   cancelOffer = async (data) => {
     const query = `
@@ -200,14 +135,7 @@ class TutionRepository extends Repository {
       tutor_id: data.tutor_id,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   getPendingDetails = async (data) => {
@@ -222,15 +150,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   getAllDetails = async (data) => {
@@ -244,15 +164,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getFilteredDetails = async (data) => {
     const query = `
@@ -270,15 +182,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getMyDetails = async (data) => {
     const query = `
@@ -295,15 +199,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getTutionDetails = async (data) => {
     const query = `
@@ -317,15 +213,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   apply = async (data) => {
     const query = `
@@ -338,14 +226,7 @@ class TutionRepository extends Repository {
       post_id: data.post_id,
     };
     const result = await this.execute(query, params);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   cancelApplication = async (data) => {
     const query = `
@@ -358,14 +239,7 @@ class TutionRepository extends Repository {
       post_id: data.post_id,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getApplicantsTutionDetails = async (data) => {
     const query = `
@@ -379,16 +253,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log(result.data.ret);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   post = async (data) => {
@@ -406,14 +271,21 @@ class TutionRepository extends Repository {
       type: data.tution.type,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
+    return result;
+  };
+  rate = async (data) => {
+    const query = `
+    BEGIN
+      RATE(:student_id,:tutor_id,:rating);
+    END;
+   `;
+    const params = {
+      student_id: data.user_id,
+      tutor_id: data.tutor_id,
+      rating: data.rating,        
     };
+    const result = await this.execute_pl(query, params);
+    return result;
   };
 }
 

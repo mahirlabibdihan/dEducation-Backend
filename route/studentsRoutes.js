@@ -3,7 +3,6 @@ const authMiddleware = require("../service/tokenValidationService");
 const StudentsController = require("../controller/studentsController");
 const studentsController = new StudentsController();
 
-// anyone can see the list off items
 router.use(authMiddleware);
 router.route("/my_list").get(studentsController.getMyList);
 router.route("/pending_list").get(studentsController.getPendingList);

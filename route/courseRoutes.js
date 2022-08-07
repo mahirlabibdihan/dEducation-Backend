@@ -3,8 +3,6 @@ const authMiddleware = require("../service/tokenValidationService");
 const CourseController = require("../controller/courseController");
 const courseController = new CourseController();
 
-//anyone can see the list off items
-
 router.use(authMiddleware);
 router.route("/create").post(courseController.create);
 router.route("/my_list").get(courseController.getMyList);

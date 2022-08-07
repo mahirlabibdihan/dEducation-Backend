@@ -3,7 +3,6 @@ const authMiddleware = require("../service/tokenValidationService");
 const TutionController = require("../controller/tutionController");
 const tutionController = new TutionController();
 
-// anyone can see the list off items
 router.use(authMiddleware);
 router.route("/post").post(tutionController.post);
 router.get("/list", tutionController.getPosts);
@@ -28,4 +27,5 @@ router.get("/get_my_details", tutionController.getMyDetails);
 router.get("/get_pending_details", tutionController.getPendingDetails);
 router.get("/get_apply_list", tutionController.getApplyList);
 router.post("/get_filtered_apply_list", tutionController.getFilteredApplyList);
+router.post("/rate", tutionController.rate);
 module.exports = router;

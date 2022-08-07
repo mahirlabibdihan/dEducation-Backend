@@ -15,18 +15,9 @@ class StudentsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getPendingList = async (data) => {
-    // Get posts from Tuition_Posts
     const query = `
     BEGIN
       :ret := GET_PENDING_STUDENTS(:id);
@@ -37,18 +28,9 @@ class StudentsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getEnrolledList = async (data) => {
-    console.log("--->", data);
     const query = `
     BEGIN
       :ret := GET_COURSE_STUDENTS(:coaching_id,:class,:subject,:batch_id);
@@ -63,17 +45,7 @@ class StudentsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-
-    console.log("FILTERED", result, query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getMembersList = async (data) => {
     let query = `
@@ -86,16 +58,7 @@ class StudentsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
     };
     let result = await this.execute_pl(query, params);
-    console.log("COACHING:", result);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 }
 

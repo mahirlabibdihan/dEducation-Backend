@@ -14,15 +14,8 @@ class TutorsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    console.log(result.data);
+    return result;
   };
   getFilteredList = async (filter) => {
     const query = `
@@ -39,16 +32,7 @@ class TutorsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log("-->", result, query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getEducationsList = async () => {
     console.log("Educa");
@@ -60,18 +44,8 @@ class TutorsRepository extends Repository {
     const params = {
       ret: { dir: oracledb.BIND_OUT, type: "EDUCATION_2D_ARRAY" },
     };
-    console.log(query, params);
     const result = await this.execute_pl(query, params);
-    console.log(result);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getEducation = async (data) => {
     console.log("EDUCATION");
@@ -85,11 +59,7 @@ class TutorsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "EDUCATION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log(query, params, result);
-    return {
-      success: true,
-      data: result.data.ret,
-    };
+    return result;
   };
   getFilteredEducationsList = async (filter) => {
     const query = `
@@ -106,16 +76,7 @@ class TutorsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "EDUCATION_2D_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log("-->", result, query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getMyList = async (data) => {
     const query = `
@@ -128,15 +89,7 @@ class TutorsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getApplicantsList = async (data) => {
     const query = `
@@ -149,15 +102,7 @@ class TutorsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 }
 

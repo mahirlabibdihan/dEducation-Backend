@@ -1,6 +1,4 @@
 const Repository = require("./connection");
-const AuthRepository = require("./authRepository");
-const authRepository = new AuthRepository();
 
 class ProfileRepository extends Repository {
   constructor() {
@@ -17,10 +15,7 @@ class ProfileRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STUDENT" },
     };
     const result = await this.execute_pl(query, params);
-    return {
-      success: true,
-      data: result.data.ret,
-    };
+    return result;
   };
   getTutorProfile = async (id) => {
     const query = `
@@ -33,10 +28,7 @@ class ProfileRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTOR" },
     };
     const result = await this.execute_pl(query, params);
-    return {
-      success: true,
-      data: result.data.ret,
-    };
+    return result;
   };
   getProfile = async (data) => {
     if (data.type === "STUDENT") {
@@ -46,7 +38,6 @@ class ProfileRepository extends Repository {
     }
   };
   getEducation = async (data) => {
-    console.log("EDUCATION");
     const query = `
     BEGIN
       :ret := GET_EDUCATIONS(:id);
@@ -57,14 +48,9 @@ class ProfileRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "EDUCATION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log(query, params, result);
-    return {
-      success: true,
-      data: result.data.ret,
-    };
+    return result;
   };
   addEducation = async (data) => {
-    console.log("EDUCATION");
     const query = `
     BEGIN
       ADD_EDUCATION(:tutor_id,:institute,:field,:degree,:passing_year);
@@ -78,18 +64,9 @@ class ProfileRepository extends Repository {
       passing_year: data.passing_year,
     };
     const result = await this.execute_pl(query, params);
-    // console.log(result, query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   updateEducation = async (data) => {
-    console.log("EDUCATION");
     const query = `
     BEGIN
       UPDATE_EDUCATION(:eq_id,:tutor_id,:institute,:field,:degree,:passing_year);
@@ -104,18 +81,9 @@ class ProfileRepository extends Repository {
       passing_year: data.passing_year,
     };
     const result = await this.execute_pl(query, params);
-    // console.log(result, query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   deleteEducation = async (eq_id) => {
-    console.log("EDUCATION");
     const query = `
     BEGIN
       DELETE_EDUCATION(:eq_id);
@@ -125,15 +93,7 @@ class ProfileRepository extends Repository {
       eq_id: eq_id,
     };
     const result = await this.execute_pl(query, params);
-    console.log(result, query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   setStudentProfile = async (data) => {
@@ -154,7 +114,8 @@ class ProfileRepository extends Repository {
       class: user.class,
       address: user.address,
     };
-    return await this.execute_pl(query, params);
+    const result = await this.execute_pl(query, params);
+    return result;
   };
   setTutorProfile = async (data) => {
     const user = data.user;
@@ -175,7 +136,8 @@ class ProfileRepository extends Repository {
       salary: user.salary,
       id: data.user_id,
     };
-    return await this.execute_pl(query, params);
+    const result = await this.execute_pl(query, params);
+    return result;
   };
 
   setProfilePicture = async (data) => {
@@ -187,12 +149,7 @@ class ProfileRepository extends Repository {
     `;
     const params = { image: fileName, id: data.user_id };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        image: fileName,
-      };
-    }
+    result["image"] = fileName;
     return result;
   };
 }

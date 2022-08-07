@@ -53,18 +53,22 @@ class Repository {
       }
       console.log("=>", query, params);
       result = await this.connection.execute(query, params);
-      console.log(query, params);
       return {
         success: true,
-        data: result.outBinds,
+        data:
+          result.outBinds && result.outBinds.ret ? result.outBinds.ret : null,
       };
     } catch (error) {
-      console.log("COULD NOT CONNECT TO ORACLE");
-      console.log(error);
-      console.log(query, params);
+      console.log(error.message);
+      let message = error.message.split("\n")[0].split(":")[1].trim();
+      if (error.errorNum == 1400) {
+        message = "Invalid Input";
+      }
+      console.log(query, params, message, error.errorNum);
       return {
         success: false,
-        error,
+        error: message,
+        errorNum: error.errorNum,
       };
     }
   };

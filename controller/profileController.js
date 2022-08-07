@@ -6,30 +6,15 @@ class ProfileController extends Controller {
   constructor() {
     super();
   }
-
   getProfile = async (req, res) => {
     const result = await (req.body.type == "STUDENT"
       ? profileRepository.getStudentProfile(req.body.user_id)
       : profileRepository.getTutorProfile(req.body.user_id));
-
-    if (result.success) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getEducation = async (req, res) => {
     const result = await profileRepository.getEducation(req.body);
-    console.log(":", result.data);
-    if (result.success) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   setEducation = async (req, res) => {
     const result = await profileRepository.getEducation(req.body);
@@ -48,9 +33,7 @@ class ProfileController extends Controller {
           result.data[i].EQ_ID
         );
         if (!result.success) {
-          res.status(404).json({
-            success: false,
-          });
+          res.status(404).json(result);
         }
       } else {
         const result = await profileRepository.updateEducation({
@@ -63,9 +46,7 @@ class ProfileController extends Controller {
           passing_year: req.body.list[i].passing_year,
         });
         if (!result.success) {
-          res.status(404).json({
-            success: false,
-          });
+          res.status(404).json(result);
         }
       }
     }
@@ -81,28 +62,17 @@ class ProfileController extends Controller {
           passing_year: req.body.list[i].passing_year,
         });
         if (!result.success) {
-          res.status(404).json({
-            success: false,
-          });
+          res.status(404).json(result);
         }
       }
     }
-
-    res.status(200).json({
-      success: true,
-    });
+    res.status(200).json(result.data);
   };
   setProfile = async (req, res) => {
     const result = await (req.body.ROLE == "STUDENT"
       ? profileRepository.setStudentProfile(req.body)
       : profileRepository.setTutorProfile(req.body));
-    if (result.success) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   deleteProfilePicture = async (req, res) => {
     console.log("START DELETING");
@@ -121,9 +91,7 @@ class ProfileController extends Controller {
   };
   setProfilePicture = async (req, res) => {
     if (req.files === null) {
-      res.status(404).json({
-        success: false,
-      });
+      res.status(404).json(result);
     }
     const profile = await profileRepository.getProfile(req.body);
     const prev_image = profile.data.IMAGE;
@@ -154,9 +122,7 @@ class ProfileController extends Controller {
         image: result.image,
       });
     }
-    res.status(404).json({
-      success: false,
-    });
+    res.status(404).json(result);
   };
 }
 

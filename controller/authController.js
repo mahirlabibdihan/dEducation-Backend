@@ -24,15 +24,7 @@ class AuthController extends Controller {
   signup = async (req, res) => {
     req.body["hashPass"] = bcrypt.hashSync(req.body.pass, 10);
     let result = await authRepository.signup(req.body);
-    if (result.success) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
 
   login = async (req, res) => {
@@ -40,11 +32,8 @@ class AuthController extends Controller {
       req.body.email,
       req.body.type
     );
-    console.log(result);
     if (result.success) {
       if (bcrypt.compareSync(req.body.pass, result.pass)) {
-        //signing a token with necessary information for validation
-        console.log(result.id, req.body.email, result.pass, req.body.type);
         return res.status(200).json({
           success: true,
           token: this.getToken(
@@ -56,9 +45,7 @@ class AuthController extends Controller {
         });
       }
     }
-    res.status(404).json({
-      success: false,
-    });
+    res.status(404).json(result);
   };
 
   changePass = async (req, res) => {
@@ -79,9 +66,11 @@ class AuthController extends Controller {
           ),
         });
       }
+      res.status(404).json(result);
     }
     res.status(404).json({
       success: false,
+      error: "Incorrect password",
     });
   };
 }

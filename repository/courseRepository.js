@@ -20,14 +20,7 @@ class CourseRepository extends Repository {
       class_time: data.batch.time,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success == true) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   create = async (data) => {
     // const batch = await this.addBatch(data);
@@ -42,14 +35,7 @@ class CourseRepository extends Repository {
       subject: data.subject,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   enroll = async (data) => {
     // console.log("JOIN:", data);
@@ -63,15 +49,7 @@ class CourseRepository extends Repository {
       batch_id: data.batch_id,
     };
     const result = await this.execute_pl(query, params);
-    console.log(result);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   getClassOptions = async (data) => {
@@ -86,16 +64,7 @@ class CourseRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STRING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log(result);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getSubjectOptions = async (data) => {
     const query = `
@@ -109,16 +78,7 @@ class CourseRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "STRING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    // console.log(result);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getBatchOptions = async (data) => {
     const query = `
@@ -133,16 +93,7 @@ class CourseRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "BATCH_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    // console.log(result);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   getBatches = async (data) => {
@@ -156,16 +107,7 @@ class CourseRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "BATCH_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    // console.log(result);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getMyList = async (data) => {
     // console.log("Course req", data.user_id);
@@ -179,16 +121,8 @@ class CourseRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "COURSE_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    // console.log(result);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    console.log("Courses", result.data);
+    return result;
   };
 
   getMyListAdmin = async (data) => {
@@ -202,16 +136,7 @@ class CourseRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "COURSE_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    // console.log(result.data);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 }
 

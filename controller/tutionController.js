@@ -7,233 +7,88 @@ class TutionController extends Controller {
   }
   post = async (req, res) => {
     let result = await tutionRepository.post(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   offer = async (req, res) => {
     let result = await tutionRepository.offer(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   apply = async (req, res) => {
     let result = await tutionRepository.apply(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   cancelApplication = async (req, res) => {
     let result = await tutionRepository.cancelApplication(req.body);
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getMyPosts = async (req, res) => {
     let result = await tutionRepository.getMyPosts(req.body);
-
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getPosts = async (req, res) => {
     let result = await tutionRepository.getPosts(req.body);
-
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getFilteredPosts = async (req, res) => {
     let result = await tutionRepository.getFilteredPosts(req.body.filter);
-    console.log("Filtered posts", result);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getApplicantsTutionDetails = async (req, res) => {
     let result = await tutionRepository.getApplicantsTutionDetails(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getApplyList = async (req, res) => {
     let result = await tutionRepository.getApplyList(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getFilteredApplyList = async (req, res) => {
     let result = await tutionRepository.getFilteredApplyList(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getPendingDetails = async (req, res) => {
     let result = await tutionRepository.getPendingDetails(req.body);
-
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getOfferFromStudent = async (req, res) => {
     let result = await tutionRepository.getTutionDetails(req.body);
-
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getOfferFromTutor = async (req, res) => {
     let result = await tutionRepository.getTutionDetails(req.body);
-
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   acceptOffer = async (req, res) => {
     let result = await tutionRepository.acceptOffer(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   rejectOffer = async (req, res) => {
     let result = await tutionRepository.rejectOffer(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   cancelOffer = async (req, res) => {
     let result = await tutionRepository.cancelOffer(req.body);
-
-    if (result.success == true) {
-      res.status(200).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getDetails = async (req, res) => {
-    console.log("Request details");
     let result = await tutionRepository.getTutionDetails(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getAllDetails = async (req, res) => {
-    console.log("Request All Tution details");
     let result = await tutionRepository.getAllDetails(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getFilteredDetails = async (req, res) => {
-    console.log("Request Filtered Tution details");
     let result = await tutionRepository.getFilteredDetails(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
   };
   getMyDetails = async (req, res) => {
-    console.log("Request My Tution details");
     let result = await tutionRepository.getMyDetails(req.body);
-    if (result.success == true) {
-      res.status(200).json(result.data);
-    } else {
-      res.status(404).json({
-        success: false,
-      });
-    }
+    this.handleResponse(result, res);
+  };
+  rate = async (req, res) => {
+    console.log("RATE FIRED");
+    let result = await tutionRepository.rate(req.body);
+    this.handleResponse(result, res);
   };
 }
 

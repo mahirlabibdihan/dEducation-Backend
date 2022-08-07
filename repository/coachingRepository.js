@@ -17,14 +17,7 @@ class CoachingRepository extends Repository {
       address: data.coaching.address,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   joinCoaching = async (data) => {
@@ -39,14 +32,7 @@ class CoachingRepository extends Repository {
       coaching_id: data.coaching_id,
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getList = async () => {
     const query = `
@@ -58,15 +44,21 @@ class CoachingRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "COACHING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
+    // console.log(result);
+    return result;
+  };
+  getJoinList = async (data) => {
+    const query = `
+    BEGIN
+      :ret := IS_JOINED(:student_id);
+    END;
+    `;
+    const params = {
+      student_id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "STRING_ARRAY" },
     };
+    const result = await this.execute_pl(query, params);
+    return result;
   };
 
   getMyList = async (data) => {
@@ -80,15 +72,7 @@ class CoachingRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "COACHING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   updateInfo = async (data) => {
     const query = `
@@ -103,14 +87,7 @@ class CoachingRepository extends Repository {
       coaching_id: data.coaching_id,
     };
     let result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
   getInfo = async (data) => {
     let query = `
@@ -123,16 +100,7 @@ class CoachingRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "COACHING" },
     };
     let result = await this.execute_pl(query, params);
-    console.log(data.coaching_id);
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data.ret,
-      };
-    }
-    return {
-      success: false,
-    };
+    return result;
   };
 
   setProfilePicture = async (data) => {
@@ -145,12 +113,7 @@ class CoachingRepository extends Repository {
     const fileName = data.coaching_id + Date.now() + "." + data.ext;
     const params = { image: fileName, coaching_id: data.coaching_id };
     const result = await this.execute_pl(query, params);
-    if (result.success) {
-      return {
-        success: true,
-        image: fileName,
-      };
-    }
+    result["image"] = fileName;
     return result;
   };
 }
