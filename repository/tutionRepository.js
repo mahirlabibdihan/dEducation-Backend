@@ -34,7 +34,7 @@ class TutionRepository extends Repository {
   getFilteredPosts = async (filter) => {
     const query = `
     BEGIN
-      :ret := GET_FILTERED_TUTION_POSTS(:gender,:start,:end,:days,:version,:type);
+      :ret := GET_FILTERED_TUTION_POSTS(:gender,:start,:end,:days,:version,:type,:class);
     END;
     `;
     const params = {
@@ -44,15 +44,17 @@ class TutionRepository extends Repository {
       days: filter.days_per_week,
       version: filter.version,
       type: filter.type,
+      class: filter.class,
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
+    console.log(result);
     return result;
   };
   getFilteredApplyList = async (data) => {
     const query = `
     BEGIN
-      :ret := IS_APPLIED_FILTERED(:id,:gender,:start,:end,:days,:version,:type);
+      :ret := IS_APPLIED_FILTERED(:id,:gender,:start,:end,:days,:version,:type,:class);
     END;
     `;
     const params = {
@@ -63,6 +65,7 @@ class TutionRepository extends Repository {
       version: data.filter.version,
       id: data.user_id,
       type: data.filter.type,
+      class: data.filter.class,
       ret: { dir: oracledb.BIND_OUT, type: "STRING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
@@ -282,7 +285,7 @@ class TutionRepository extends Repository {
     const params = {
       student_id: data.user_id,
       tutor_id: data.tutor_id,
-      rating: data.rating,        
+      rating: data.rating,
     };
     const result = await this.execute_pl(query, params);
     return result;

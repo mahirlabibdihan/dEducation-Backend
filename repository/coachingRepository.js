@@ -74,6 +74,19 @@ class CoachingRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
+  getCourseList = async (data) => {
+    const query = `
+    BEGIN
+      :ret := GET_COACHING_COURSES(:id);
+    END;
+    `;
+    const params = {
+      id: data.coaching_id,
+      ret: { dir: oracledb.BIND_OUT, type: "COURSE_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   updateInfo = async (data) => {
     const query = `
     BEGIN

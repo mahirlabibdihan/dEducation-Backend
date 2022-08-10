@@ -25,7 +25,10 @@ class CoachingController extends Controller {
     const result = await coachingRepository.getMyList(req.body);
     this.handleResponse(result, res);
   };
-
+  getCourseList = async (req, res) => {
+    const result = await coachingRepository.getCourseList(req.body);
+    this.handleResponse(result, res);
+  };
   joinCoaching = async (req, res) => {
     let result = await coachingRepository.joinCoaching(req.body);
     this.handleResponse(result, res);

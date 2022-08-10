@@ -22,7 +22,10 @@ class AuthRepository extends Repository {
         pass: result.data.PASS,
       };
     }
-    return result;
+    return {
+      success: false,
+      error: "Invalid credentials", 
+    };
   };
   signup = async (data) => {
     const query = `

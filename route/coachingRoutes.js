@@ -11,5 +11,6 @@ router.route("/get_info").post(coachingController.getInfo);
 router.route("/list").get(coachingController.getList);
 router.route("/join_list").get(coachingController.getJoinList);
 router.route("/my_list").get(coachingController.getMyList);
+router.route("/course_list").post(coachingController.getCourseList);
 router.route("/join").post(coachingController.joinCoaching);
 module.exports = router;

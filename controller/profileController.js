@@ -10,6 +10,7 @@ class ProfileController extends Controller {
     const result = await (req.body.type == "STUDENT"
       ? profileRepository.getStudentProfile(req.body.user_id)
       : profileRepository.getTutorProfile(req.body.user_id));
+    console.log(req.body, result.data);
     this.handleResponse(result, res);
   };
   getEducation = async (req, res) => {
@@ -21,7 +22,6 @@ class ProfileController extends Controller {
 
     for (let i = 0; i < result.data.length; i++) {
       let flag = 0;
-      console.log(i, result.data[i].EQ_ID);
       for (let j = 0; j < req.body.list.length; j++) {
         if (req.body.list[j].eq_id == result.data[i].EQ_ID) {
           flag = 1;
@@ -29,14 +29,14 @@ class ProfileController extends Controller {
         }
       }
       if (flag == 0) {
-        const result = await profileRepository.deleteEducation(
+        const result2 = await profileRepository.deleteEducation(
           result.data[i].EQ_ID
         );
-        if (!result.success) {
-          res.status(404).json(result);
+        if (!result2.success) {
+          res.status(404).json(result2);
         }
       } else {
-        const result = await profileRepository.updateEducation({
+        const result2 = await profileRepository.updateEducation({
           eq_id: req.body.list[i].eq_id,
           user_id: req.body.user_id,
           eq_id: req.body.list[i].eq_id,
@@ -45,15 +45,15 @@ class ProfileController extends Controller {
           degree: req.body.list[i].degree,
           passing_year: req.body.list[i].passing_year,
         });
-        if (!result.success) {
-          res.status(404).json(result);
+        if (!result2.success) {
+          res.status(404).json(result2);
         }
       }
     }
     for (let i = 0; i < req.body.list.length; i++) {
       if (req.body.list[i].eq_id == null) {
         console.log("ADD NEW");
-        const result = await profileRepository.addEducation({
+        const result2 = await profileRepository.addEducation({
           user_id: req.body.user_id,
           eq_id: req.body.list[i].eq_id,
           institute: req.body.list[i].institute,
@@ -61,15 +61,15 @@ class ProfileController extends Controller {
           degree: req.body.list[i].degree,
           passing_year: req.body.list[i].passing_year,
         });
-        if (!result.success) {
-          res.status(404).json(result);
+        if (!result2.success) {
+          res.status(404).json(result2);
         }
       }
     }
     res.status(200).json(result.data);
   };
   setProfile = async (req, res) => {
-    const result = await (req.body.ROLE == "STUDENT"
+    const result = await (req.body.type == "STUDENT"
       ? profileRepository.setStudentProfile(req.body)
       : profileRepository.setTutorProfile(req.body));
     this.handleResponse(result, res);
