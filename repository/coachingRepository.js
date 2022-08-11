@@ -74,6 +74,40 @@ class CoachingRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
+  getMyNotices = async (data) => {
+    const query = `
+    BEGIN
+      :ret := ${
+        data.type === "TUTOR"
+          ? "GET_ADMIN_NOTICES(:id)"
+          : "GET_MEMBER_NOTICES(:id)"
+      };
+    END;
+    `;
+    const params = {
+      id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "NOTICE_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  postNotice = async (body) => {
+    const query = `
+    BEGIN
+      POST_NOTICE(:id,:coaching_id,:class,:subject,:batch_id,:text);
+    END;
+    `;
+    const params = {
+      id: body.user_id,
+      coaching_id: body.data.coaching,
+      class: body.data.class,
+      subject: body.data.subject,
+      batch_id: body.data.batch_id === undefined ? -1 : body.data.batch_id,
+      text: body.data.notice,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   getCourseList = async (data) => {
     const query = `
     BEGIN
@@ -117,7 +151,6 @@ class CoachingRepository extends Repository {
   };
 
   setProfilePicture = async (data) => {
-    console.log(data);
     const query = `
     BEGIN
       CHANGE_COACHING_PICTURE(:coaching_id,:image);
