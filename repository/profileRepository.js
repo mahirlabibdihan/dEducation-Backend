@@ -50,6 +50,19 @@ class ProfileRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
+  getNotifications = async (data) => {
+    const query = `
+    BEGIN
+      :ret := GET_NOTIFICATIONS(:id);
+    END;
+    `;
+    const params = {
+      id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "NOTIFICATION_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   addEducation = async (data) => {
     const query = `
     BEGIN

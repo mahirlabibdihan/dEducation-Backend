@@ -9,4 +9,5 @@ router.get("/", profileController.getProfile);
 router.post("/", profileController.setProfile);
 router.get("/education", profileController.getEducation);
 router.post("/education", profileController.setEducation);
+router.get("/notifications", profileController.getNotifications);
 module.exports = router;
