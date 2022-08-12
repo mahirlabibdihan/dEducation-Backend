@@ -30,7 +30,7 @@ class TutionController extends Controller {
     this.handleResponse(result, res);
   };
   getFilteredPosts = async (req, res) => {
-    let result = await tutionRepository.getFilteredPosts(req.body.filter);
+    let result = await tutionRepository.getFilteredPosts(req.body);
     this.handleResponse(result, res);
   };
   getApplicantsTutionDetails = async (req, res) => {

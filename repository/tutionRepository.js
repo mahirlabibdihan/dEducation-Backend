@@ -19,32 +19,34 @@ class TutionRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
-  getPosts = async () => {
+  getPosts = async (body) => {
     const query = `
     BEGIN
-      :ret := GET_ALL_TUTION_POSTS();
+      :ret := GET_ALL_TUTION_POSTS(:id);
     END;
     `;
     const params = {
+      id: body.user_id,
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
     return result;
   };
-  getFilteredPosts = async (filter) => {
+  getFilteredPosts = async (body) => {
     const query = `
     BEGIN
-      :ret := GET_FILTERED_TUTION_POSTS(:gender,:start,:end,:days,:version,:type,:class);
+      :ret := GET_FILTERED_TUTION_POSTS(:id,:gender,:start,:end,:days,:version,:type,:class);
     END;
     `;
     const params = {
-      gender: filter.gender,
-      start: filter.start_salary,
-      end: filter.end_salary,
-      days: filter.days_per_week,
-      version: filter.version,
-      type: filter.type,
-      class: filter.class,
+      id: body.user_id,
+      gender: body.filter.gender,
+      start: body.filter.start_salary,
+      end: body.filter.end_salary,
+      days: body.filter.days_per_week,
+      version: body.filter.version,
+      type: body.filter.type,
+      class: body.filter.class,
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
