@@ -89,7 +89,7 @@ class TutionRepository extends Repository {
   offer = async (data) => {
     const query = `
       BEGIN
-        MAKE_OFFER(:student_id,:tutor_id,:subjects,:salary,:days_per_week,:type);
+        MAKE_OFFER(:student_id,:tutor_id,:subjects,:salary,:start_date,:class_days,:class_time,:type);
       END;
     `;
     const params = {
@@ -97,7 +97,9 @@ class TutionRepository extends Repository {
       tutor_id: data.tutor_id,
       subjects: data.tution.subjects,
       salary: data.tution.salary,
-      days_per_week: data.tution.days_per_week,
+      start_date: data.tution.start_date,
+      class_days: data.tution.class_days,
+      class_time: data.tution.class_time,
       type: data.tution.type,
     };
     const result = await this.execute_pl(query, params);
@@ -155,6 +157,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
+    console.log(result);
     return result;
   };
 
@@ -281,13 +284,27 @@ class TutionRepository extends Repository {
   rate = async (data) => {
     const query = `
     BEGIN
-      RATE(:student_id,:tutor_id,:rating);
+      RATE_TUTOR(:student_id,:tutor_id,:rating,:review);
     END;
    `;
     const params = {
       student_id: data.user_id,
       tutor_id: data.tutor_id,
       rating: data.rating,
+      review: data.review,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  getFeedbacks = async (data) => {
+    const query = `
+      BEGIN
+        :ret := GET_FEEDBACKS(:tutor_id);
+      END;
+    `;
+    const params = {
+      tutor_id: data.tutor_id,
+      ret: { dir: oracledb.BIND_OUT, type: "FEEDBACK_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
     return result;

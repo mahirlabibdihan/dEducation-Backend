@@ -13,5 +13,8 @@ router.route("/batch_options").post(courseController.getBatchOptions);
 router.route("/batches").post(courseController.getBatches);
 router.route("/add_batch").post(courseController.addBatch);
 router.route("/enroll").post(courseController.enroll);
+router.route("/enroll/approve").post(courseController.approveEnrollment);
+router.route("/enroll/decline").post(courseController.declineEnrollment);
+router.route("/enroll/cancel").post(courseController.cancelEnrollment);
 
 module.exports = router;

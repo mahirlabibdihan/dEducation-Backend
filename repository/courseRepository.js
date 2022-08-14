@@ -37,6 +37,48 @@ class CourseRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
+  cancelEnrollment = async (data) => {
+    // console.log("JOIN:", data);
+    const query = `
+    BEGIN
+      CANCEL_ENROLLMENT(:student_id,:batch_id);
+    END;
+    `;
+    const params = {
+      student_id: data.user_id,
+      batch_id: data.batch_id,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  declineEnrollment = async (data) => {
+    // console.log("JOIN:", data);
+    const query = `
+    BEGIN
+      DECLINE_ENROLLMENT(:student_id,:batch_id);
+    END;
+    `;
+    const params = {
+      student_id: data.student_id,
+      batch_id: data.batch_id,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  approveEnrollment = async (data) => {
+    // console.log("JOIN:", data);
+    const query = `
+    BEGIN
+      APPROVE_ENROLLMENT(:student_id,:batch_id);
+    END;
+    `;
+    const params = {
+      student_id: data.student_id,
+      batch_id: data.batch_id,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   enroll = async (data) => {
     // console.log("JOIN:", data);
     const query = `
@@ -83,10 +125,11 @@ class CourseRepository extends Repository {
   getBatchOptions = async (data) => {
     const query = `
       BEGIN 
-       :ret := GET_BATCH_OPTIONS(:coaching_id,:class,:subject);
+       :ret := GET_BATCH_OPTIONS(:student_id,:coaching_id,:class,:subject);
       END;
     `;
     const params = {
+      student_id: data.user_id,
       coaching_id: data.coaching_id,
       class: data.class,
       subject: data.subject,

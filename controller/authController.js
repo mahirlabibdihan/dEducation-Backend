@@ -32,7 +32,7 @@ class AuthController extends Controller {
       req.body.email,
       req.body.type
     );
-    console.log("=>", result, req.body.type);
+    // console.log("=>", result, req.body.type);
     if (result.success) {
       if (bcrypt.compareSync(req.body.pass, result.pass)) {
         return res.status(200).json({

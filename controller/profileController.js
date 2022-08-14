@@ -10,7 +10,7 @@ class ProfileController extends Controller {
     const result = await (req.body.type == "STUDENT"
       ? profileRepository.getStudentProfile(req.body.user_id)
       : profileRepository.getTutorProfile(req.body.user_id));
-    console.log(req.body, result.data);
+    // console.log(req.body, result.data);
     this.handleResponse(result, res);
   };
   getEducation = async (req, res) => {
@@ -56,7 +56,7 @@ class ProfileController extends Controller {
     }
     for (let i = 0; i < req.body.list.length; i++) {
       if (req.body.list[i].eq_id == null) {
-        console.log("ADD NEW");
+        // console.log("ADD NEW");
         const result2 = await profileRepository.addEducation({
           user_id: req.body.user_id,
           eq_id: req.body.list[i].eq_id,
@@ -79,11 +79,11 @@ class ProfileController extends Controller {
     this.handleResponse(result, res);
   };
   deleteProfilePicture = async (req, res) => {
-    console.log("START DELETING");
+    // console.log("START DELETING");
     const result = await profileRepository.getProfile(req.body);
-    console.log(result);
+    // console.log(result);
     if (result.data.IMAGE !== null) {
-      console.log("AGAIN START DELETING");
+      // console.log("AGAIN START DELETING");
       try {
         fs.unlinkSync(
           `G:/github/hidden-brain/hidden-brain-backend/public/assets/images/${result.data.IMAGE}`

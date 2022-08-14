@@ -1,5 +1,4 @@
 const Repository = require("./connection");
-
 class StudentsRepository extends Repository {
   constructor() {
     super();
@@ -55,6 +54,36 @@ class StudentsRepository extends Repository {
     `;
     let params = {
       coaching_id: data.coaching_id,
+      ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
+    };
+    let result = await this.execute_pl(query, params);
+    return result;
+  };
+  getJoinRequests = async (data) => {
+    let query = `
+    BEGIN
+      :ret := GET_JOIN_REQUESTS(:coaching_id);
+    END;
+    `;
+    let params = {
+      coaching_id: data.coaching_id,
+      ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
+    };
+    let result = await this.execute_pl(query, params);
+    return result;
+  };
+  getPendingEnrollments = async (data) => {
+    console.log(data.course);
+    let query = `
+    BEGIN
+      :ret := GET_PENDING_ENROLLMENTS(:coaching_id,:class,:subject,:batch_id);
+    END;
+    `;
+    let params = {
+      coaching_id: data.course.coaching,
+      class: data.course.class === undefined ? null : data.course.class,
+      subject: data.course.subject === undefined ? null : data.course.subject,
+      batch_id: data.course.batch === undefined ? null : data.course.batch,
       ret: { dir: oracledb.BIND_OUT, type: "STUDENT_ARRAY" },
     };
     let result = await this.execute_pl(query, params);

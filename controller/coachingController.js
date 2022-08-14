@@ -13,7 +13,7 @@ class CoachingController extends Controller {
   };
 
   getList = async (req, res) => {
-    const result = await coachingRepository.getList();
+    const result = await coachingRepository.getList(req.body);
     this.handleResponse(result, res);
   };
 
@@ -42,6 +42,18 @@ class CoachingController extends Controller {
     let result = await coachingRepository.joinCoaching(req.body);
     this.handleResponse(result, res);
   };
+  approveJoinRequest = async (req, res) => {
+    let result = await coachingRepository.approveJoinRequest(req.body);
+    this.handleResponse(result, res);
+  };
+  declineJoinRequest = async (req, res) => {
+    let result = await coachingRepository.declineJoinRequest(req.body);
+    this.handleResponse(result, res);
+  };
+  cancelJoinRequest = async (req, res) => {
+    let result = await coachingRepository.cancelJoinRequest(req.body);
+    this.handleResponse(result, res);
+  };
 
   updateInfo = async (req, res) => {
     let result = await coachingRepository.updateInfo(req.body.coaching);
@@ -55,7 +67,6 @@ class CoachingController extends Controller {
 
   getRequests = async (req, res) => {
     let result = await coachingRepository.getRequests(req.body);
-
     this.handleResponse(result, res);
   };
 

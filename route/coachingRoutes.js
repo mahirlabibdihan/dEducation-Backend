@@ -15,4 +15,7 @@ router.route("/notices").get(coachingController.getMyNotices);
 router.route("/notices").post(coachingController.postNotice);
 router.route("/course_list").post(coachingController.getCourseList);
 router.route("/join").post(coachingController.joinCoaching);
+router.route("/join/approve").post(coachingController.approveJoinRequest);
+router.route("/join/decline").post(coachingController.declineJoinRequest);
+router.route("/join/cancel").post(coachingController.cancelJoinRequest);
 module.exports = router;

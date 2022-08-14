@@ -14,6 +14,18 @@ class CourseController extends Controller {
     let result = await courseRepository.enroll(req.body);
     this.handleResponse(result, res);
   };
+  approveEnrollment = async (req, res) => {
+    let result = await courseRepository.approveEnrollment(req.body);
+    this.handleResponse(result, res);
+  };
+  declineEnrollment = async (req, res) => {
+    let result = await courseRepository.declineEnrollment(req.body);
+    this.handleResponse(result, res);
+  };
+  cancelEnrollment = async (req, res) => {
+    let result = await courseRepository.cancelEnrollment(req.body);
+    this.handleResponse(result, res);
+  };
   addBatch = async (req, res) => {
     let result = await courseRepository.addBatch(req.body);
     this.handleResponse(result, res);

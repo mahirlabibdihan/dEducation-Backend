@@ -19,7 +19,48 @@ class CoachingRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
-
+  approveJoinRequest = async (body) => {
+    // console.log("JOIN:", data);
+    const query = `
+    BEGIN
+      APPROVE_JOIN_REQUEST(:coaching_id,:student_id);
+    END;
+  `;
+    const params = {
+      coaching_id: body.coaching_id,
+      student_id: body.student_id,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  declineJoinRequest = async (body) => {
+    // console.log("JOIN:", data);
+    const query = `
+    BEGIN
+      DECLINE_JOIN_REQUEST(:coaching_id,:student_id);
+    END;
+  `;
+    const params = {
+      coaching_id: data.coaching_id,
+      student_id: body.student_id,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  cancelJoinRequest = async (body) => {
+    // console.log("JOIN:", data);
+    const query = `
+    BEGIN
+      CANCEL_JOIN_REQUEST(:coaching_id,:student_id);
+    END;
+  `;
+    const params = {
+      coaching_id: body.coaching_id,
+      student_id: body.user_id,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   joinCoaching = async (data) => {
     // console.log("JOIN:", data);
     const query = `
@@ -34,13 +75,14 @@ class CoachingRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
-  getList = async () => {
+  getList = async (body) => {
     const query = `
     BEGIN
-      :ret := GET_ALL_COACHINGS();
+      :ret := GET_ALL_COACHINGS(:id);
     END;
     `;
     const params = {
+      id: body.user_id,
       ret: { dir: oracledb.BIND_OUT, type: "COACHING_ARRAY" },
     };
     const result = await this.execute_pl(query, params);

@@ -90,6 +90,10 @@ class TutionController extends Controller {
     let result = await tutionRepository.rate(req.body);
     this.handleResponse(result, res);
   };
+  getFeedbacks = async (req, res) => {
+    let result = await tutionRepository.getFeedbacks(req.body);
+    this.handleResponse(result, res);
+  };
 }
 
 module.exports = TutionController;

@@ -28,4 +28,5 @@ router.get("/get_pending_details", tutionController.getPendingDetails);
 router.get("/get_apply_list", tutionController.getApplyList);
 router.post("/get_filtered_apply_list", tutionController.getFilteredApplyList);
 router.post("/rate", tutionController.rate);
+router.post("/feedbacks", tutionController.getFeedbacks);
 module.exports = router;
