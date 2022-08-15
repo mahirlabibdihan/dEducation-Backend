@@ -41,7 +41,7 @@ class CoachingRepository extends Repository {
     END;
   `;
     const params = {
-      coaching_id: data.coaching_id,
+      coaching_id: body.coaching_id,
       student_id: body.student_id,
     };
     const result = await this.execute_pl(query, params);
