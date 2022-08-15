@@ -121,7 +121,7 @@ class TutionRepository extends Repository {
   rejectOffer = async (data) => {
     const query = `
     BEGIN
-      DELETE_OFFER(:tutor_id,:student_id);
+      REJECT_OFFER(:tutor_id,:student_id);
     END;
     `;
     const params = {
@@ -134,7 +134,7 @@ class TutionRepository extends Repository {
   cancelOffer = async (data) => {
     const query = `
       BEGIN
-        DELETE_OFFER(:tutor_id,:student_id);
+        CANCEL_OFFER(:tutor_id,:student_id);
       END;
     `;
     const params = {
