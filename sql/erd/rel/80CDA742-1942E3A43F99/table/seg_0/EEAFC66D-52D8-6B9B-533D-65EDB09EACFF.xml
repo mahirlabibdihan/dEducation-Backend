@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EEAFC66D-52D8-6B9B-533D-65EDB09EACFF" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="APPLIES">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>APPLIES</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TUTOR_ID" id="3A08D080-FA47-C509-66AC-0AF0411BBFB4">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>APPLIES</sourceObjSchema>
+<sourceObjName>TUTOR_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CECC31CC-8257-4A64-1F6F-4FD0A9BF5605" referredColumn="7F4AE66B-6E10-5415-519B-DFF952505CAE"/>
+</associations>
+</Column>
+<Column name="POST_ID" id="82ABB991-23B9-23BB-97E2-DEF559B822B0">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>APPLIES</sourceObjSchema>
+<sourceObjName>POST_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="79AE9D71-9333-9FD7-5194-179DE39F449F" referredColumn="D8F9380B-B02A-5FA6-106E-2B3851B4E7DB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9F5884F9-4765-DA4E-5740-4BB6D88642EC" name="SYS_C0019358">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3A08D080-FA47-C509-66AC-0AF0411BBFB4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6A004D9F-469F-3DC8-90AE-460681B6BB69" name="SYS_C0019359">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="82ABB991-23B9-23BB-97E2-DEF559B822B0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

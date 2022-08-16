@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0DA03D03-88C0-320F-7338-0B8F9969FB34" containerWithKeyObject="21D7B35A-14C0-8C8E-A036-B622B985D1E3" localFKIndex="7CE4E22D-930E-0B77-D3DF-98D3809A5C32" name="SYS_C0019385">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019385</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:48 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<referredTableLongName>C##HIDDENBRAIN.COURSES</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<mandatory>false</mandatory>
+<refColNames>COURSE_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

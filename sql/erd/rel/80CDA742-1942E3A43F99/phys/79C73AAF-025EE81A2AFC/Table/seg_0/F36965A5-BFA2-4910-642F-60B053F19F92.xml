@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="MEMBEROF" directorySegmentName="seg_0" id="F36965A5-BFA2-4910-642F-60B053F19F92">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>798660A2-6CE5-8A11-DFEA-9C6FF7FB270E</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="COACHING_ID" id="16D81B28-2324-B06C-2F18-88B03DF3611C">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="USER_ID" id="A12F9991-22D8-EF3A-952C-5A9ED5E0A656">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TYPE" id="A33C33D7-6FD8-3065-C5E2-5BEB8DCBFE3F">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<defaultValue>&apos;PENDING&apos;</defaultValue>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C0019374" id="67EF176C-8CCA-6F3E-1494-99D6067C997C">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:29 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C0019375" id="F4CDCA72-F04D-7D32-5306-2DE1D99AD528">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:29 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="MEMBEROF_PK" id="FB6947C9-8A54-5A57-91E5-490FDFEE8FE2">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:29 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<segment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<indexSegment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

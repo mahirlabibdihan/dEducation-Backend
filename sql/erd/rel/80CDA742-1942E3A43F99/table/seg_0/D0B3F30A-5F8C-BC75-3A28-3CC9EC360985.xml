@@ -1,0 +1,143 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D0B3F30A-5F8C-BC75-3A28-3CC9EC360985" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="TUTIONS">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>TUTIONS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TUTION_ID" id="C8438A26-EAD9-5A7E-232F-8EE770E5AC87">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>TUTION_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SUBJECTS" id="AC9BD2C0-0270-9C81-4FF5-E1B24082AC29">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>SUBJECTS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1024 BYTE</dataTypeSize>
+<ownDataTypeParameters>1024 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SALARY" id="C5BDA0F2-07C7-EDF8-E55C-8B2E46C070C7">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>SALARY</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DAYS_PER_WEEK" id="79F32251-D4A0-F2C6-A278-D5CDB56FC719">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>DAYS_PER_WEEK</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYPE" id="9DDF0766-043F-5422-28E4-29608383779D">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>TYPE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLASS_DAYS" id="F4ACA210-9171-CF47-3981-12E230D1C45E">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>CLASS_DAYS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLASS_TIME" id="4E23FF06-0F0E-05AA-D1C6-BD65EA53FE68">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>CLASS_TIME</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="START_DATE" id="AF27941E-9583-B4A3-8B23-7C3E4CAEF961">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTIONS</sourceObjSchema>
+<sourceObjName>START_DATE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DDAF854F-EDFE-E884-780D-9EA10B124796" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="TUTIONS_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019352</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8438A26-EAD9-5A7E-232F-8EE770E5AC87"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

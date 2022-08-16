@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="CHECK_EMAIL" directorySegmentName="seg_0" id="83427A44-1071-FE42-C168-033B1F823B07">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>CHECK_EMAIL</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:20 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE	
+	user_row Users%ROWTYPE;
+BEGIN
+	IF IS_EMAIL_TAKEN(:NEW.email) = 'YES' THEN
+		RAISE_APPLICATION_ERROR(-20999, 'Email is already taken');
+	END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>3701D913-0B80-3877-CD18-E9F5CAA626FC</table>
+</TriggerOraclev10g>

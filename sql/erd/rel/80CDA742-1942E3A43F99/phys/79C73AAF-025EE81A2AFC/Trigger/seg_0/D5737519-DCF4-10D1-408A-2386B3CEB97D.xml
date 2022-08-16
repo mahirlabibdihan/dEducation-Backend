@@ -1,0 +1,31 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="FEEDBACK_UPDATE_NOTIFICATION" directorySegmentName="seg_0" id="D5737519-DCF4-10D1-408A-2386B3CEB97D">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>FEEDBACK_UPDATE_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+	s_name 	Users.name%TYPE;
+	s_image Users.image%TYPE;
+	s_id 		Users.user_id%TYPE;
+	t_id 		Tutors.user_id%TYPE;
+BEGIN
+	SELECT name,image,user_id,tutor_id INTO s_name,s_image,s_id,t_id
+	FROM Offers JOIN Users
+	ON user_id = student_id
+	WHERE feedback_id = :NEW.feedback_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('FEEDBACK','UPDATE',s_id,:NEW.feedback_id,t_id,s_image,s_name||' has updated feedback','/my_students?id='||s_id);
+	
+	DELETE FROM Notifications
+	WHERE type = 'FEEDBACK' AND sender_id = s_id AND user_id = t_id
+	AND entity_id <> :NEW.feedback_id;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>68EF5691-C713-18DE-F197-07FEB2A5F432</table>
+</TriggerOraclev10g>

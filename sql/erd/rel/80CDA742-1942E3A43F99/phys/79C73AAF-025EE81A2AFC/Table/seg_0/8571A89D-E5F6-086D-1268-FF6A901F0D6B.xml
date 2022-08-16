@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="NOTICES" directorySegmentName="seg_0" id="8571A89D-E5F6-086D-1268-FF6A901F0D6B">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>798660A2-6CE5-8A11-DFEA-9C6FF7FB270E</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="BATCH_ID" id="2808406B-2358-60E2-F874-573444E0DE2B">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADMIN_ID" id="5BEEFC43-8B8E-18FC-CCDA-6ECE179362F4">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TEXT" id="6656FC62-41F8-ED9A-EE08-68CAAF05B5E0">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOTICE_ID" id="836A444A-D47D-9FD0-2F7A-BF404DB41B40">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLASS" id="A2AA6317-27E2-30EC-9DB0-94C7913FA946">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TIMESTAMP" id="C27D1B66-EEC2-0C28-109C-E1353676B2DD">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<defaultValue>SYSDATE</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="SUBJECT" id="F01780C4-2086-5F7F-8BC6-512D228C1237">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COACHING_ID" id="F2CB1316-8562-C9E4-1F2C-C318D94DA0A4">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="NOTICES_PK" id="A585A841-0DD1-5B7C-C383-698D4C4CD6AD">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<segment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<indexSegment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

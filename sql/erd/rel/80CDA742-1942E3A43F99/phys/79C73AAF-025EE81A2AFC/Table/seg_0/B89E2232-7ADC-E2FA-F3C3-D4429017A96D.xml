@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="STUDENTS" directorySegmentName="seg_0" id="B89E2232-7ADC-E2FA-F3C3-D4429017A96D">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>798660A2-6CE5-8A11-DFEA-9C6FF7FB270E</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ADDRESS" id="0758D8ED-48CE-72C2-EA26-D0CD83CE51F9">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="INSTITUTION" id="2C80676F-7124-D5D4-0A06-CDE9F53E68CD">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLASS" id="4785C705-FCB9-9834-9227-69FB7A2CEBA8">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="VERSION" id="83A54F3D-F709-E5D2-1075-F004296B1454">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="USER_ID" id="932DC37D-CD02-C159-A918-337A552878C5">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C0019346" id="53D56576-FA9B-7747-E8B6-9E043E63E253">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="STUDENTS_PK" id="00439DAD-E08C-8B56-0BF2-D2199D214D9B">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:51 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<segment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<indexSegment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

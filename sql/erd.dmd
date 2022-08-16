@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="erd" id="8BE63F90-CA38-510B-01D1-4EDAA00B1720" version="3.5">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:21:53 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>8BE63F90-CA38-510B-01D1-4EDAA00B1720</designId>
+</OSDM_Design>

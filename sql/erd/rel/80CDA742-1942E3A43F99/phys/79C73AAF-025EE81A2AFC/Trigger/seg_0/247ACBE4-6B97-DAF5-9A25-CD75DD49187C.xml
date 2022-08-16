@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="NEW_APPLICATION_NOTIFICATION" directorySegmentName="seg_0" id="247ACBE4-6B97-DAF5-9A25-CD75DD49187C">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>NEW_APPLICATION_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE
+	t_name 	Users.name%TYPE;
+	t_image Users.image%TYPE;
+	s_id		Students.user_id%TYPE;
+BEGIN
+	SELECT name,image INTO t_name,t_image
+	FROM Users WHERE user_id = :NEW.tutor_id;
+	SELECT student_id INTO s_id
+	FROM Tution_Posts WHERE post_id = :NEW.post_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('APPLICATION','SUBMIT',:NEW.tutor_id,:NEW.post_id,s_id,t_image,t_name||' has applied to your tution post','/req_tutor/applicants?post_id='||:NEW.post_id||'&id='||:NEW.tutor_id);
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20000,'ERROR APP');
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>EEAFC66D-52D8-6B9B-533D-65EDB09EACFF</table>
+</TriggerOraclev10g>

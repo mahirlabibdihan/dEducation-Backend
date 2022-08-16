@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="GENERATE_NOTIFICATION_ID" directorySegmentName="seg_0" id="B74D1703-0600-7403-F4A5-282B6CAA1409">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>GENERATE_NOTIFICATION_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:13 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[BEGIN
+	SELECT COUNT(notification_id)+1 INTO :NEW.notification_id
+	FROM Notifications; 
+	IF :NEW.notification_id > 1 THEN
+		SELECT MAX(notification_id)+1 INTO :NEW.notification_id
+		FROM Notifications; 
+	END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>0BECAC16-2112-361B-6B26-C007828A5C1E</table>
+</TriggerOraclev10g>

@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="85D75659-9732-2153-C39C-1B1ABAA1FB02" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="TUTION_POSTS">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>TUTION_POSTS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:08 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="POST_ID" id="D8F9380B-B02A-5FA6-106E-2B3851B4E7DB">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTION_POSTS</sourceObjSchema>
+<sourceObjName>POST_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STUDENT_ID" id="35FCAC6F-79B9-2CA2-9237-19A30B697617">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTION_POSTS</sourceObjSchema>
+<sourceObjName>STUDENT_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="894BF644-43C1-8544-93C5-A9A9AB244406" referredColumn="932DC37D-CD02-C159-A918-337A552878C5"/>
+</associations>
+</Column>
+<Column name="TUTION_ID" id="3E803930-4513-4BA3-D7E0-C6FAAFA58A5B">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTION_POSTS</sourceObjSchema>
+<sourceObjName>TUTION_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CE11DC57-415B-CEA0-889C-0430B7FA0844" referredColumn="C8438A26-EAD9-5A7E-232F-8EE770E5AC87"/>
+</associations>
+</Column>
+<Column name="TIMESTAMP" id="5525622A-3757-38BC-119F-3BD7DA47B6C1">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTION_POSTS</sourceObjSchema>
+<sourceObjName>TIMESTAMP</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESIRED_TUTOR_GENDER" id="EFCFB69A-1A0A-DDAE-EBE6-4AB9E68B7FB2">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>TUTION_POSTS</sourceObjSchema>
+<sourceObjName>DESIRED_TUTOR_GENDER</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="49F2D73A-F4DB-7798-85A4-9CB60BDF1ADA" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="TUTION_POSTS_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019355</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D8F9380B-B02A-5FA6-106E-2B3851B4E7DB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="21695052-B972-D160-A2BB-234CB1611E86" name="SYS_C0019356">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35FCAC6F-79B9-2CA2-9237-19A30B697617"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E98C5E39-F55C-FEDE-62FF-F7AB62F8EF47" name="SYS_C0019357">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:09 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3E803930-4513-4BA3-D7E0-C6FAAFA58A5B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

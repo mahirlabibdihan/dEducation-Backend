@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="NEW_FEEDBACK_NOTIFICATION" directorySegmentName="seg_0" id="CFD06287-0ED3-07BB-235C-4A0E0655A8AC">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>NEW_FEEDBACK_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+	s_name 	Users.name%TYPE;
+	s_image Users.image%TYPE;
+BEGIN
+	SELECT name,image INTO s_name,s_image
+	FROM Users
+	WHERE user_id = :NEW.student_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('FEEDBACK','SUBMIT',:NEW.student_id,:NEW.feedback_id,:NEW.tutor_id,s_image,'You have received a feedback by '||s_name,'/my_students?id='||:NEW.student_id);
+	
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<columns>247836D7-FA4C-A04A-2A07-937D0A9B2502</columns>
+<condition><![CDATA[OLD.status = 'ACCEPTED']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>613536AD-BC55-0DE8-960F-0966253AD7D8</table>
+</TriggerOraclev10g>

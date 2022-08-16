@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="CHECK_BATCH_LIMIT" directorySegmentName="seg_0" id="F2EDDD00-2290-925D-423F-84D3295B1CD9">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>CHECK_BATCH_LIMIT</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE	
+	student_count NUMBER;
+BEGIN
+	IF GET_BATCH_STUDENT_COUNT(:NEW.batch_id) = GET_SEAT_COUNT(:NEW.batch_id) THEN
+		RAISE_APPLICATION_ERROR(-20999, 'Batch is full');
+	END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>A66BB7E7-E8C4-F337-7602-722CD6CA268B</table>
+</TriggerOraclev10g>

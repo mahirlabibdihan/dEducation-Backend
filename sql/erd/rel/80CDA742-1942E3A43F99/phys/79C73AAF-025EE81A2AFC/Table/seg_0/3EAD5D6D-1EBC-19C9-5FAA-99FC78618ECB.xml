@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TUTORS" directorySegmentName="seg_0" id="3EAD5D6D-1EBC-19C9-5FAA-99FC78618ECB">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>798660A2-6CE5-8A11-DFEA-9C6FF7FB270E</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="EXPERTISE" id="274A12E5-7CAC-8081-F570-8AD25730D6F2">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PREFFERED_SALARY" id="34B67925-9298-2411-3027-A0518B491A0E">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="USER_ID" id="7F4AE66B-6E10-5415-519B-DFF952505CAE">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="AVAILABILITY" id="A4EC4A09-18AB-A19C-6A15-E45E70066682">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="YEARS_OF_EXPERIENCE" id="F8186879-BB29-6415-BCC1-07F9D98FD2E5">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C0019348" id="48535AB0-3D41-3835-A8DE-365CAC7175EF">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="TUTORS_PK" id="74B3D29B-7A26-8F20-7B69-B7CD74978BE2">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:38 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<segment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<indexSegment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

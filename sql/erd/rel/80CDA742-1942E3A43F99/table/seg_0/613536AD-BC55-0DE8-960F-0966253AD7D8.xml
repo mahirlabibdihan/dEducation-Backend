@@ -1,0 +1,154 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="613536AD-BC55-0DE8-960F-0966253AD7D8" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="OFFERS">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>OFFERS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="STUDENT_ID" id="BF08F39D-3D07-84B7-60F7-C40D99A84A40">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>OFFERS</sourceObjSchema>
+<sourceObjName>STUDENT_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="819D61BC-DE1E-093A-705A-049899D16266" referredColumn="932DC37D-CD02-C159-A918-337A552878C5"/>
+</associations>
+</Column>
+<Column name="TUTOR_ID" id="46471B99-E605-F345-27B2-D552D4765676">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>OFFERS</sourceObjSchema>
+<sourceObjName>TUTOR_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF207EF5-E35D-1D78-8FA0-18F16D6151C4" referredColumn="7F4AE66B-6E10-5415-519B-DFF952505CAE"/>
+</associations>
+</Column>
+<Column name="TUTION_ID" id="FF87CBEB-1454-D60C-E830-6F93C1C7DB2E">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>OFFERS</sourceObjSchema>
+<sourceObjName>TUTION_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A61C23D9-DAEC-6934-053B-F731143BD879" referredColumn="C8438A26-EAD9-5A7E-232F-8EE770E5AC87"/>
+</associations>
+</Column>
+<Column name="STATUS" id="0DA78C10-9405-83FD-513A-93CF8EE8B943">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>OFFERS</sourceObjSchema>
+<sourceObjName>STATUS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<defaultValue>&apos;PENDING&apos;</defaultValue>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FEEDBACK_ID" id="247836D7-FA4C-A04A-2A07-937D0A9B2502">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>OFFERS</sourceObjSchema>
+<sourceObjName>FEEDBACK_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="20D61B48-54C0-4AA1-8370-31E09C3A4C6E" referredColumn="0972BBA1-AB24-8109-E649-CE2C1F146BEF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E11E5095-C45E-D78B-13CB-FE33B205574E" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="OFFERS_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019362</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BF08F39D-3D07-84B7-60F7-C40D99A84A40"/>
+<colUsage columnID="46471B99-E605-F345-27B2-D552D4765676"/>
+<colUsage columnID="0DA78C10-9405-83FD-513A-93CF8EE8B943"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2561C554-C5DF-7F52-77D3-A1DE6DFFC1B8" name="SYS_C0019363">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BF08F39D-3D07-84B7-60F7-C40D99A84A40"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C0BCB4AA-6E03-5455-A88E-1C509BB5084D" name="SYS_C0019364">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="46471B99-E605-F345-27B2-D552D4765676"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0F07C61F-8930-B954-2498-FA68BF3254B2" name="SYS_C0019365">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF87CBEB-1454-D60C-E830-6F93C1C7DB2E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="703884A6-E5D1-9C04-4CE5-5C9FCDF41EBE" name="SYS_C0019366">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="247836D7-FA4C-A04A-2A07-937D0A9B2502"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

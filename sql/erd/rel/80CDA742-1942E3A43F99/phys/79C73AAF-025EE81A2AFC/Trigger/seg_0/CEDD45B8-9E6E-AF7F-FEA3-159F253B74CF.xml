@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="COURSE_ENROLL_NOTIFICATION" directorySegmentName="seg_0" id="CEDD45B8-9E6E-AF7F-FEA3-159F253B74CF">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>COURSE_ENROLL_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE
+	s_name 		Users.name%TYPE;
+	s_image 	Users.image%TYPE;
+	c_id			Coachings.coaching_id%TYPE;
+	t_id  		Tutors.user_id%TYPE;
+	c_name 		Coachings.name%TYPE;
+	c_class		Courses.class%TYPE;
+	c_subject Courses.subject%TYPE;
+BEGIN
+	SELECT coaching_id,name INTO c_id,c_name
+	FROM Courses NATURAL JOIN Coachings 
+	WHERE course_id = :NEW.course_id;
+	
+	SELECT user_id INTO t_id
+	FROM MemberOf NATURAL JOIN Tutors
+	WHERE coaching_id = c_id AND type = 'ADMIN';
+	
+	SELECT name,image INTO s_name,s_image
+	FROM Users
+	WHERE user_id = :NEW.student_id;
+	
+	SELECT class,subject INTO c_class,c_subject
+	FROM Courses
+	WHERE course_id = :NEW.course_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('ENROLL','REQUEST',:NEW.student_id,:NEW.course_id,t_id,s_image,s_name||' has requested to enroll in '||c_subject||', '||c_class||', '||c_name,'/pending_requests?type=Course+Enroll&coaching='||c_id||'&class='||c_class||'&subject='||c_subject||'&batch='||:NEW.batch_id||'&id='||:NEW.student_id);
+	
+	DELETE FROM Notifications
+	WHERE type = 'ENROLL' AND action = 'DECLINE' AND sender_id = c_id AND entity_id = :NEW.course_id AND user_id = :NEW.student_id;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<condition><![CDATA[NEW.status = 'PENDING']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>A66BB7E7-E8C4-F337-7602-722CD6CA268B</table>
+</TriggerOraclev10g>

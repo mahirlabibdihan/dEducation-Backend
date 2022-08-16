@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="CANCEL_APPLICATION_NOTIFICATION" directorySegmentName="seg_0" id="CF221C58-B6EF-A062-6E66-2EC676D06C2E">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>CANCEL_APPLICATION_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>DELETE</actions>
+<body><![CDATA[DECLARE
+	t_name 	Users.name%TYPE;
+	t_image Users.image%TYPE;
+	s_id		Students.user_id%TYPE;
+BEGIN
+	SELECT student_id INTO s_id
+	FROM Tution_Posts WHERE post_id = :OLD.post_id;
+	
+	DELETE FROM Notifications 
+	WHERE type = 'APPLICATION' AND action = 'SUBMIT' AND sender_id = :OLD.tutor_id AND entity_id = :OLD.post_id;
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20000,'ERROR APP');
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>EEAFC66D-52D8-6B9B-533D-65EDB09EACFF</table>
+</TriggerOraclev10g>

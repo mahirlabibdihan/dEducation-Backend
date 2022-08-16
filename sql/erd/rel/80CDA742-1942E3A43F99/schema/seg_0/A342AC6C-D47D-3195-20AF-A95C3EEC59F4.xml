@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="C##HIDDENBRAIN" directorySegmentName="seg_0" id="A342AC6C-D47D-3195-20AF-A95C3EEC59F4">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</SchemaObject>

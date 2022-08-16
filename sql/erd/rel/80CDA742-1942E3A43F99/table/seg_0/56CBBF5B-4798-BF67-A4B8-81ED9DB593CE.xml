@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="56CBBF5B-4798-BF67-A4B8-81ED9DB593CE" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="EDUCATIONS">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>EDUCATIONS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EQ_ID" id="77542916-A3FD-772E-C831-11B7D3F8CAA3">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>EDUCATIONS</sourceObjSchema>
+<sourceObjName>EQ_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TUTOR_ID" id="5442A9ED-3207-52AE-34BA-AAB9C57D073E">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>EDUCATIONS</sourceObjSchema>
+<sourceObjName>TUTOR_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BBC51250-B9F4-711C-CD9D-61EEE1B9FADD" referredColumn="7F4AE66B-6E10-5415-519B-DFF952505CAE"/>
+</associations>
+</Column>
+<Column name="INSTITUTE" id="9F5E0AE2-E18F-797A-690F-4940B1C5EBFA">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>EDUCATIONS</sourceObjSchema>
+<sourceObjName>INSTITUTE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIELD_OF_STUDY" id="F6E6A70B-85C6-B0A5-3E77-3E502EFCA1DB">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>EDUCATIONS</sourceObjSchema>
+<sourceObjName>FIELD_OF_STUDY</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DEGREE" id="40753302-C4B3-5454-C651-A6F4E5648F21">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>EDUCATIONS</sourceObjSchema>
+<sourceObjName>DEGREE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PASSING_YEAR" id="D1C9CC00-EACE-F67C-FFE7-7B2104B04419">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>EDUCATIONS</sourceObjSchema>
+<sourceObjName>PASSING_YEAR</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BFA3520F-5170-1D9F-95B3-EC9F9D1E1A01" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="EDUCATIONS_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019391</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="77542916-A3FD-772E-C831-11B7D3F8CAA3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="68367C41-2B5D-A840-3550-4B6769126FD3" name="SYS_C0019392">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:03 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5442A9ED-3207-52AE-34BA-AAB9C57D073E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

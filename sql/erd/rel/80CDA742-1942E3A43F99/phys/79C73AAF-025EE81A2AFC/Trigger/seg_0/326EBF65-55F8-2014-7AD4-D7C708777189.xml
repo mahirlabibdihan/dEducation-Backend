@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="CANCEL_ENROLL_NOTIFICATION" directorySegmentName="seg_0" id="326EBF65-55F8-2014-7AD4-D7C708777189">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>CANCEL_ENROLL_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>DELETE</actions>
+<body><![CDATA[BEGIN
+	DELETE FROM NOTIFICATIONS 
+	WHERE type = 'ENROLL' AND action = 'REQUEST' AND sender_id = :OLD.student_id AND entity_id = :OLD.course_id;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<condition><![CDATA[OLD.status = 'PENDING']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>A66BB7E7-E8C4-F337-7602-722CD6CA268B</table>
+</TriggerOraclev10g>

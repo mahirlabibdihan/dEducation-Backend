@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TUTION_UPDATE_NOTIFICATION" directorySegmentName="seg_0" id="D722B498-C82D-9EB0-59BF-AE5225D96680">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>TUTION_UPDATE_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:00 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE
+	student_row STUDENT;
+BEGIN
+	student_row := GET_STUDENT_DETAILS(:NEW.student_id);
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('TUTION','UPDATE',:NEW.student_id,:NEW.tution_id,:NEW.tutor_id,student_row.image,student_row.name||' has requested to update tution','/pending_requests?type=Tution+Offer&id='||:NEW.student_id);
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<condition><![CDATA[NEW.status = 'UPDATE']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>613536AD-BC55-0DE8-960F-0966253AD7D8</table>
+</TriggerOraclev10g>

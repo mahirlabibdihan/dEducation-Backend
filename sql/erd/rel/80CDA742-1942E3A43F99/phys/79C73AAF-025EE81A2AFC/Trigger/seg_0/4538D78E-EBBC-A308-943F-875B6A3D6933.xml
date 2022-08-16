@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="APPROVE_ENROLL_NOTIFICATION" directorySegmentName="seg_0" id="4538D78E-EBBC-A308-943F-875B6A3D6933">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>APPROVE_ENROLL_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+	c_name 	Coachings.name%TYPE;
+	c_image Coachings.image%TYPE;
+	c_id		Coachings.coaching_id%TYPE;
+	c_class		Courses.class%TYPE;
+	c_subject Courses.subject%TYPE;
+BEGIN
+	SELECT name,image,coaching_id INTO c_name,c_image,c_id
+	FROM Courses NATURAL JOIN Coachings 
+	WHERE course_id = :NEW.course_id;
+	
+	SELECT class,subject INTO c_class,c_subject
+	FROM Courses
+	WHERE course_id = :NEW.course_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('ENROLL','APPROVE',c_id,:NEW.course_id,:NEW.student_id,c_image,c_name||' has approved your enrollment in '||c_subject||', '||c_class||', '||c_name,'/my_courses');
+	
+	DELETE FROM NOTIFICATIONS 
+	WHERE type = 'ENROLL' AND action = 'REQUEST' AND sender_id = :NEW.student_id AND entity_id = :NEW.course_id;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<columns>FA57A627-DCA4-DB22-DACC-605C8B066683</columns>
+<condition><![CDATA[OLD.status = 'PENDING' AND NEW.status = 'APPROVED']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>A66BB7E7-E8C4-F337-7602-722CD6CA268B</table>
+</TriggerOraclev10g>

@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="NOTICE_NOTIFICATION" directorySegmentName="seg_0" id="2278B482-007D-0977-087E-A9F71B158E69">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>NOTICE_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:22 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE
+	c_name 	Coachings.name%TYPE;
+	c_image Coachings.image%TYPE;
+BEGIN
+	SELECT name,image INTO c_name,c_image
+	FROM Coachings WHERE coaching_id = :NEW.coaching_id;	
+	FOR r IN (
+		SELECT user_id
+		FROM Students
+	)LOOP
+	IF IS_MEMBER_INCLUDED(r.user_id,:NEW.admin_id,:NEW.coaching_id,:NEW.class,:NEW.subject,:NEW.batch_id) = 'YES' THEN
+		INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+		VALUES('NOTICE','POST',:NEW.coaching_id,:NEW.notice_id,r.user_id,c_image,c_name||' has posted a new notice','/notice_board');
+	END IF;
+	END LOOP;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>8571A89D-E5F6-086D-1268-FF6A901F0D6B</table>
+</TriggerOraclev10g>

@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="68EF5691-C713-18DE-F197-07FEB2A5F432" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="FEEDBACKS">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>FEEDBACKS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:11 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FEEDBACK_ID" id="0972BBA1-AB24-8109-E649-CE2C1F146BEF">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>FEEDBACKS</sourceObjSchema>
+<sourceObjName>FEEDBACK_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:11 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RATING" id="986B4087-B159-FC5E-C74C-8E371E7A613D">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>FEEDBACKS</sourceObjSchema>
+<sourceObjName>RATING</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:11 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REVIEW" id="CCFB9D81-CD01-81FB-EB0F-1960CC2BD7C5">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>FEEDBACKS</sourceObjSchema>
+<sourceObjName>REVIEW</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:11 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1024 BYTE</dataTypeSize>
+<ownDataTypeParameters>1024 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8D931ED1-2939-C728-599A-5EE3CF886705" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="FEEDBACKS_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019360</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:25:11 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0972BBA1-AB24-8109-E649-CE2C1F146BEF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

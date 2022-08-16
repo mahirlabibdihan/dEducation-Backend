@@ -1,0 +1,187 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0BECAC16-2112-361B-6B26-C007828A5C1E" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="NOTIFICATIONS">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>NOTIFICATIONS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NOTIFICATION_ID" id="6BB20E51-2B26-5F93-5CC7-F1FBC841F72A">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>NOTIFICATION_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYPE" id="93A9A10E-ED8F-B242-2D67-97CC65BD3326">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>TYPE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ACTION" id="6920654C-C149-446D-0E9E-8FD0847DE65B">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>ACTION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_ID" id="A95209CB-249D-5D39-2111-9ED920D59A07">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>USER_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SENDER_ID" id="13E6CBAA-C31C-252B-0A7F-AA4EFB295911">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>SENDER_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ENTITY_ID" id="15E451E4-9C3B-4413-86C9-C2EBD04666D4">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>ENTITY_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IMAGE" id="D46BCDD5-AB8A-6D3D-B2FB-865832AEFACE">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>IMAGE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000 BYTE</dataTypeSize>
+<ownDataTypeParameters>1000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TEXT" id="224DE100-D0B9-8196-D4A1-714BB5CA84D5">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>TEXT</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1024 BYTE</dataTypeSize>
+<ownDataTypeParameters>1024 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="URL" id="E653E984-A965-78FF-EA1A-C08413FF9520">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>URL</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TIMESTAMP" id="DFFDCCC7-8B5A-469B-C5C1-15755DFA820D">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>TIMESTAMP</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>SYSDATE</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SEEN" id="8202AA88-DDCE-449F-5515-7DA4BD3F358E">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>NOTIFICATIONS</sourceObjSchema>
+<sourceObjName>SEEN</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<defaultValue>&apos;NO&apos;</defaultValue>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="579C1EE0-90A6-6DD0-41EF-D121FE648A3E" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="NOTIFICATIONS_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019421</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6BB20E51-2B26-5F93-5CC7-F1FBC841F72A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

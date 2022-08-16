@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="MATCH_CLASS" directorySegmentName="seg_0" id="D338C6EF-32B2-1612-1772-A6AEB4AB81A3">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>MATCH_CLASS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE	
+student_row	STUDENT;
+course_row	COURSE;
+BEGIN
+	student_row := GET_STUDENT_DETAILS(:NEW.student_id);
+	course_row	:= GET_COURSE_DETAILS(:NEW.course_id,:NEW.batch_id);
+	IF student_row.class <> course_row.class THEN
+		RAISE_APPLICATION_ERROR(-20999, 'Your class doesn`t match with the course');
+	END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>A66BB7E7-E8C4-F337-7602-722CD6CA268B</table>
+</TriggerOraclev10g>

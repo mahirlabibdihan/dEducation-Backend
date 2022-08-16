@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="REJECT_OFFER_NOTIFICATION" directorySegmentName="seg_0" id="164B8975-6AC2-5DC5-80A0-83C3E9A97CF1">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>REJECT_OFFER_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+	t_name 	Users.name%TYPE;
+	t_image Users.image%TYPE;
+BEGIN
+	SELECT name,image INTO t_name,t_image
+	FROM Users WHERE user_id = :NEW.tutor_id;
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('TUTION','REJECT',:NEW.tutor_id,:NEW.tution_id,:NEW.student_id,t_image,t_name||' has rejected your offer','/home/tutors?id='||:NEW.tutor_id);
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<columns>0DA78C10-9405-83FD-513A-93CF8EE8B943</columns>
+<condition><![CDATA[NEW.status = 'REJECTED']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>613536AD-BC55-0DE8-960F-0966253AD7D8</table>
+</TriggerOraclev10g>

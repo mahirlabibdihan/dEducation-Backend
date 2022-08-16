@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A66BB7E7-E8C4-F337-7602-722CD6CA268B" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="ENROLLEDIN">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>ENROLLEDIN</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="STUDENT_ID" id="373D9F12-8E4D-AEFF-6371-E5B763086419">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>ENROLLEDIN</sourceObjSchema>
+<sourceObjName>STUDENT_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D567EACF-AEBB-A572-6A1A-597CCB3FFE49" referredColumn="932DC37D-CD02-C159-A918-337A552878C5"/>
+</associations>
+</Column>
+<Column name="COURSE_ID" id="F949E73B-D4C3-C64E-B101-A94A0E5EC9CD">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>ENROLLEDIN</sourceObjSchema>
+<sourceObjName>COURSE_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BATCH_ID" id="5BC8BEDB-1340-D94B-1D4F-2C6745FE9611">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>ENROLLEDIN</sourceObjSchema>
+<sourceObjName>BATCH_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="39395B8D-2C4C-F96A-EEC7-2B2D27BE036C" referredColumn="B9BEBEFF-A4DB-81B3-6B7F-FDE089A9EABF"/>
+</associations>
+</Column>
+<Column name="STATUS" id="FA57A627-DCA4-DB22-DACC-605C8B066683">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>ENROLLEDIN</sourceObjSchema>
+<sourceObjName>STATUS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<defaultValue>&apos;PENDING&apos;</defaultValue>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B5603C8E-7752-D1D2-8546-1C14F8EA1B61" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="ENROLLEDIN_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019387</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:55 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="373D9F12-8E4D-AEFF-6371-E5B763086419"/>
+<colUsage columnID="F949E73B-D4C3-C64E-B101-A94A0E5EC9CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="94D259C5-D9D7-4FE8-FDD5-663BAC9A8BF1" name="SYS_C0019388">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:56 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="373D9F12-8E4D-AEFF-6371-E5B763086419"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C6D6CBC1-2E31-B0A8-6CB6-C5F3AD80E966" name="SYS_C0019389">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:56 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F949E73B-D4C3-C64E-B101-A94A0E5EC9CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="005BE1D5-9AD5-6D88-3695-11769D407741" name="SYS_C0019390">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:56 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5BC8BEDB-1340-D94B-1D4F-2C6745FE9611"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

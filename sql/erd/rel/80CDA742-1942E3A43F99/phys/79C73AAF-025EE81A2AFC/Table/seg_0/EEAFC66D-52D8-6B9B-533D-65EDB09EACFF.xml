@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="APPLIES" directorySegmentName="seg_0" id="EEAFC66D-52D8-6B9B-533D-65EDB09EACFF">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>798660A2-6CE5-8A11-DFEA-9C6FF7FB270E</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="TUTOR_ID" id="3A08D080-FA47-C509-66AC-0AF0411BBFB4">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="POST_ID" id="82ABB991-23B9-23BB-97E2-DEF559B822B0">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C0019359" id="6A004D9F-469F-3DC8-90AE-460681B6BB69">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C0019358" id="9F5884F9-4765-DA4E-5740-4BB6D88642EC">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:50 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TUTIONS" directorySegmentName="seg_0" id="D0B3F30A-5F8C-BC75-3A28-3CC9EC360985">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>798660A2-6CE5-8A11-DFEA-9C6FF7FB270E</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CLASS_TIME" id="4E23FF06-0F0E-05AA-D1C6-BD65EA53FE68">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DAYS_PER_WEEK" id="79F32251-D4A0-F2C6-A278-D5CDB56FC719">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TYPE" id="9DDF0766-043F-5422-28E4-29608383779D">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SUBJECTS" id="AC9BD2C0-0270-9C81-4FF5-E1B24082AC29">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="START_DATE" id="AF27941E-9583-B4A3-8B23-7C3E4CAEF961">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SALARY" id="C5BDA0F2-07C7-EDF8-E55C-8B2E46C070C7">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TUTION_ID" id="C8438A26-EAD9-5A7E-232F-8EE770E5AC87">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLASS_DAYS" id="F4ACA210-9171-CF47-3981-12E230D1C45E">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="TUTIONS_PK" id="DDAF854F-EDFE-E884-780D-9EA10B124796">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:23:12 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<schemaObject>A342AC6C-D47D-3195-20AF-A95C3EEC59F4</schemaObject>
+<segment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</segment>
+<tableSpace>B2D502DA-B5B2-C30D-098E-9B8A4CECFED4</tableSpace>
+<indexSegment>31CA397B-64D5-2F04-5BDB-8DFD818AC431</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

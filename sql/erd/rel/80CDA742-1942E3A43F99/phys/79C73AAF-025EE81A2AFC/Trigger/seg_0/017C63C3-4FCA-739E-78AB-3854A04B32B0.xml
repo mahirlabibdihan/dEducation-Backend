@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TUTION_OFFER_NOTIFICATION" directorySegmentName="seg_0" id="017C63C3-4FCA-739E-78AB-3854A04B32B0">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>TUTION_OFFER_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT, UPDATE</actions>
+<body><![CDATA[DECLARE
+	student_row STUDENT;
+BEGIN
+	student_row := GET_STUDENT_DETAILS(:NEW.student_id);
+	
+	DELETE FROM Notifications
+	WHERE type = 'TUTION' AND action = 'REJECT' AND sender_id = :NEW.tutor_id AND user_id = :NEW.student_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('TUTION','OFFER',:NEW.student_id,:NEW.tution_id,:NEW.tutor_id,student_row.image,student_row.name||' has offered you a tution','/pending_requests?type=Tution+Offer&id='||:NEW.student_id);
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<columns>0DA78C10-9405-83FD-513A-93CF8EE8B943</columns>
+<condition><![CDATA[NEW.status = 'PENDING']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>613536AD-BC55-0DE8-960F-0966253AD7D8</table>
+</TriggerOraclev10g>

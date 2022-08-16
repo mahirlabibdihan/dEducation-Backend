@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="39395B8D-2C4C-F96A-EEC7-2B2D27BE036C" containerWithKeyObject="A66BB7E7-E8C4-F337-7602-722CD6CA268B" localFKIndex="005BE1D5-9AD5-6D88-3695-11769D407741" name="SYS_C0019390">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019390</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:56 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<referredTableLongName>C##HIDDENBRAIN.BATCHES</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>21D7B35A-14C0-8C8E-A036-B622B985D1E3</referredTableID>
+<keyObject>F26B3F1E-9180-0B7A-3813-CE0D4FBD8AEA</keyObject>
+<referredKeyID>F26B3F1E-9180-0B7A-3813-CE0D4FBD8AEA</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>BATCH_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,30 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="ACCEPT_OFFER_NOTIFICATION" directorySegmentName="seg_0" id="55A5FFCF-473E-D23F-4FBF-69C0763E9DE1">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>ACCEPT_OFFER_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:01 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+	t_name 	Users.name%TYPE;
+	t_image Users.image%TYPE;
+BEGIN
+	SELECT name,image INTO t_name,t_image
+	FROM Users WHERE user_id = :NEW.tutor_id;
+	
+	DELETE FROM Notifications
+	WHERE type = 'TUTION' AND action = 'OFFER' AND sender_id = :NEW.student_id AND user_id = :NEW.tutor_id;
+	
+	DELETE FROM Notifications
+	WHERE type = 'APPLICATION' AND action = 'SUBMIT' AND sender_id = :NEW.tutor_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('TUTION','ACCEPT',:NEW.tutor_id,:NEW.tution_id,:NEW.student_id,t_image,t_name||' has accepted your offer','/my_tutors?id='||:NEW.tutor_id);
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<condition><![CDATA[OLD.status = 'PENDING' AND NEW.status = 'ACCEPTED']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>613536AD-BC55-0DE8-960F-0966253AD7D8</table>
+</TriggerOraclev10g>

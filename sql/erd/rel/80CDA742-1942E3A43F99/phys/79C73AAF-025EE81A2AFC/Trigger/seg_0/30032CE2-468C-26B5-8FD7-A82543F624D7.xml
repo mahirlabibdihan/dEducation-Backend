@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="GENERATE_COACHING_ID" directorySegmentName="seg_0" id="30032CE2-468C-26B5-8FD7-A82543F624D7">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>GENERATE_COACHING_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:58 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[BEGIN
+	SELECT COUNT(coaching_id)+1 INTO :NEW.coaching_id
+	FROM Coachings; 
+	IF :NEW.coaching_id > 1 THEN
+		SELECT MAX(coaching_id)+1 INTO :NEW.coaching_id
+		FROM Coachings; 
+	END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>6A26C21B-4E44-D3F2-32C0-47F679EA77B4</table>
+</TriggerOraclev10g>

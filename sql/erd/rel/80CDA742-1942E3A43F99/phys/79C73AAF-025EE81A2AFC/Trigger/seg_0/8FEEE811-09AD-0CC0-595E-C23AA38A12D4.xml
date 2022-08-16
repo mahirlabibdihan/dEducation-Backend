@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="JOIN_REQUEST_NOTIFICATION" directorySegmentName="seg_0" id="8FEEE811-09AD-0CC0-595E-C23AA38A12D4">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>JOIN_REQUEST_NOTIFICATION</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:29 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE
+	c_name 	Coachings.name%TYPE;
+	s_name 	Users.name%TYPE;
+	s_image Users.image%TYPE;
+	t_id   	Tutors.user_id%TYPE;
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(:NEW.user_id||' '||:NEW.coaching_id);
+	SELECT name INTO c_name
+	FROM Coachings WHERE coaching_id = :NEW.coaching_id;
+	
+	SELECT name,image INTO s_name,s_image
+	FROM Users 
+	WHERE user_id = :NEW.user_id;
+	
+	SELECT user_id INTO t_id
+	FROM MemberOf NATURAL JOIN Tutors
+	WHERE coaching_id = :NEW.coaching_id;
+	
+	INSERT INTO Notifications(type,action,sender_id,entity_id,user_id,image,text,url)
+	VALUES('JOIN','REQUEST',:NEW.user_id,:NEW.coaching_id,t_id,s_image,s_name||' has requested to join '||c_name,'/pending_requests?type=Join+Request&coaching='||:NEW.coaching_id||'&id=
+'||:NEW.user_id);
+	
+	DELETE FROM Notifications
+	WHERE type = 'JOIN' AND action = 'DECLINE' AND sender_id = :NEW.coaching_id AND user_id = :NEW.user_id;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<condition><![CDATA[NEW.type = 'PENDING']]></condition>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>F36965A5-BFA2-4910-642F-60B053F19F92</table>
+</TriggerOraclev10g>

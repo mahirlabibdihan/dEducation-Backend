@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="21D7B35A-14C0-8C8E-A036-B622B985D1E3" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="BATCHES">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>BATCHES</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="BATCH_ID" id="B9BEBEFF-A4DB-81B3-6B7F-FDE089A9EABF">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>BATCHES</sourceObjSchema>
+<sourceObjName>BATCH_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COURSE_ID" id="44FAACC2-21A6-36E1-C363-51846C4A4645">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>BATCHES</sourceObjSchema>
+<sourceObjName>COURSE_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="START_DATE" id="CA824517-1EF0-91B8-C2D1-3880DC88CC64">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>BATCHES</sourceObjSchema>
+<sourceObjName>START_DATE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SEATS" id="AF8E4C07-380F-5556-B376-FCC93CE98067">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>BATCHES</sourceObjSchema>
+<sourceObjName>SEATS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STUDENTS" id="D2407CB1-AD96-F0B3-ECC7-D5ED0A212210">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>BATCHES</sourceObjSchema>
+<sourceObjName>STUDENTS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLASS_DAYS" id="8B2264E2-4107-CAF2-0A07-592066752CF7">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>BATCHES</sourceObjSchema>
+<sourceObjName>CLASS_DAYS</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLASS_TIME" id="8DBD8014-36C6-F484-8982-645B5021FAD5">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>BATCHES</sourceObjSchema>
+<sourceObjName>CLASS_TIME</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F26B3F1E-9180-0B7A-3813-CE0D4FBD8AEA" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="BATCHES_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019384</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:47 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B9BEBEFF-A4DB-81B3-6B7F-FDE089A9EABF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7CE4E22D-930E-0B77-D3DF-98D3809A5C32" name="SYS_C0019385">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:48 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="44FAACC2-21A6-36E1-C363-51846C4A4645"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

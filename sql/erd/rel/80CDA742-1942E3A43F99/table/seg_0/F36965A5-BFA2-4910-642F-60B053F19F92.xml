@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F36965A5-BFA2-4910-642F-60B053F19F92" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="MEMBEROF">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>MEMBEROF</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="USER_ID" id="A12F9991-22D8-EF3A-952C-5A9ED5E0A656">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>MEMBEROF</sourceObjSchema>
+<sourceObjName>USER_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4F1DE366-A52F-60AF-919B-D9D5CE41B96B" referredColumn="CC37FEEA-105D-706C-F052-57AA3C82EF0F"/>
+</associations>
+</Column>
+<Column name="COACHING_ID" id="16D81B28-2324-B06C-2F18-88B03DF3611C">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>MEMBEROF</sourceObjSchema>
+<sourceObjName>COACHING_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="77401B1B-195D-EAFC-FABD-32473AEB71C2" referredColumn="03468A5E-951F-F285-6E7C-586BDA8FDDB3"/>
+</associations>
+</Column>
+<Column name="TYPE" id="A33C33D7-6FD8-3065-C5E2-5BEB8DCBFE3F">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>MEMBEROF</sourceObjSchema>
+<sourceObjName>TYPE</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:28 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<defaultValue>&apos;PENDING&apos;</defaultValue>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FB6947C9-8A54-5A57-91E5-490FDFEE8FE2" schemaObject="A342AC6C-D47D-3195-20AF-A95C3EEC59F4" name="MEMBEROF_PK">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>SYS_C0019373</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:29 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A12F9991-22D8-EF3A-952C-5A9ED5E0A656"/>
+<colUsage columnID="16D81B28-2324-B06C-2F18-88B03DF3611C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="67EF176C-8CCA-6F3E-1494-99D6067C997C" name="SYS_C0019374">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:29 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A12F9991-22D8-EF3A-952C-5A9ED5E0A656"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F4CDCA72-F04D-7D32-5306-2DE1D99AD528" name="SYS_C0019375">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:24:29 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="16D81B28-2324-B06C-2F18-88B03DF3611C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

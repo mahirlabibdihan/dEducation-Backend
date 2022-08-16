@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TABLE_24" directorySegmentName="seg_0" id="BFE3316B-2B2A-3E95-91DA-5930A41280F0">
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:31:07 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+</TableProxyOraclev12c>

@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="GENERATE_BATCH_ID" directorySegmentName="seg_0" id="9FD6C74D-3DDF-A430-B181-49F6F470E747">
+<sourceConnName>Hidden+Brain</sourceConnName>
+<sourceObjSchema>C##HIDDENBRAIN</sourceObjSchema>
+<sourceObjName>GENERATE_BATCH_ID</sourceObjName>
+<createdBy>ASUS</createdBy>
+<createdTime>2022-08-16 14:22:48 UTC</createdTime>
+<ownerDesignName>erd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[BEGIN
+	SELECT COUNT(batch_id)+1 INTO :NEW.batch_id
+	FROM Batches; 
+	IF :NEW.batch_id > 1 THEN
+		SELECT MAX(batch_id)+1 INTO :NEW.batch_id
+		FROM Batches; 
+	END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>7DD4EB94-07FC-A399-B768-4D000B2A5689</owner>
+<table>21D7B35A-14C0-8C8E-A036-B622B985D1E3</table>
+</TriggerOraclev10g>
