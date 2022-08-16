@@ -63,6 +63,18 @@ class ProfileRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
+  seenNotifications = async (data) => {
+    const query = `
+    BEGIN
+      SEEN_NOTIFICATIONS(:id);
+    END;
+    `;
+    const params = {
+      id: data.user_id,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   addEducation = async (data) => {
     const query = `
     BEGIN

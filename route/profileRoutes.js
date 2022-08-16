@@ -10,4 +10,6 @@ router.post("/", profileController.setProfile);
 router.get("/education", profileController.getEducation);
 router.post("/education", profileController.setEducation);
 router.get("/notifications", profileController.getNotifications);
+router.post("/notifications/seen", profileController.seenNotifications);
+router.get("/new_notifications?", profileController.isNotificationAvailable);
 module.exports = router;
