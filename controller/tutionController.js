@@ -13,6 +13,10 @@ class TutionController extends Controller {
     let result = await tutionRepository.offer(req.body);
     this.handleResponse(result, res);
   };
+  postOffer = async (req, res) => {
+    let result = await tutionRepository.postOffer(req.body);
+    this.handleResponse(result, res);
+  };
   apply = async (req, res) => {
     let result = await tutionRepository.apply(req.body);
     this.handleResponse(result, res);
@@ -23,6 +27,11 @@ class TutionController extends Controller {
   };
   getMyPosts = async (req, res) => {
     let result = await tutionRepository.getMyPosts(req.body);
+    this.handleResponse(result, res);
+  };
+  getSelectedTutor = async (req, res) => {
+    console.log("GOT SELECTED TUTOR");
+    let result = await tutionRepository.getSelectedTutor(req.body);
     this.handleResponse(result, res);
   };
   getPosts = async (req, res) => {

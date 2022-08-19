@@ -32,6 +32,25 @@ class TutionRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
+  getSelectedTutor = async (body) => {
+    const query = `
+    BEGIN
+      :ret := GET_TUTION_POST_DETAILS(:post_id);
+    END;
+    `;
+    const params = {
+      post_id: body.post_id,
+      ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST" },
+    };
+    const result = await this.execute_pl(query, params);
+    if (result.success) {
+      return {
+        success: true,
+        data: result.data.SELECTED_TUTOR,
+      };
+    }
+    return result;
+  };
   getFilteredPosts = async (body) => {
     const query = `
     BEGIN
@@ -93,6 +112,26 @@ class TutionRepository extends Repository {
       END;
     `;
     const params = {
+      student_id: data.user_id,
+      tutor_id: data.tutor_id,
+      subjects: data.tution.subjects,
+      salary: data.tution.salary,
+      start_date: data.tution.start_date,
+      class_days: data.tution.class_days,
+      class_time: data.tution.class_time,
+      type: data.tution.type,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  postOffer = async (data) => {
+    const query = `
+      BEGIN
+        MAKE_OFFER_FOR_POST(:post_id,:student_id,:tutor_id,:subjects,:salary,:start_date,:class_days,:class_time,:type);
+      END;
+    `;
+    const params = {
+      post_id: data.post_id,
       student_id: data.user_id,
       tutor_id: data.tutor_id,
       subjects: data.tution.subjects,

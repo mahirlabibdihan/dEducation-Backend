@@ -15,6 +15,7 @@ router.post(
   tutionController.getApplicantsTutionDetails
 );
 router.route("/offer").post(tutionController.offer);
+router.route("/post_offer").post(tutionController.postOffer);
 router.post("/get_offer_student", tutionController.getOfferFromStudent);
 router.post("/get_offer_tutor", tutionController.getOfferFromTutor);
 router.post("/offer/accept", tutionController.acceptOffer);
@@ -29,4 +30,5 @@ router.get("/get_apply_list", tutionController.getApplyList);
 router.post("/get_filtered_apply_list", tutionController.getFilteredApplyList);
 router.post("/rate", tutionController.rate);
 router.post("/feedbacks", tutionController.getFeedbacks);
+router.post("/selected_tutor", tutionController.getSelectedTutor);
 module.exports = router;
