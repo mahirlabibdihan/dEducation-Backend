@@ -35,6 +35,12 @@ class CourseRepository extends Repository {
       subject: data.subject,
     };
     const result = await this.execute_pl(query, params);
+    if (!result.success) {
+      if (result.errorNum === 1) {
+        result.error =
+          "Can't create multiple course with same coaching,class and subject";
+      }
+    }
     return result;
   };
   cancelEnrollment = async (data) => {
