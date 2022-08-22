@@ -9,7 +9,7 @@ class CourseRepository extends Repository {
     // console.log(data.batch);
     const query = `
       BEGIN
-        CREATE_BATCH(:course_id,:start_date,:seats,:class_days,:class_time);
+        CREATE_BATCH(:course_id,:start_date,:seats,:class_days,:start_time,:end_time);
       END;
     `;
     const params = {
@@ -17,7 +17,8 @@ class CourseRepository extends Repository {
       start_date: data.batch.start,
       seats: data.batch.seats,
       class_days: data.batch.days,
-      class_time: data.batch.time,
+      start_time: data.batch.start_time,
+      end_time: data.batch.end_time,
     };
     const result = await this.execute_pl(query, params);
     return result;
