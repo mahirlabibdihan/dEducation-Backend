@@ -12,4 +12,5 @@ router.post("/education", profileController.setEducation);
 router.get("/notifications", profileController.getNotifications);
 router.post("/notifications/seen", profileController.seenNotifications);
 router.get("/new_notifications?", profileController.isNotificationAvailable);
+router.get("/schedule", profileController.getSchedule);
 module.exports = router;

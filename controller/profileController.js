@@ -21,6 +21,10 @@ class ProfileController extends Controller {
     const result = await profileRepository.getNotifications(req.body);
     this.handleResponse(result, res);
   };
+  getSchedule = async (req, res) => {
+    const result = await profileRepository.getSchedule(req.body);
+    this.handleResponse(result, res);
+  };
   seenNotifications = async (req, res) => {
     const result = await profileRepository.seenNotifications(req.body);
     this.handleResponse(result, res);

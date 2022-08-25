@@ -17,6 +17,40 @@ class ProfileRepository extends Repository {
     const result = await this.execute_pl(query, params);
     return result;
   };
+  getSchedule = async (data) => {
+    const query = `
+      BEGIN
+        :ret := ${
+          data.type === "STUDENT"
+            ? "GET_STUDENT_SCHEDULE(:user_id);"
+            : "GET_TUTOR_SCHEDULE(:user_id);"
+        }
+      END;
+    `;
+    const params = {
+      user_id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "SCHEDULE_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  getAllSchedule = async (data) => {
+    const query = `
+      BEGIN
+        :ret := ${
+          data.type === "STUDENT"
+            ? "GET_STUDENT_ALL_SCHEDULE(:user_id);"
+            : "GET_TUTOR_ALL_SCHEDULE(:user_id);"
+        }
+      END;
+    `;
+    const params = {
+      user_id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "SCHEDULE_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   getTutorProfile = async (id) => {
     const query = `
     BEGIN
