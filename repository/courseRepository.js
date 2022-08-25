@@ -4,7 +4,19 @@ class CourseRepository extends Repository {
   constructor() {
     super();
   }
-
+  getBatchDetails = async (data) => {
+    const query = `
+    BEGIN
+      :ret := GET_BATCH_DETAILS(:batch_id);
+    END;
+  `;
+    const params = {
+      batch_id: data.batch_id,
+      ret: { dir: oracledb.BIND_OUT, type: "BATCH" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   addBatch = async (data) => {
     // console.log(data.batch);
     const query = `
