@@ -17,6 +17,46 @@ class TutorsRepository extends Repository {
     console.log(result.data);
     return result;
   };
+  uploadMaterial = async (data) => {
+    const query = `
+      BEGIN
+        UPLOAD_MATERIAL(:id,:type,:description,:link);
+      END;
+    `;
+    const params = {
+      id: data.user_id,
+      type: "Video",
+      description: data.description,
+      link: data.link,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  getMyMaterials = async (data) => {
+    const query = `
+      BEGIN
+        :ret := GET_TUTOR_MATERIALS(:id);
+      END;
+    `;
+    const params = {
+      id: data.user_id,
+      ret: { dir: oracledb.BIND_OUT, type: "MATERIAL_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  getAllMaterials = async () => {
+    const query = `
+      BEGIN
+        :ret := GET_ALL_MATERIALS();
+      END;
+    `;
+    const params = {
+      ret: { dir: oracledb.BIND_OUT, type: "MATERIAL_ARRAY" },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
   getFilteredList = async (filter) => {
     const query = `
       BEGIN

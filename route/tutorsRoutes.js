@@ -14,4 +14,7 @@ router.post(
 );
 router.route("/my_list").get(tutorsController.getMyList);
 router.post("/applicants_list", tutorsController.getApplicantsList);
+router.get("/all_materials", tutorsController.getAllMaterials);
+router.get("/my_materials", tutorsController.getMyMaterials);
+router.post("/upload", tutorsController.uploadMaterial);
 module.exports = router;

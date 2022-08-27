@@ -9,6 +9,18 @@ class TutorController extends Controller {
     let result = await tutorsRepository.getList(req.body);
     this.handleResponse(result, res);
   };
+  getMyMaterials = async (req, res) => {
+    let result = await tutorsRepository.getMyMaterials(req.body);
+    this.handleResponse(result, res);
+  };
+  getAllMaterials = async (req, res) => {
+    let result = await tutorsRepository.getAllMaterials();
+    this.handleResponse(result, res);
+  };
+  uploadMaterial = async (req, res) => {
+    let result = await tutorsRepository.uploadMaterial(req.body);
+    this.handleResponse(result, res);
+  };
   getFilteredList = async (req, res) => {
     let result = await tutorsRepository.getFilteredList(req.body.filter);
     this.handleResponse(result, res);
