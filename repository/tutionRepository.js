@@ -162,12 +162,13 @@ class TutionRepository extends Repository {
   rejectOffer = async (data) => {
     const query = `
     BEGIN
-      REJECT_OFFER(:tutor_id,:student_id);
+      REJECT_OFFER(:tutor_id,:student_id,:reason);
     END;
     `;
     const params = {
       tutor_id: data.user_id,
       student_id: data.student_id,
+      reason: data.reason,
     };
     const result = await this.execute(query, params);
     return result;
