@@ -73,7 +73,7 @@ class StudentsRepository extends Repository {
     return result;
   };
   getPendingEnrollments = async (data) => {
-    console.log(data.course);
+    // console.log(data.course);
     let query = `
     BEGIN
       :ret := GET_PENDING_ENROLLMENTS(:coaching_id,:class,:subject,:batch_id);

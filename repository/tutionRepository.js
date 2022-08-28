@@ -69,7 +69,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_POST_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log(result);
+    // console.log(result);
     return result;
   };
   getFilteredApplyList = async (data) => {
@@ -199,7 +199,7 @@ class TutionRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTION_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log(result);
+    // console.log(result);
     return result;
   };
 

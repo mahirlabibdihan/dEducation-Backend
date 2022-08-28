@@ -14,7 +14,7 @@ class TutorsRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "TUTOR_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log(result.data);
+    // console.log(result.data);
     return result;
   };
   uploadMaterial = async (data) => {
@@ -75,7 +75,7 @@ class TutorsRepository extends Repository {
     return result;
   };
   getEducationsList = async () => {
-    console.log("Educa");
+    // console.log("Educa");
     const query = `
       BEGIN
         :ret := GET_ALL_EDUCATIONS();
@@ -88,7 +88,7 @@ class TutorsRepository extends Repository {
     return result;
   };
   getEducation = async (data) => {
-    console.log("EDUCATION");
+    // console.log("EDUCATION");
     const query = `
     BEGIN
       :ret := GET_EDUCATIONS(:id);

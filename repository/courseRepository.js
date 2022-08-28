@@ -183,7 +183,7 @@ class CourseRepository extends Repository {
       ret: { dir: oracledb.BIND_OUT, type: "COURSE_ARRAY" },
     };
     const result = await this.execute_pl(query, params);
-    console.log("Courses", result.data);
+    // console.log("Courses", result.data);
     return result;
   };
 

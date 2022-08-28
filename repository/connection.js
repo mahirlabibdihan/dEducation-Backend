@@ -51,7 +51,7 @@ class Repository {
           // connectionString: "localhost/orcl",
         });
       }
-      console.log("=>", query, params);
+      // console.log("=>", query, params);
       result = await this.connection.execute(query, params);
       return {
         success: true,

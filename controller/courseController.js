@@ -20,10 +20,10 @@ class CourseController extends Controller {
       const scheduleList = result2.data;
       const batch = result3.data;
       for (let i = 0; i < scheduleList.length; i++) {
-        console.log(scheduleList[i], batch);
+        // console.log(scheduleList[i], batch);
         const days1 = scheduleList[i].CLASS_DAYS.split(", ");
         const days2 = batch.CLASS_DAYS.split(", ");
-        console.log(days1, days2);
+        // console.log(days1, days2);
         for (let j = 0; j < days1.length; j++) {
           for (let k = 0; k < days2.length; k++) {
             if (days1[j] === days2[k]) {
