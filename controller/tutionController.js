@@ -17,10 +17,8 @@ class TutionController extends Controller {
     if (result2.success) {
       const scheduleList = result2.data;
       for (let i = 0; i < scheduleList.length; i++) {
-        console.log(scheduleList[i]);
         const days1 = scheduleList[i].CLASS_DAYS.split(", ");
         const days2 = req.body.tution.class_days.split(", ");
-        console.log(days1, days2);
         for (let j = 0; j < days1.length; j++) {
           for (let k = 0; k < days2.length; k++) {
             if (days1[j] === days2[k]) {
@@ -86,6 +84,35 @@ class TutionController extends Controller {
   };
   getPosts = async (req, res) => {
     let result = await tutionRepository.getPosts(req.body);
+    let result2 = await profileRepository.getProfile(req.body);
+    const posts = [];
+    const tutor_subjects = result2.data.EXPERTISE.split(", ");
+    for (let i = 0; i < result.data.length; i++) {
+      const post_subjects = result.data[i].SUBJECTS.split(", ");
+      // console.log(post_subjects, tutor_subjects);
+      let valid = true;
+      for (let i = 0; i < post_subjects.length; i++) {
+        let found = false;
+        for (let j = 0; j < tutor_subjects.length; j++) {
+          // console.log(post_subjects[i], tutor_subjects[j]);
+          if (tutor_subjects[j] === post_subjects[i]) {
+            found = true;
+            // console.log("found");
+            break;
+          }
+        }
+        if (!found) {
+          valid = false;
+          break;
+        }
+      }
+      if (valid) {
+        posts.push(result.data[i]);
+      }
+    }
+    // console.log(result.data, "=>");
+    // console.log(posts);
+    result.data = posts;
     this.handleResponse(result, res);
   };
   getFilteredPosts = async (req, res) => {
@@ -124,10 +151,10 @@ class TutionController extends Controller {
       const scheduleList = result2.data;
       const tution = result3.data;
       for (let i = 0; i < scheduleList.length; i++) {
-        console.log(scheduleList[i], tution);
+        // console.log(scheduleList[i], tution);
         const days1 = scheduleList[i].CLASS_DAYS.split(", ");
         const days2 = tution.CLASS_DAYS.split(", ");
-        console.log(days1, days2);
+        // console.log(days1, days2);
         for (let j = 0; j < days1.length; j++) {
           for (let k = 0; k < days2.length; k++) {
             if (days1[j] === days2[k]) {
@@ -184,7 +211,7 @@ class TutionController extends Controller {
     this.handleResponse(result, res);
   };
   rate = async (req, res) => {
-    console.log("RATE FIRED");
+    // console.log("RATE FIRED");
     let result = await tutionRepository.rate(req.body);
     this.handleResponse(result, res);
   };
