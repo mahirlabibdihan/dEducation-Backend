@@ -81,7 +81,7 @@ class CoachingController extends Controller {
     if (result.data.IMAGE !== null) {
       try {
         fs.unlinkSync(
-          `G:/github/hidden-brain/hidden-brain-backend/public/assets/images/${result.data.IMAGE}`
+          `G:/github/dbms-project/server/public/assets/images/${result.data.IMAGE}`
         );
       } catch (err) {
         // console.log(err);
@@ -111,7 +111,7 @@ class CoachingController extends Controller {
     if (result.success) {
       try {
         await file.mv(
-          `G:/github/hidden-brain/hidden-brain-backend/public/assets/images/${result.image}`
+          `G:/github/dbms-project/server/public/assets/images/${result.image}`
         );
       } catch (err) {
         (err) => {
