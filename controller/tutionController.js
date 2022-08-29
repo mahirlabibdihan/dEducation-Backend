@@ -39,6 +39,11 @@ class TutionController extends Controller {
               const r1 = end1.getHours() * 60 + end1.getMinutes();
               const r2 = end2.getHours() * 60 + end2.getMinutes();
               if (l1 < r2 && r1 > l2) {
+                if (req.body.tutor_id !== undefined) {
+                  if (req.body.tutor_id === scheduleList[i].ENTITY_ID) {
+                    continue;
+                  }
+                }
                 return { success: false, error: "Timeslot is not free" };
               }
             }
@@ -173,6 +178,11 @@ class TutionController extends Controller {
               const r1 = end1.getHours() * 60 + end1.getMinutes();
               const r2 = end2.getHours() * 60 + end2.getMinutes();
               if (l1 < r2 && r1 > l2) {
+                if (req.body.student_id !== undefined) {
+                  if (req.body.student_id === scheduleList[i].ENTITY_ID) {
+                    continue;
+                  }
+                }
                 return this.handleResponse(
                   { success: false, error: "Timeslot is not free" },
                   res
