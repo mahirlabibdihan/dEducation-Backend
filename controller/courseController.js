@@ -27,14 +27,10 @@ class CourseController extends Controller {
         for (let j = 0; j < days1.length; j++) {
           for (let k = 0; k < days2.length; k++) {
             if (days1[j] === days2[k]) {
-              const start1 = new Date(
-                scheduleList[i].START_TIME.toString().slice(0, -1)
-              );
-              const start2 = new Date(batch.START_TIME.toString().slice(0, -1));
-              const end1 = new Date(
-                scheduleList[i].END_TIME.toString().slice(0, -1)
-              );
-              const end2 = new Date(batch.END_TIME.toString().slice(0, -1));
+              const start1 = new Date(scheduleList[i].START_TIME.toString());
+              const start2 = new Date(batch.START_TIME.toString());
+              const end1 = new Date(scheduleList[i].END_TIME.toString());
+              const end2 = new Date(batch.END_TIME.toString());
               const l1 = start1.getHours() * 60 + start1.getMinutes();
               const l2 = start2.getHours() * 60 + start2.getMinutes();
               const r1 = end1.getHours() * 60 + end1.getMinutes();
