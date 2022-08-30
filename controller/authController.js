@@ -3,6 +3,7 @@ const AuthRepository = require("../repository/authRepository");
 const authRepository = new AuthRepository();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const sendMail = require("../service/email");
 const tokenExpiryDuration = 86400;
 class AuthController extends Controller {
   constructor() {
@@ -32,7 +33,6 @@ class AuthController extends Controller {
       req.body.email,
       req.body.type
     );
-    // console.log("=>", result, req.body.type);
     if (result.success) {
       if (bcrypt.compareSync(req.body.pass, result.pass)) {
         return res.status(200).json({
@@ -43,6 +43,11 @@ class AuthController extends Controller {
             result.pass,
             req.body.type
           ),
+        });
+      } else {
+        return res.status(404).json({
+          success: false,
+          error: "Invalid credentials",
         });
       }
     }
@@ -73,6 +78,66 @@ class AuthController extends Controller {
       success: false,
       error: "Incorrect password",
     });
+  };
+
+  resetPass = async (req, res) => {
+    const result = await authRepository.getResetEmail(req.body.token);
+    if (result.success) {
+      const newPassHash = bcrypt.hashSync(req.body.new_pass, 10);
+      const result2 = await authRepository.resetPass(result.data, newPassHash);
+      return this.handleResponse(result2, res);
+    }
+    res.status(404).json({
+      success: false,
+      error: "Invalid token",
+    });
+  };
+
+  sendResetMail = async (req, res) => {
+    const result = await authRepository.getUserIDPass(
+      req.body.email,
+      req.body.type
+    );
+    if (result.success) {
+      const token = jwt.sign(
+        {
+          email: req.body.email,
+          type: req.body.type,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: `${tokenExpiryDuration}s` }
+      );
+      const result2 = await authRepository.saveResetToken(
+        req.body.email,
+        token
+      );
+      if (result2.success) {
+        sendMail(
+          req.body.email,
+          "Password reset",
+          `Your password reset link is: http://localhost:8080/reset_password?type=${req.body.type}&token=${token}`
+        )
+          .then((value) => {
+            res.status(200).json({
+              success: true,
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+            res.status(404).json({
+              success: false,
+              error: "Something goes wrong. Please try again",
+            });
+          });
+      } else {
+        this.handleResponse(result2, res);
+      }
+    } else {
+      res.status(404).json({
+        success: false,
+        error: "The Email is not registered with us",
+      });
+    }
   };
 }
 

@@ -24,7 +24,7 @@ class AuthRepository extends Repository {
     }
     return {
       success: false,
-      error: "Invalid credentials", 
+      error: "Invalid credentials",
     };
   };
   signup = async (data) => {
@@ -79,6 +79,46 @@ class AuthRepository extends Repository {
       return true;
     }
     return false;
+  };
+  resetPass = async (email, newPassHash) => {
+    const query = `
+      BEGIN
+        RESET_PASSWORD(:email,:pass);
+      END;
+    `;
+    const params = {
+      pass: newPassHash,
+      email: email,
+    };
+    console.log(email, newPassHash);
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  getResetEmail = async (token) => {
+    const query = `
+      BEGIN
+        :ret := GET_RESET_EMAIL(:token);
+      END;
+    `;
+    const params = {
+      token: token,
+      ret: { dir: oracledb.BIND_OUT, type: oracledb.STRING },
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
+  };
+  saveResetToken = async (email, token) => {
+    const query = `
+      BEGIN
+        SAVE_RESET_TOKEN(:email,:token);
+      END;
+    `;
+    const params = {
+      email: email,
+      token: token,
+    };
+    const result = await this.execute_pl(query, params);
+    return result;
   };
 }
 
