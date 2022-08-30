@@ -18,11 +18,9 @@ class Repository {
           user: process.env.db_user,
           password: process.env.db_password,
           connectionString: process.env.db_connectstring,
-          // user: "c##hiddenbrain",
-          // password: "root",
-          // connectionString: "localhost/orcl",
         });
       }
+      console.log(query, params);
       result = await this.connection.execute(query, params);
       return {
         success: true,
@@ -46,9 +44,6 @@ class Repository {
           user: process.env.db_user,
           password: process.env.db_password,
           connectionString: process.env.db_connectstring,
-          // user: "c##hiddenbrain",
-          // password: "root",
-          // connectionString: "localhost/orcl",
         });
       }
       // console.log("=>", query, params);
