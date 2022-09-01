@@ -3,48 +3,17 @@
 
 ![dEducation-logo](https://user-images.githubusercontent.com/62663759/187912013-d1653a15-833a-4102-9091-0c9aa96b8505.png)
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-
-  </ol>
-</details>
-
-<!-- ABOUT THE PROJECT -->
-
 ## About The Project
 
-Squirrel is an oracle powered bootstrapped node Website. It is a faithful copy of Rokomari.com. You'll find many features that is in the main site. We tried best of our ability to create something in this short time.
-
-Youtube Demo: https://youtu.be/eeUI5hNmdYo
+dEducation is an ed-tech platform where tutors,students and coaching centers get connected to each other. Students can find their desired tutors and join coaching centers. On the other hand, tutors can get tuitions and create their own coaching centers.
 
 ## Languages, Tools and Frameworks:<a name="tools"></a>
 
 - Node.js
-- Express.js (Routing)
-- OracleDB (Database connection)
-- JWT (Authentication)
-- Bcrypt (Password encryption)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
+- Express.js
+- OracleDB
+- JWT
+- Bcrypt
 
 ## Getting Started
 
@@ -52,11 +21,9 @@ Follow the step by step installation procedure to install and run this on your m
 
 ### Prerequisites
 
-Make sure you have node and oracle installed in your device.
+Make sure you have node installed in your device.
 
 **`NodeJs`**: Install Nodejs from [here](https://nodejs.org/en/download/)
-
-**`Oracle`**:Install Oracle from [here](http://www.oracle.com/index.html) and register for an account of your own
 
 ### Installation
 
@@ -87,17 +54,20 @@ DB_USER= YOUR_DB_USER
 DB_PASS= YOUR_DB_PASS
 DB_CONNECTSTRING=localhost/orcl
 PORT=YOUR_FABOURITE_PORT
-APP_SECRET=YOUR_DARKEST_SECRET
+JWT_SECRET=YOUR_DARKEST_SECRET
+EMAIL_USER = YOUR_EMAIL_ADDRESS
+EMAIL_PASS = YOUR_EMAIL_PASSWORD
 ```
 
 If you followed the above then the `.env` should look like this
 
 ```sh
-DB_USER= c##deducation
-DB_PASS= password
-DB_CONNECTSTRING=localhost/orcl
-PORT= 5000
-APP_SECRET=kuddusmia
+DB_USER = c##deducation
+DB_PASSWORD= password
+DB_CONNECTSTRING= localhost/orcl
+JWT_SECRET= kuddusmia
+EMAIL_USER = "1905072@ugrad.cse.buet.ac.bd"
+EMAIL_PASS = "password_bolbo_na"
 ```
 
 We are finally good to go
@@ -111,18 +81,6 @@ npm start
 ```
 
 You should find that the project is working!
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- CONTACT -->
 
 ## Supervisor
 
