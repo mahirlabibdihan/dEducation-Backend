@@ -104,7 +104,7 @@ class ProfileController extends Controller {
       // console.log("AGAIN START DELETING");
       try {
         fs.unlinkSync(
-          `G:/github/dbms-project/server/public/assets/images/${result.data.IMAGE}`
+          `G:/github/dEducation/server/public/assets/images/${result.data.IMAGE}`
         );
       } catch (err) {
         // console.log(err);
@@ -130,7 +130,7 @@ class ProfileController extends Controller {
     if (result.success) {
       try {
         await file.mv(
-          `G:/github/dbms-project/server/public/assets/images/${result.image}`
+          `G:/github/dEducation/server/public/assets/images/${result.image}`
         );
       } catch (err) {
         (err) => {
