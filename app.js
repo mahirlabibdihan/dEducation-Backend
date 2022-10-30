@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const appRoutes = require("./route/appRoutes");
-const initdb = require("./initdb");
+// const initdb = require("./initdb");
 // db.execute(require("./sql/schema"), {});
 // const corsOption = {
 //   origin: "http://localhost:8080",
